@@ -31,7 +31,11 @@
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-header.top{border-bottom:1px solid var(--line)}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;background:var(--bg)}
+.tn{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}
+.tn a{font-size:15px;font-weight:500;color:var(--text);text-decoration:none}
+.tn a:hover{color:var(--accent)}
+.tn a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:72px}
 .logo{font-family:var(--mark);font-size:28px;letter-spacing:-.5px;color:var(--text);text-decoration:none;line-height:1}
 .logo i{font-style:normal;color:var(--accent)}
@@ -78,8 +82,8 @@ footer{padding:24px 0;font-size:13px;color:var(--muted)}
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#" aria-label="SRMJ Editing">SRMJ<i>.</i></a>
-    <small>Editing standard</small>
+    <a class="logo" href="index.html" aria-label="SRMJ Editing, home">SRMJ<i>.</i></a>
+    <nav class="tn"><a href="index.html">Home</a><a href="index.html#service">Service</a><a href="index.html#how">How it works</a><a href="index.html#contact">Contact</a></nav>
   </div>
 </header>
 
@@ -88,7 +92,7 @@ footer{padding:24px 0;font-size:13px;color:var(--muted)}
   <div class="hero">
     <p class="eyebrow">SRMJ Editing &middot; Standards</p>
     <h1>How we edit a photograph</h1>
-    <p class="lead">SRMJ Editing offers one service: image enhancement for property photographs, across rentals, hospitality and real estate. This page sets out the standard we apply to every image.</p>
+    <p class="lead">SRMJ Editing offers one service: image enhancement for property photographs, across rentals, hospitality and real estate. We do all of the editing ourselves, and this page sets out the standard we apply to every image.</p>
   </div>
 
   <section class="sec">
@@ -103,7 +107,7 @@ footer{padding:24px 0;font-size:13px;color:var(--muted)}
   <section class="sec">
     <div><div class="num">01</div><h2>What we correct</h2></div>
     <div class="body">
-      <p>A property photograph is made to show a place accurately and clearly. Our work is limited to the technical qualities of the image that affect how well it does that, and each one is described here in plain terms.</p>
+      <p>A property photograph is made to show a place accurately and clearly. We edit each photograph ourselves, and our work is limited to the technical qualities of the image that affect how well it does that. Each one is described here in plain terms.</p>
       <p>We correct <strong>light</strong>, <strong>colour</strong>, <strong>sharpness</strong> and <strong>straight lines</strong>. Together they keep the photograph faithful to the room it shows.</p>
       <p>Where the scene contains temporary clutter, we may remove it. The purpose is the same as the other corrections: to present the place as it is, without distraction. Clutter that is temporary is not part of the place, so removing it does not change what the place is.</p>
     </div>
@@ -128,22 +132,22 @@ footer{padding:24px 0;font-size:13px;color:var(--muted)}
   <section class="sec">
     <div><div class="num">03</div><h2>How each image is checked</h2></div>
     <div class="body">
-      <p>No image is delivered on the strength of the editing alone. Every image is checked against the original by a person before delivery.</p>
+      <p>We do not deliver an image on the strength of the editing alone. We check every image against the original ourselves before it reaches you.</p>
       <ol class="steps">
-        <li><b>1</b><span>The edited image is compared with the original.</span></li>
-        <li><b>2</b><span>A person confirms that the photograph still matches the real place.</span></li>
-        <li><b>3</b><span>The image is then delivered to you.</span></li>
+        <li><b>1</b><span>We compare the edited image with the original.</span></li>
+        <li><b>2</b><span>We confirm that the photograph still matches the real place.</span></li>
+        <li><b>3</b><span>We then deliver the image to you.</span></li>
       </ol>
-      <p>Originals are never altered.</p>
+      <p>We never alter the originals.</p>
     </div>
   </section>
 
   <section class="sec" style="border-bottom:0">
     <div><div class="num">04</div><h2>What you receive</h2></div>
     <div class="body">
-      <p>You receive the edited images within one day.</p>
+      <p>We take your photographs, edit them, and deliver the edited images to you within one day.</p>
       <p>You see every edited image first, and you decide what to use. The choice of which images to use is yours.</p>
-      <p>The result is a set of photographs that you have reviewed, that a person has checked against the originals, and that show the property as it is. If you have a question about a particular image, you can write to us at the address below.</p>
+      <p>The result is a set of photographs that you have reviewed, that we have checked against the originals, and that show the property as it is. If you have a question about a particular image, you can write to us at the address below.</p>
     </div>
   </section>
 </div>
