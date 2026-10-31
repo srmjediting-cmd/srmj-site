@@ -46,7 +46,7 @@ header .wrap{ display:flex; align-items:center; justify-content:space-between; g
 .frame{ position:relative; aspect-ratio:16/9; width:100%; max-width:100%; background:var(--band); overflow:hidden }
 .frame video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block }
 
-section{ border-top:1px solid var(--line); padding-block:clamp(52px,7vw,96px) }
+section{ scroll-margin-top:72px; border-top:1px solid var(--line); padding-block:clamp(52px,7vw,96px) }
 .film + section{ border-top:0 }
 .cols{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(28px,6vw,90px) }
 .cols h2{ font-size:clamp(28px,3.8vw,44px); line-height:1.12 }
@@ -109,7 +109,7 @@ footer .wrap{ display:flex; justify-content:space-between; gap:16px; flex-wrap:w
     <a class="logo" href="#top" aria-label="SRMJ Editing, to the top">
       <svg viewBox="0 0 150 36" role="img" aria-hidden="true"><text x="0" y="29" font-family="Archivo Black, Arial Black, Impact, sans-serif" font-size="32" letter-spacing="-0.5">SRMJ<tspan style="fill:#128A73">.</tspan></text></svg>
     </a>
-    <nav class="nav"><a href="#service">Service</a><a href="#how">How it works</a><a href="article.html">Standards</a><a href="#contact">Contact</a></nav>
+    <nav class="nav"><a href="#service">Service</a><a href="#how">How it works</a><a href="article">Standards</a><a href="#contact">Contact</a></nav>
   </div>
 </header>
 
@@ -169,7 +169,7 @@ footer .wrap{ display:flex; justify-content:space-between; gap:16px; flex-wrap:w
       </div>
       <div class="cap">Sample photograph. Drag to compare.</div>
       <div class="links">
-        <a href="article.html"><b>How we edit a photograph</b><span>What we correct, and what we never do.</span></a>
+        <a href="article"><b>How we edit a photograph</b><span>What we correct, and what we never do.</span></a>
       </div>
     </div>
   </section>
@@ -209,5 +209,25 @@ footer .wrap{ display:flex; justify-content:space-between; gap:16px; flex-wrap:w
       navigator.clipboard.writeText(t).then(function(){ out.textContent='Copied: '+t; }, fallback);
     } else { fallback(); }
   });
+})();
+</script>
+<script>
+(function(){
+  function clean(){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} }
+  function go(id){
+    var t = (!id || id==='top') ? null : document.getElementById(id);
+    if(!t && id && id!=='top') return false;
+    if(t){ t.scrollIntoView({behavior:'smooth', block:'start'}); } else { window.scrollTo({top:0, behavior:'smooth'}); }
+    return true;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    if(go(a.getAttribute('href').slice(1))){ e.preventDefault(); clean(); }
+  });
+  if(location.hash){
+    var id = location.hash.slice(1);
+    setTimeout(function(){ go(id); clean(); }, 50);
+  }
 })();
 </script>
