@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How we edit a photograph | SRMJ Editing</title>
+<meta name="description" content="The SRMJ Editing standard for property photographs: what we correct, what we never do, and how every image is checked.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B2527; --paper:#FFFFFF; --muted:#506568; --line:#D5DCDA;
+  --accent:#128A73; --accent-dark:#63D8BC; --on-dark:#F1F6F4;
+  --bg:var(--paper); --text:var(--ink); --band:#0B2527; --band-text:var(--on-dark); --band-accent:var(--accent-dark);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --mark:"Archivo Black","Arial Black",Impact,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A1517; --text:#EAF1EF; --muted:#9FB1AE; --line:#24393B; --accent:#4FCBAE;
+    --band:#0F2023; --band-accent:#4FCBAE;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A1517; --text:#EAF1EF; --muted:#9FB1AE; --line:#24393B; --accent:#4FCBAE;
+  --band:#0F2023; --band-accent:#4FCBAE;
+}
+*{box-sizing:border-box;border-radius:0}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header.top{border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:72px}
+.logo{font-family:var(--mark);font-size:28px;letter-spacing:-.5px;color:var(--text);text-decoration:none;line-height:1}
+.logo i{font-style:normal;color:var(--accent)}
+.top small{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.hero{padding:72px 0 48px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 24px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,7vw,68px);line-height:1.05;letter-spacing:-.01em;margin:0 0 32px;max-width:14em}
+.lead{font-family:var(--serif);font-size:clamp(21px,3vw,27px);line-height:1.45;color:var(--text);max-width:30em;margin:0}
+section.sec{display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px;padding:56px 0;border-bottom:1px solid var(--line)}
+.sec .num{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,34px);line-height:1.2;margin:8px 0 0;letter-spacing:-.005em}
+.body{max-width:680px}
+.body p{margin:0 0 20px}
+.body p:last-child{margin-bottom:0}
+.body strong{font-weight:600}
+.tbl{width:100%;border-collapse:collapse;margin:8px 0 0;font-size:16px}
+.tbl th{font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-align:left;color:var(--muted);font-weight:600;padding:12px 24px 12px 0;border-bottom:1px solid var(--text);width:50%}
+.tbl td{padding:14px 24px 14px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th:last-child,.tbl td:last-child{padding-right:0}
+.tbl th.yes{color:var(--accent)}
+.steps{list-style:none;margin:0 0 20px;padding:0;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:40px 1fr;gap:8px;padding:16px 0;border-bottom:1px solid var(--line)}
+.steps b{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--accent);line-height:1.3}
+.band{background:var(--band);color:var(--band-text);padding:72px 0}
+.band .wrap{display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px}
+.band .eyebrow{color:var(--band-accent);margin:0}
+.band p.big{font-family:var(--serif);font-size:clamp(24px,3.4vw,34px);line-height:1.3;margin:0 0 24px;max-width:24em}
+.band a{color:var(--band-accent);text-decoration:none;border-bottom:1px solid currentColor;font-weight:500}
+.band a:focus-visible,.logo:focus-visible{outline:2px solid var(--band-accent);outline-offset:3px}
+footer{padding:24px 0;font-size:13px;color:var(--muted)}
+@media (max-width:760px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  header.top .wrap{height:64px}
+  .hero{padding:48px 0 32px}
+  section.sec,.band .wrap{grid-template-columns:1fr;gap:16px}
+  section.sec{padding:40px 0}
+  .band{padding:48px 0}
+  .tbl th,.tbl td{padding-right:12px}
+  .tbl{font-size:15px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="SRMJ Editing">SRMJ<i>.</i></a>
+    <small>Editing standard</small>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <div class="hero">
+    <p class="eyebrow">SRMJ Editing &middot; Standards</p>
+    <h1>How we edit a photograph</h1>
+    <p class="lead">SRMJ Editing offers one service: image enhancement for property photographs, across rentals, hospitality and real estate. This page sets out the standard we apply to every image.</p>
+  </div>
+
+  <section class="sec">
+    <div><div class="num">Principle</div><h2>Why the standard is narrow</h2></div>
+    <div class="body">
+      <p>A photograph of a rental, a hotel room or a property for sale makes a promise to the person who looks at it. The more closely the photograph matches the place, the more reliably that promise is kept.</p>
+      <p>For that reason the scope of our work is deliberately limited. We improve how the place is seen. We do not change what the place is. Each correction described below serves the first aim, and each limit serves the second.</p>
+      <p>Because the scope is narrow, it is also easy to state, to apply consistently and to verify. Every image is held to the same standard, whatever the property.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div><div class="num">01</div><h2>What we correct</h2></div>
+    <div class="body">
+      <p>A property photograph is made to show a place accurately and clearly. Our work is limited to the technical qualities of the image that affect how well it does that, and each one is described here in plain terms.</p>
+      <p>We correct <strong>light</strong>, <strong>colour</strong>, <strong>sharpness</strong> and <strong>straight lines</strong>. Together they keep the photograph faithful to the room it shows.</p>
+      <p>Where the scene contains temporary clutter, we may remove it. The purpose is the same as the other corrections: to present the place as it is, without distraction. Clutter that is temporary is not part of the place, so removing it does not change what the place is.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div><div class="num">02</div><h2>What we never do</h2></div>
+    <div class="body">
+      <p>The standard rests on a single principle. Nothing is added and nothing is hidden. The photograph must match the real place.</p>
+      <table class="tbl">
+        <thead><tr><th class="yes" scope="col">We do</th><th scope="col">We do not</th></tr></thead>
+        <tbody>
+          <tr><td>Correct light, colour and sharpness</td><td>Add anything that is not in the place</td></tr>
+          <tr><td>Correct straight lines</td><td>Hide anything that belongs to the place</td></tr>
+          <tr><td>Remove temporary clutter</td><td>Alter the original file</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:20px">A guest, a tenant or a buyer who arrives at the property should find what the photograph showed. That expectation is what we protect, and it is the test we apply to every edit.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div><div class="num">03</div><h2>How each image is checked</h2></div>
+    <div class="body">
+      <p>No image is delivered on the strength of the editing alone. Every image is checked against the original by a person before delivery.</p>
+      <ol class="steps">
+        <li><b>1</b><span>The edited image is compared with the original.</span></li>
+        <li><b>2</b><span>A person confirms that the photograph still matches the real place.</span></li>
+        <li><b>3</b><span>The image is then delivered to you.</span></li>
+      </ol>
+      <p>Originals are never altered.</p>
+    </div>
+  </section>
+
+  <section class="sec" style="border-bottom:0">
+    <div><div class="num">04</div><h2>What you receive</h2></div>
+    <div class="body">
+      <p>You receive the edited images within one day.</p>
+      <p>You see every edited image first, and you decide what to use. The choice of which images to use is yours.</p>
+      <p>The result is a set of photographs that you have reviewed, that a person has checked against the originals, and that show the property as it is. If you have a question about a particular image, you can write to us at the address below.</p>
+    </div>
+  </section>
+</div>
+
+<div class="band">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <div>
+      <p class="big">To discuss your photographs, write to us.</p>
+      <a href="mailto:info@srmjbusiness.com">info@srmjbusiness.com</a>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer><div class="wrap">SRMJ Editing &middot; Image enhancement for property photographs</div></footer>
+</body>
+</html>
