@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our work | SRMJ Editing</title>
+<meta name="description" content="Property photographs before and after enhancement by SRMJ Editing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: Swiss column. Header with menu, a short title block, five full-width before/after images with thin rules, dark contact band. */
+:root{
+  --bg:#FFFFFF; --text:#0B2527; --muted:#506568; --line:#D5DCDA; --accent:#128A73;
+  --band:#0B2527; --on-band:#F1F6F4; --accent-on-band:#63D8BC;
+  --display:"Newsreader", Georgia, "Times New Roman", serif;
+  --body:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mark:"Archivo Black", "Arial Black", Impact, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#0A1517; --text:#EAF1EF; --muted:#9FB3B0; --line:#223A3C; --accent:#4FCBAE; --band:#102022; color-scheme:dark }
+}
+:root[data-theme="dark"]{ --bg:#0A1517; --text:#EAF1EF; --muted:#9FB3B0; --line:#223A3C; --accent:#4FCBAE; --band:#102022; color-scheme:dark }
+
+*{box-sizing:border-box}
+html{ scroll-behavior:smooth }
+body{ margin:0; background:var(--bg); color:var(--text); font-family:var(--body); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased }
+a{color:inherit}
+.wrap{ max-width:1080px; margin:0 auto; padding-left:max(20px, env(safe-area-inset-left,0px)); padding-right:max(20px, env(safe-area-inset-right,0px)) }
+h1,h2{ font-family:var(--display); font-weight:400; letter-spacing:-.012em; margin:0; text-wrap:balance }
+p{ margin:0; text-wrap:pretty }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px }
+
+header{ position:sticky; top:0; z-index:30; background:var(--bg) }
+header .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:22px; border-bottom:1px solid var(--line) }
+.logo{ font-family:var(--mark); font-size:28px; letter-spacing:-.5px; line-height:1; color:var(--text); text-decoration:none }
+.logo i{ font-style:normal; color:var(--accent) }
+.nav{ display:flex; gap:26px; flex-wrap:wrap; justify-content:flex-end }
+.nav a{ font-size:15px; font-weight:500; text-decoration:none }
+.nav a:hover,.nav a[aria-current]{ color:var(--accent) }
+
+.hero{ padding-block:clamp(56px,9vw,120px) clamp(32px,5vw,64px) }
+.hero h1{ font-size:clamp(40px,7vw,84px); line-height:1.04 }
+.hero p{ margin-top:26px; font-size:clamp(18px,2vw,22px); color:var(--muted); max-width:46ch }
+
+.work{ display:grid; gap:clamp(40px,6vw,72px); padding-bottom:clamp(56px,8vw,104px) }
+.work figure{ margin:0; display:grid; gap:14px; border-top:1px solid var(--line); padding-top:clamp(20px,3vw,32px) }
+.work img{ display:block; width:100%; height:auto; max-width:100% }
+.work figcaption{ font-size:14px; color:var(--muted) }
+
+.contact{ background:var(--band); color:var(--on-band) }
+.contact .inner{ display:grid; gap:26px; padding-block:clamp(60px,9vw,110px) }
+.contact h2{ font-size:clamp(32px,5vw,58px); line-height:1.08; max-width:17ch }
+.addr{ font-family:var(--display); font-size:clamp(22px,3.2vw,34px); user-select:all; word-break:break-all }
+.btn{ display:inline-flex; width:fit-content; padding:12px 22px; font:600 15px var(--body); text-decoration:none; background:var(--accent-on-band); color:#06221E }
+.btn:hover{ background:#86E6CF }
+footer{ background:var(--band); color:#9DB5B1; font-size:14px; border-top:1px solid rgba(241,246,244,.14) }
+footer .wrap{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-block:22px; border:0 }
+@media (max-width:640px){ .nav{ gap:14px } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="SRMJ Editing, home">SRMJ<i>.</i></a>
+    <nav class="nav"><a href="/#service">Service</a><a href="/#how">How it works</a><a href="our-work" aria-current="page">Our work</a><a href="article">Standards</a><a href="/#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <h1>Our work</h1>
+      <p>Property photographs before and after enhancement. The light is balanced, the colour is true and the lines are straight.</p>
+    </div>
+
+    <div class="work">
+      <figure>
+        <img src="work-1.jpg" width="2400" height="895" alt="Before and after: a hot tub with a field behind it." loading="eager">
+        <figcaption>Outdoor</figcaption>
+      </figure>
+      <figure>
+        <img src="work-2.jpg" width="2400" height="1192" alt="Before and after: a log cabin exterior." loading="lazy">
+        <figcaption>Exterior</figcaption>
+      </figure>
+      <figure>
+        <img src="work-3.jpg" width="2400" height="773" alt="Before and after: a living room with a stone fireplace." loading="lazy">
+        <figcaption>Interior</figcaption>
+      </figure>
+      <figure>
+        <img src="work-4.jpg" width="2188" height="1448" alt="Before and after: a cabin living room with a stone chimney." loading="lazy">
+        <figcaption>Interior</figcaption>
+      </figure>
+      <figure>
+        <img src="work-5.jpg" width="2400" height="835" alt="Before and after: a cabin with a covered deck among trees." loading="lazy">
+        <figcaption>Exterior</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section class="contact">
+    <div class="wrap inner">
+      <h2>Tell us about your photographs.</h2>
+      <span class="addr">info@srmjbusiness.com</span>
+      <a class="btn" href="mailto:info@srmjbusiness.com?subject=Hello%20SRMJ">Email us</a>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>SRMJ Editing</span><span>Image Enhancement</span></div></footer>
+</body>
+</html>
