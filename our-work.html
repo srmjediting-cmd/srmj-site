@@ -23,13 +23,14 @@
 .intro h1{ font-size:clamp(40px,6vw,72px); line-height:1.04 }
 .intro p{ margin-top:22px; font-size:clamp(18px,2vw,21px); color:var(--muted); max-width:46ch }
 
-.work{ display:grid; gap:clamp(48px,7vw,88px); padding-bottom:clamp(64px,9vw,120px) }
+.work{ display:grid; gap:clamp(48px,7vw,88px); padding-bottom:clamp(48px,7vw,88px) }
 .work figure{ margin:0; border-top:1px solid var(--line); padding-top:clamp(20px,3vw,28px) }
 .work figcaption{ display:flex; justify-content:space-between; gap:16px; margin-bottom:16px; font-size:15px; color:var(--muted) }
 .work figcaption b{ font-family:var(--display); font-weight:400; font-size:22px; color:var(--text) }
 .pair{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px }
 .pair img{ width:100%; background:var(--ph) }
 .pair.tall{ max-width:860px }
+.next{ margin:0 0 clamp(64px,9vw,120px); padding-top:28px; border-top:2px solid var(--text); font-family:var(--display); font-size:clamp(21px,2.6vw,27px); line-height:1.4; max-width:34em }
 
 @media (max-width:640px){
   .pair{ grid-template-columns:1fr; gap:8px }
@@ -49,7 +50,7 @@
   <div class="wrap">
     <div class="intro">
       <h1>Our work</h1>
-      <p>Property photographs before and after enhancement. The light is balanced, the colour is true and the lines are straight.</p>
+      <p>Property photographs before and after enhancement. The light is balanced, the color is true and the lines are straight. Shown with the owners' permission.</p>
     </div>
 
     <div class="work">
@@ -64,31 +65,32 @@
         <figcaption><b>Living room</b><span>Interior</span></figcaption>
         <div class="pair tall">
           <img src="work-4-before-700.jpg" srcset="work-4-before-700.jpg 700w, work-4-before.jpg 1080w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1080" height="1448" alt="Before: a cabin living room with a stone chimney, dark and dull." loading="lazy">
-          <img src="work-4-after-700.jpg" srcset="work-4-after-700.jpg 700w, work-4-after.jpg 1080w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1080" height="1448" alt="After: the same room with brighter light and natural wood colour." loading="lazy">
+          <img src="work-4-after-700.jpg" srcset="work-4-after-700.jpg 700w, work-4-after.jpg 1080w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1080" height="1448" alt="After: the same room with brighter light and natural wood color." loading="lazy">
         </div>
       </figure>
       <figure>
         <figcaption><b>Hot tub</b><span>Outdoor</span></figcaption>
         <div class="pair">
           <img src="work-1-before-700.jpg" srcset="work-1-before-700.jpg 700w, work-1-before.jpg 1186w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1186" height="895" alt="Before: a hot tub with a field behind it." loading="lazy">
-          <img src="work-1-after-700.jpg" srcset="work-1-after-700.jpg 700w, work-1-after.jpg 1186w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1186" height="895" alt="After: the same view with balanced light and colour." loading="lazy">
+          <img src="work-1-after-700.jpg" srcset="work-1-after-700.jpg 700w, work-1-after.jpg 1186w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1186" height="895" alt="After: the same view with balanced light and color." loading="lazy">
         </div>
       </figure>
       <figure>
         <figcaption><b>Fireplace</b><span>Interior</span></figcaption>
         <div class="pair">
           <img src="work-3-before-700.jpg" srcset="work-3-before-700.jpg 700w, work-3-before.jpg 1186w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1186" height="773" alt="Before: a living room with a stone fireplace and leather sofas." loading="lazy">
-          <img src="work-3-after-700.jpg" srcset="work-3-after-700.jpg 700w, work-3-after.jpg 1186w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1186" height="773" alt="After: the same room with even light and true colour." loading="lazy">
+          <img src="work-3-after-700.jpg" srcset="work-3-after-700.jpg 700w, work-3-after.jpg 1186w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1186" height="773" alt="After: the same room with even light and true color." loading="lazy">
         </div>
       </figure>
       <figure>
         <figcaption><b>Covered deck</b><span>Exterior</span></figcaption>
         <div class="pair">
           <img src="work-5-before-700.jpg" srcset="work-5-before-700.jpg 700w, work-5-before.jpg 1186w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1186" height="835" alt="Before: a cabin with a covered deck among trees." loading="lazy">
-          <img src="work-5-after-700.jpg" srcset="work-5-after-700.jpg 700w, work-5-after.jpg 1186w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1186" height="835" alt="After: the same cabin with lifted shadows and natural colour." loading="lazy">
+          <img src="work-5-after-700.jpg" srcset="work-5-after-700.jpg 700w, work-5-after.jpg 1186w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1186" height="835" alt="After: the same cabin with lifted shadows and natural color." loading="lazy">
         </div>
       </figure>
     </div>
+    <p class="next">Want to see your own place like this? Send us a link to your listing and we will edit a photograph as a free sample.</p>
   </div>
 
   <section class="band contact" id="contact">
