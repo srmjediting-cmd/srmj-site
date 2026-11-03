@@ -76,6 +76,15 @@
     f.addEventListener('load', function () { try { f.contentWindow.focus(); } catch (e) {} });
   });
 
+  // Phone contact bar: visible once the hero is gone, hidden again when the contact band is on screen.
+  var bar = document.getElementById('mbar'), hero = document.querySelector('.hero'), contact = document.getElementById('contact');
+  if (bar && hero && contact && 'IntersectionObserver' in window) {
+    var past = false, near = false;
+    var show = function () { bar.classList.toggle('on', past && !near); };
+    new IntersectionObserver(function (e) { past = !e[0].isIntersecting; show(); }).observe(hero);
+    new IntersectionObserver(function (e) { near = e[0].isIntersecting || e[0].boundingClientRect.top < 0; show(); }).observe(contact);
+  }
+
   // Keep the address bar clean after jumping to a #section on the same page.
   function clean() { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} }
   document.addEventListener('click', function (e) {
