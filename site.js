@@ -66,6 +66,16 @@
     });
   }
 
+  // How it works: swap the start panel for the walkthrough on click (saves 570 KB for visitors who skip it).
+  var start = document.querySelector('.deck-start');
+  if (start) start.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = start.getAttribute('data-src');
+    f.title = 'How it works: a short presentation in three steps';
+    start.replaceWith(f);
+    f.addEventListener('load', function () { try { f.contentWindow.focus(); } catch (e) {} });
+  });
+
   // Keep the address bar clean after jumping to a #section on the same page.
   function clean() { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} }
   document.addEventListener('click', function (e) {
