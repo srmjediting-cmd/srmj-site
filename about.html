@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About | SRMJ</title>
+<meta name="description" content="SRMJ is Sebastian Rogat and Magnus Jørgensen. We enhance photographs of rentals and guest houses.">
+<link rel="canonical" href="https://srmjbusiness.com/about">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About | SRMJ">
+<meta property="og:description" content="The people behind SRMJ, and how we work.">
+<meta property="og:url" content="https://srmjbusiness.com/about">
+<meta property="og:image" content="https://srmjbusiness.com/sample-after.jpg">
+<meta name="theme-color" content="#0B2527">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+/* About: short intro, the two people side by side, how we work, and the business details. */
+.intro{ padding-block:clamp(48px,8vw,104px) clamp(40px,6vw,72px) }
+.intro h1{ font-size:clamp(40px,6vw,72px); line-height:1.04 }
+.intro p{ margin-top:24px; font-family:var(--display); font-size:clamp(21px,2.6vw,27px); line-height:1.42; max-width:32em }
+
+.people{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(24px,4vw,56px); max-width:820px; padding-bottom:clamp(56px,8vw,104px) }
+.person{ margin:0; display:grid; gap:18px; align-content:start }
+.portrait{ position:relative; aspect-ratio:4/5; background:var(--ph); overflow:hidden }
+.portrait img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
+.portrait .initials{ position:absolute; inset:0; display:grid; place-items:center; font-family:var(--mark); font-size:clamp(48px,8vw,96px); color:var(--line); letter-spacing:-1px }
+.person h2{ font-size:clamp(26px,3vw,34px); line-height:1.15 }
+.person .role{ font-size:15px; color:var(--accent); font-weight:600 }
+.person p{ color:var(--muted); max-width:44ch }
+
+.how{ border-top:1px solid var(--line); padding-block:clamp(56px,8vw,96px); display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(28px,6vw,90px) }
+.how h2{ font-size:clamp(28px,3.8vw,44px); line-height:1.12 }
+.rules{ list-style:none; margin:0; padding:0; border-top:2px solid var(--text) }
+.rules li{ padding:20px 0; border-bottom:1px solid var(--line); display:grid; gap:6px }
+.rules b{ font-family:var(--display); font-weight:400; font-size:22px; line-height:1.25 }
+.rules span{ color:var(--muted) }
+
+.facts{ border-top:1px solid var(--line); padding-block:clamp(56px,8vw,96px) clamp(64px,9vw,112px); display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(28px,6vw,90px) }
+.facts h2{ font-size:clamp(28px,3.8vw,44px); line-height:1.12 }
+.facts dl{ margin:0; display:grid; grid-template-columns:160px minmax(0,1fr); border-top:2px solid var(--text) }
+.facts dt,.facts dd{ margin:0; padding:16px 0; border-bottom:1px solid var(--line) }
+.facts dt{ color:var(--muted); font-size:15px }
+.facts dd a{ text-decoration:none; border-bottom:1px solid var(--line) }
+.facts dd a:hover{ color:var(--accent); border-color:var(--accent) }
+
+@media (max-width:760px){
+  .people{ grid-template-columns:1fr }
+  .portrait{ aspect-ratio:1/1 }
+  .how,.facts{ grid-template-columns:1fr }
+  .facts dl{ grid-template-columns:1fr }
+  .facts dt{ padding-bottom:0; border-bottom:0 }
+  .facts dd{ padding-top:4px }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="SRMJ, home">SRMJ<i>.</i></a>
+    <nav class="nav" aria-label="Main"><a href="our-work">Our work</a><a href="article">Standards</a><a href="about" aria-current="page">About</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div class="intro">
+      <h1>About SRMJ</h1>
+      <p>SRMJ is two people: Sebastian Rogat and Magnus J&oslash;rgensen. We enhance photographs of rentals and guest houses, and we deal with every client ourselves.</p>
+    </div>
+
+    <!-- To show a portrait: put team-sebastian.jpg / team-magnus.jpg (about 1200 x 1500 px) next to this page. Until then the initials show. -->
+    <div class="people">
+      <figure class="person">
+        <div class="portrait"><span class="initials" aria-hidden="true">SR</span><img src="team-sebastian.jpg" alt="Sebastian Rogat" width="1200" height="1500" onerror="this.remove()"></div>
+        <figcaption>
+          <h2>Sebastian Rogat</h2>
+          <p class="role">Co-founder</p>
+          <p>Sebastian writes to the hosts and owners we work with and looks after each delivery.</p>
+        </figcaption>
+      </figure>
+      <figure class="person">
+        <div class="portrait"><span class="initials" aria-hidden="true">MJ</span><img src="team-magnus.jpg" alt="Magnus J&oslash;rgensen" width="1200" height="1500" onerror="this.remove()"></div>
+        <figcaption>
+          <h2>Magnus J&oslash;rgensen</h2>
+          <p class="role">Co-founder</p>
+          <p>Magnus is based in Denmark and looks after the editing and the checks on every photograph.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="how" aria-labelledby="how-h">
+      <h2 id="how-h">How we work</h2>
+      <ul class="rules">
+        <li><b>Honest edits only.</b><span>We correct light, colour, sharpness and straight lines. Nothing is added and nothing that belongs to the place is hidden.</span></li>
+        <li><b>You see everything first.</b><span>All edited photographs are sent with a watermark. You decide what to use, and you pay only for that.</span></li>
+        <li><b>Your originals stay yours.</b><span>We never alter the original files, and we delete your details when you ask us to.</span></li>
+      </ul>
+    </section>
+
+    <section class="facts" aria-labelledby="facts-h">
+      <h2 id="facts-h">The business</h2>
+      <dl>
+        <dt>Name</dt><dd>SRMJ</dd>
+        <dt>Postal address</dt><dd>Via Luca Ghini, 20141 Milano, Italy</dd>
+        <dt>Email</dt><dd><a href="mailto:info@srmjbusiness.com">info@srmjbusiness.com</a></dd>
+        <dt>Payments</dt><dd>Through PayPal. <a href="pay">How payment works</a></dd>
+        <dt>Your data</dt><dd><a href="privacy">Privacy notice</a></dd>
+      </dl>
+    </section>
+  </div>
+
+  <section class="band contact" id="contact">
+    <div class="wrap inner">
+      <h2>Tell us about your photographs.</h2>
+      <p>Send a link to your listing, or attach a few photographs. We reply by email.</p>
+      <a class="addr" href="mailto:info@srmjbusiness.com?subject=Hello%20SRMJ">info@srmjbusiness.com</a>
+      <a class="btn solid" href="mailto:info@srmjbusiness.com?subject=Hello%20SRMJ">Email us</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-id"><span class="logo">SRMJ<i>.</i></span><p>Image enhancement for property photographs.</p><address>SRMJ, Via Luca Ghini, 20141 Milano, Italy<br><a href="mailto:info@srmjbusiness.com">info@srmjbusiness.com</a></address></div>
+    <nav aria-label="Footer"><a href="our-work">Our work</a><a href="article">Standards</a><a href="about">About</a><a href="pay">Payment</a><a href="privacy">Privacy</a></nav>
+  </div>
+</footer>
+<script src="site.js" defer></script>
+</body>
+</html>

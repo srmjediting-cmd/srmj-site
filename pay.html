@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Payment | SRMJ</title>
+<meta name="description" content="How payment works at SRMJ: you see your edited photographs first and pay only for what you use, securely through PayPal.">
+<link rel="canonical" href="https://srmjbusiness.com/pay">
+<meta name="theme-color" content="#0B2527">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+/* Payment: how it works on the left, the pay box on the right. No prices on the site: the amount is agreed by email. */
+.intro{ padding-block:clamp(48px,8vw,104px) clamp(32px,5vw,56px) }
+.intro h1{ font-size:clamp(40px,6vw,72px); line-height:1.04 }
+.intro p{ margin-top:24px; font-family:var(--display); font-size:clamp(21px,2.6vw,27px); line-height:1.42; max-width:30em }
+
+.grid{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(32px,6vw,88px); align-items:start; padding-bottom:clamp(64px,9vw,120px) }
+.grid h2{ font-size:clamp(26px,3.2vw,34px); line-height:1.15; margin-bottom:20px }
+.steps{ list-style:none; margin:0; padding:0; border-top:2px solid var(--text); counter-reset:s }
+.steps li{ display:grid; grid-template-columns:44px 1fr; gap:8px; padding:18px 0; border-bottom:1px solid var(--line); counter-increment:s }
+.steps li::before{ content:counter(s); font-family:var(--display); font-weight:500; font-size:24px; line-height:1.25; color:var(--accent) }
+.steps b{ display:block; font-weight:600 }
+.steps span{ color:var(--muted) }
+
+.box{ border:1px solid var(--line); padding:clamp(24px,3vw,36px); display:grid; gap:18px; position:sticky; top:104px }
+.box h2{ margin:0 }
+.box p{ color:var(--muted) }
+.box .btn{ width:100%; min-height:52px; font-size:16px }
+.box .note{ font-size:14px }
+.box .haslink{ display:grid; gap:18px }
+.box .nolink{ display:none }
+.box.empty .haslink{ display:none }
+.box.empty .nolink{ display:grid; gap:18px }
+.safe{ display:grid; gap:10px; margin:4px 0 0; padding:16px 0 0; border-top:1px solid var(--line); list-style:none; font-size:15px }
+.safe li{ padding-left:22px; position:relative }
+.safe li::before{ content:""; position:absolute; left:0; top:.55em; width:10px; height:6px; border-left:2px solid var(--accent); border-bottom:2px solid var(--accent); transform:rotate(-45deg) }
+
+@media (max-width:820px){
+  .grid{ grid-template-columns:1fr }
+  .box{ position:static }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="SRMJ, home">SRMJ<i>.</i></a>
+    <nav class="nav" aria-label="Main"><a href="our-work">Our work</a><a href="article">Standards</a><a href="about">About</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div class="intro">
+      <h1>Payment</h1>
+      <p>You pay only after you have seen your edited photographs and decided to use them.</p>
+    </div>
+
+    <div class="grid">
+      <section aria-labelledby="how-h">
+        <h2 id="how-h">How it works</h2>
+        <ol class="steps">
+          <li><div><b>You see every edit first.</b><span>We send all edited photographs with a watermark.</span></div></li>
+          <li><div><b>You decide.</b><span>Tell us which photographs you want. If none of them are for you, you owe nothing.</span></div></li>
+          <li><div><b>You pay through PayPal.</b><span>For the amount agreed in our email, using the button on this page or the link we send you.</span></div></li>
+          <li><div><b>We send the full files.</b><span>Full-size photographs without a watermark, by email.</span></div></li>
+        </ol>
+      </section>
+
+      <!-- PAYPAL LINK: paste the SRMJ PayPal link (for example https://www.paypal.com/paypalme/NAME) into data-paypal below.
+           Leave it empty and the box asks customers to use the link from our email instead. Never put a price on this page. -->
+      <aside class="box" id="paybox" data-paypal="" aria-labelledby="pay-h">
+        <h2 id="pay-h">Pay with PayPal</h2>
+        <div class="haslink">
+          <p>Enter the amount from our email on the PayPal page.</p>
+          <a class="btn solid" id="paylink" href="#" rel="noopener">Pay with PayPal</a>
+          <p class="note">You can pay with a PayPal account or with a card through PayPal.</p>
+        </div>
+        <div class="nolink">
+          <p>Use the payment link in our email. It opens PayPal with the agreed amount.</p>
+          <a class="btn line" href="mailto:info@srmjbusiness.com?subject=Payment%20link">Ask for a payment link</a>
+        </div>
+        <ul class="safe">
+          <li>Payment is handled by PayPal. We never see your card details.</li>
+          <li>Payments go to SRMJ, info@srmjbusiness.com.</li>
+          <li>Questions about a payment: <a href="mailto:info@srmjbusiness.com">info@srmjbusiness.com</a></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+
+  <section class="band contact" id="contact">
+    <div class="wrap inner">
+      <h2>Questions before you pay?</h2>
+      <p>Write to us. One of us will answer.</p>
+      <a class="addr" href="mailto:info@srmjbusiness.com?subject=Payment">info@srmjbusiness.com</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-id"><span class="logo">SRMJ<i>.</i></span><p>Image enhancement for property photographs.</p><address>SRMJ, Via Luca Ghini, 20141 Milano, Italy<br><a href="mailto:info@srmjbusiness.com">info@srmjbusiness.com</a></address></div>
+    <nav aria-label="Footer"><a href="our-work">Our work</a><a href="article">Standards</a><a href="about">About</a><a href="pay">Payment</a><a href="privacy">Privacy</a></nav>
+  </div>
+</footer>
+<script>
+(function () {
+  var box = document.getElementById('paybox'), url = box.getAttribute('data-paypal').trim();
+  // Only PayPal addresses are accepted, so a typo can never send customers somewhere else.
+  if (/^https:\/\/(www\.)?(paypal\.com|paypal\.me)\//.test(url)) document.getElementById('paylink').href = url;
+  else box.classList.add('empty');
+})();
+</script>
+<script src="site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+/* SRMJ shared styles: tokens, header, footer, contact band, buttons, before/after slider.
+   Brand rules: website/source/design/brand-spec.md (radius 0, one accent, no gradients). */
+:root{
+  --bg:#FFFFFF; --text:#0B2527; --muted:#506568; --line:#D5DCDA; --accent:#0F7A66; /* brand #128A73, darkened a little to pass AA for small text on white */ --ph:#EEF2F1;
+  --band:#0B2527; --on-band:#F1F6F4; --on-band-muted:#9DB5B1; --accent-on-band:#63D8BC;
+  --display:"Newsreader", Georgia, "Times New Roman", serif;
+  --body:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mark:"Archivo Black", "Arial Black", Impact, sans-serif;
+  --gutter:max(20px, env(safe-area-inset-left, 0px));
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#0A1517; --text:#EAF1EF; --muted:#9FB3B0; --line:#223A3C; --accent:#4FCBAE; --band:#102022; --ph:#102022; color-scheme:dark }
+}
+:root[data-theme="dark"]{ --bg:#0A1517; --text:#EAF1EF; --muted:#9FB3B0; --line:#223A3C; --accent:#4FCBAE; --band:#102022; --ph:#102022; color-scheme:dark }
+
+*,*::before,*::after{ box-sizing:border-box }
+html{ -webkit-text-size-adjust:100%; scroll-padding-top:88px }
+@media (prefers-reduced-motion: no-preference){ html{ scroll-behavior:smooth } }
+body{ margin:0; background:var(--bg); color:var(--text); font-family:var(--body); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden }
+img{ max-width:100%; height:auto; display:block }
+a{ color:inherit }
+h1,h2,h3{ font-family:var(--display); font-weight:400; letter-spacing:-.012em; margin:0; text-wrap:balance }
+p{ margin:0; text-wrap:pretty }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px }
+[tabindex="-1"]:focus{ outline:none }
+.wrap{ max-width:1080px; margin:0 auto; padding-inline:var(--gutter) }
+.skip{ position:absolute; left:-9999px; top:0; z-index:40; padding:10px 16px; background:var(--text); color:var(--bg); font-weight:600; text-decoration:none }
+.skip:focus{ left:var(--gutter) }
+
+/* Header */
+.site-head{ position:sticky; top:0; z-index:30; background:var(--bg); border-bottom:1px solid var(--line) }
+.site-head .wrap{ display:flex; align-items:center; justify-content:space-between; gap:12px 24px; min-height:72px; flex-wrap:wrap }
+.logo{ font-family:var(--mark); font-size:28px; letter-spacing:-.5px; line-height:1; color:var(--text); text-decoration:none; white-space:nowrap }
+.logo i{ font-style:normal; color:var(--accent) }
+.nav{ display:flex; gap:26px }
+.nav a{ font-size:15px; font-weight:500; text-decoration:none; white-space:nowrap }
+.nav a:hover,.nav a[aria-current="page"]{ color:var(--accent) }
+@media (max-width:720px){
+  html{ scroll-padding-top:120px }
+  .site-head .wrap{ min-height:0; padding-block:14px 0 }
+  /* shortcut: nav scrolls sideways on phones instead of a menu button; fine for 4-5 short links */
+  .nav{ width:100%; overflow-x:auto; gap:24px; padding-bottom:12px; scrollbar-width:none }
+  .nav::-webkit-scrollbar{ display:none }
+}
+
+/* Buttons */
+.btn{ display:inline-flex; align-items:center; justify-content:center; min-height:46px; padding:12px 22px; font:600 15px/1.2 var(--body); text-decoration:none; border:1px solid transparent; cursor:pointer; white-space:nowrap; transition:background-color .15s, border-color .15s, color .15s }
+.btn:active{ transform:translateY(1px) }
+.btn.solid{ background:var(--text); color:var(--bg) }
+.btn.solid:hover{ background:var(--accent); color:var(--bg) }
+.btn.line{ border-color:var(--line); color:var(--text); background:transparent }
+.btn.line:hover{ border-color:var(--text) }
+.band .btn.solid{ background:var(--accent-on-band); color:#06221E }
+.band .btn.solid:hover{ background:#86E6CF }
+.band .btn.line{ border-color:rgba(241,246,244,.4); color:var(--on-band) }
+.band .btn.line:hover{ border-color:var(--on-band) }
+.band :focus-visible{ outline-color:var(--accent-on-band) }
+
+/* Dark contact band */
+.band{ background:var(--band); color:var(--on-band) }
+.contact{ padding-block:clamp(64px,9vw,120px) }
+.contact .inner{ display:grid; gap:26px; justify-items:start }
+.contact h2{ font-size:clamp(32px,5vw,58px); line-height:1.08; max-width:17ch }
+.contact p{ color:var(--on-band-muted); max-width:52ch }
+.addr{ font-family:var(--display); font-size:clamp(22px,3.2vw,34px); color:var(--on-band); text-decoration:none; overflow-wrap:anywhere }
+.addr:hover{ color:var(--accent-on-band) }
+.row{ display:flex; flex-wrap:wrap; gap:12px }
+.copied{ font-size:14px; color:var(--accent-on-band); min-height:1.4em }
+
+/* Footer */
+.site-foot{ background:var(--band); color:var(--on-band-muted); font-size:14px; border-top:1px solid rgba(241,246,244,.14) }
+.site-foot .wrap{ display:flex; justify-content:space-between; align-items:flex-start; gap:28px 48px; flex-wrap:wrap; padding-block:40px 48px }
+.site-foot .logo{ color:var(--on-band); font-size:24px }
+.site-foot .logo i{ color:var(--accent-on-band) }
+.foot-id{ display:grid; gap:10px }
+.foot-id address{ font-style:normal; line-height:1.6 }
+.site-foot nav{ display:flex; gap:12px 24px; flex-wrap:wrap; padding-top:4px }
+.site-foot a{ text-decoration:none }
+.site-foot a:hover{ color:var(--on-band) }
+
+/* Before/after slider: slider.js sets --pos; the invisible range input on top gives drag, click and keyboard control */
+.cmp{ --pos:50%; position:relative; aspect-ratio:4/3; width:100%; overflow:hidden; background:var(--ph); user-select:none; -webkit-user-select:none; touch-action:pan-y }
+.cmp img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
+.cmp .after{ clip-path:inset(0 0 0 var(--pos)) }
+.cmp .tag{ position:absolute; top:12px; z-index:2; padding:5px 10px; background:rgba(11,37,39,.82); color:#fff; font:600 11px/1.4 var(--body); letter-spacing:.12em; text-transform:uppercase; pointer-events:none }
+.cmp .l{ left:12px } .cmp .r{ right:12px }
+.cmp .bar{ position:absolute; top:0; bottom:0; left:var(--pos); z-index:1; width:2px; margin-left:-1px; background:#fff; pointer-events:none }
+.cmp .bar::after{ content:"\2039\00a0\203A"; position:absolute; top:50%; left:50%; width:44px; height:44px; transform:translate(-50%,-50%); border-radius:50%; background:#fff; color:#0B2527; font:600 20px/42px var(--body); text-align:center; box-shadow:0 1px 6px rgba(11,37,39,.35) }
+.cmp input{ position:absolute; inset:0; z-index:3; width:100%; height:100%; margin:0; opacity:0; cursor:ew-resize }
+.cmp:has(input:focus-visible){ outline:2px solid var(--accent); outline-offset:3px }
+.cmp.empty img,.cmp.empty .tag,.cmp.empty .bar,.cmp.empty input{ display:none }
+.cmp.empty::after{ content:"Sample photographs will appear here."; position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:15px }
+.cap{ margin-top:14px; font-size:14px; color:var(--muted) }
+
+/* Our work images are side-by-side originals (before | after in one file). Each <img> shows one half:
+   width/height attributes give the half's size, object-fit crops to the left or right half. */
+.half{ object-fit:cover }
+.half.l{ object-position:0 50% }
+.half.r{ object-position:100% 50% }
