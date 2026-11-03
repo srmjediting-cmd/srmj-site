@@ -1,3 +1,10 @@
+/* Fonts are self-hosted (fontsource, latin subset): no request to Google. */
+@font-face{ font-family:"Newsreader"; font-weight:400; font-style:normal; font-display:swap; src:url(newsreader-latin-400-normal.woff2) format("woff2") }
+@font-face{ font-family:"Newsreader"; font-weight:500; font-style:normal; font-display:swap; src:url(newsreader-latin-500-normal.woff2) format("woff2") }
+@font-face{ font-family:"Public Sans"; font-weight:400; font-style:normal; font-display:swap; src:url(public-sans-latin-400-normal.woff2) format("woff2") }
+@font-face{ font-family:"Public Sans"; font-weight:500; font-style:normal; font-display:swap; src:url(public-sans-latin-500-normal.woff2) format("woff2") }
+@font-face{ font-family:"Public Sans"; font-weight:600; font-style:normal; font-display:swap; src:url(public-sans-latin-600-normal.woff2) format("woff2") }
+@font-face{ font-family:"Archivo Black"; font-weight:400; font-style:normal; font-display:swap; src:url(archivo-black-latin-400-normal.woff2) format("woff2") }
 /* SRMJ shared styles: tokens, header, footer, contact band, buttons, before/after slider.
    Brand rules: website/source/design/brand-spec.md (radius 0, one accent, no gradients). */
 :root{
@@ -93,8 +100,3 @@ p{ margin:0; text-wrap:pretty }
 .cmp.empty::after{ content:"Sample photographs will appear here."; position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:15px }
 .cap{ margin-top:14px; font-size:14px; color:var(--muted) }
 
-/* Our work images are side-by-side originals (before | after in one file). Each <img> shows one half:
-   width/height attributes give the half's size, object-fit crops to the left or right half. */
-.half{ object-fit:cover }
-.half.l{ object-position:0 50% }
-.half.r{ object-position:100% 50% }

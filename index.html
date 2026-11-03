@@ -14,11 +14,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0B2527">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
-<link rel="preload" as="image" href="sample-before.jpg" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="newsreader-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="public-sans-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="image" href="sample-before-1000.jpg" imagesrcset="sample-before-1000.jpg 1000w, sample-before.jpg 1448w" imagesizes="(max-width: 820px) calc(100vw - 40px), 520px" fetchpriority="high">
 <link rel="stylesheet" href="site.css">
 <style>
 /* Front page. Swiss column: split hero with a live before/after, thin rules, one dark band at the end. */
@@ -104,8 +102,8 @@ section{ border-top:1px solid var(--line); padding-block:clamp(56px,8vw,104px) }
     </div>
     <div>
       <div class="cmp" role="group" aria-label="A living room before and after enhancement">
-        <img src="sample-before.jpg" width="1448" height="1086" alt="Before: a log cabin living room with a stone fireplace, soft focus and an orange cast." fetchpriority="high">
-        <img class="after" src="sample-after.jpg" width="1448" height="1086" alt="After: the same room, sharp, with even light and natural colour.">
+        <img src="sample-before-1000.jpg" srcset="sample-before-1000.jpg 1000w, sample-before.jpg 1448w" sizes="(max-width: 820px) calc(100vw - 40px), 520px" width="1448" height="1086" alt="Before: a log cabin living room with a stone fireplace, soft focus and an orange cast." fetchpriority="high">
+        <img class="after" src="sample-after-1000.jpg" srcset="sample-after-1000.jpg 1000w, sample-after.jpg 1448w" sizes="(max-width: 820px) calc(100vw - 40px), 520px" width="1448" height="1086" alt="After: the same room, sharp, with even light and natural colour.">
         <span class="tag l" aria-hidden="true">Before</span><span class="tag r" aria-hidden="true">After</span>
         <div class="bar"></div>
         <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
@@ -155,8 +153,8 @@ section{ border-top:1px solid var(--line); padding-block:clamp(56px,8vw,104px) }
       <div class="cols"><h2>The difference</h2><div class="body"><p class="lead">Lifted light, true colour, straight lines.</p></div></div>
       <div class="wide">
         <div class="cmp" role="group" aria-label="A bedroom and sitting area before and after enhancement">
-          <img src="sample2-before.jpg" width="1448" height="1086" alt="Before: a log cabin bedroom and sitting area in flat light." loading="lazy">
-          <img class="after" src="sample2-after.jpg" width="1448" height="1086" alt="After: the same room with clearer light and natural colour." loading="lazy">
+          <img src="sample2-before-1000.jpg" srcset="sample2-before-1000.jpg 1000w, sample2-before.jpg 1448w" sizes="(max-width: 1080px) calc(100vw - 40px), 1040px" width="1448" height="1086" alt="Before: a log cabin bedroom and sitting area in flat light." loading="lazy">
+          <img class="after" src="sample2-after-1000.jpg" srcset="sample2-after-1000.jpg 1000w, sample2-after.jpg 1448w" sizes="(max-width: 1080px) calc(100vw - 40px), 1040px" width="1448" height="1086" alt="After: the same room with clearer light and natural colour." loading="lazy">
           <span class="tag l" aria-hidden="true">Before</span><span class="tag r" aria-hidden="true">After</span>
           <div class="bar"></div>
           <input type="range" min="0" max="100" value="50" aria-label="Compare before and after, second photograph">
