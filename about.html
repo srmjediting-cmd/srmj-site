@@ -23,9 +23,15 @@
 <link rel="stylesheet" href="site.css">
 <style>
 /* About: short intro, the two people side by side, how we work, and the business details. */
-.intro{ padding-block:clamp(48px,8vw,104px) clamp(40px,6vw,72px) }
-.intro h1{ font-size:clamp(40px,6vw,72px); line-height:1.04 }
-.intro p{ margin-top:24px; font-family:var(--display); font-size:clamp(21px,2.6vw,27px); line-height:1.42; max-width:32em }
+.ahead{ background:#0B2527; color:#F1F6F4; margin-bottom:clamp(56px,8vw,104px) }
+.ahead-in{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(32px,6vw,88px); align-items:end; padding-block:clamp(56px,9vw,128px) 0 }
+.ahead-copy{ padding-bottom:clamp(48px,7vw,96px) }
+.ahead h1{ font-size:clamp(48px,8vw,112px); line-height:.98; letter-spacing:-.025em; color:#fff }
+.ahead p{ margin-top:28px; font-family:var(--display); font-size:clamp(21px,2.6vw,27px); line-height:1.42; max-width:30em; color:#DCE7E3 }
+.ahead-img{ position:relative; aspect-ratio:4/5; overflow:hidden; background:#14282B }
+/* The file has an "After" label burnt into the top-left corner: zoom from the bottom-right to keep it out of frame. */
+.ahead-img img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.18); transform-origin:100% 100% }
+@media (max-width:760px){ .ahead-in{ grid-template-columns:1fr; gap:0; padding-top:48px } .ahead-copy{ padding-bottom:40px } .ahead-img{ aspect-ratio:4/3; margin-inline:calc(-1 * var(--gutter)) } }
 
 .people{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(24px,4vw,56px); max-width:820px; padding-bottom:clamp(56px,8vw,104px) }
 .person{ margin:0; display:grid; gap:18px; align-content:start }
@@ -75,11 +81,17 @@
 </header>
 
 <main id="main">
-  <div class="wrap">
-    <div class="intro">
-      <h1>About SRMJ</h1>
-      <p>SRMJ is two people: Sebastian Rogat and Magnus J&oslash;rgensen. We enhance photographs of rentals and guest houses, and we deal with every client ourselves. Our postal address is in Milan, Italy. Magnus works from Denmark.</p>
+  <header class="ahead">
+    <div class="wrap ahead-in">
+      <div class="ahead-copy">
+        <h1>About SRMJ</h1>
+        <p>SRMJ is two people: Sebastian Rogat and Magnus J&oslash;rgensen. We enhance photographs of rentals and guest houses, and we deal with every client ourselves. Our postal address is in Milan, Italy. Magnus works from Denmark.</p>
+      </div>
+      <div class="ahead-img"><img src="work-2-after-700.jpg" srcset="work-2-after-700.jpg 700w, work-2-after.jpg 1186w" sizes="(max-width: 760px) 100vw, 520px" width="1186" height="1192" alt="A log cabin in the woods, one of the rentals we have worked on." fetchpriority="high"></div>
     </div>
+  </header>
+
+  <div class="wrap">
 
     <!-- To show a portrait: put team-sebastian.jpg / team-magnus.jpg (about 1200 x 1500 px) next to this page and remove the comment marks around its <img>. Until then the initials show. -->
     <div class="people">
