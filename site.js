@@ -106,6 +106,27 @@
     dlg.addEventListener('click', function (e) { if (e.target !== big) dlg.close(); });
   }
 
+  // Our work: filter the examples by the type in each caption (Interior, Exterior, Outdoor).
+  if (gallery) {
+    var figs = [].slice.call(gallery.querySelectorAll('figure'));
+    var kinds = [];
+    figs.forEach(function (f) { var k = f.querySelector('figcaption span'); if (k && kinds.indexOf(k.textContent) < 0) kinds.push(k.textContent); });
+    if (kinds.length > 1) {
+      var bar = document.createElement('div');
+      bar.className = 'work-filter'; bar.setAttribute('role', 'group'); bar.setAttribute('aria-label', 'Show examples');
+      ['All'].concat(kinds).forEach(function (k, i) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.textContent = k; b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+        b.addEventListener('click', function () {
+          bar.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          figs.forEach(function (f) { var s = f.querySelector('figcaption span'); f.hidden = k !== 'All' && (!s || s.textContent !== k); });
+        });
+        bar.appendChild(b);
+      });
+      gallery.parentNode.insertBefore(bar, gallery);
+    }
+  }
+
   // Keep the address bar clean after jumping to a #section on the same page.
   function clean() { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} }
   document.addEventListener('click', function (e) {
