@@ -249,3 +249,14 @@ h1 em,h2 em{ font-style:italic; color:#63D8BC }
 .spot.lit::after{ opacity:1 }
 .spot > *{ position:relative; z-index:2 }
 .spot > canvas{ z-index:-1 }
+
+/* v12: giant outlined SRMJ wordmark closing every page; it slides up into place as the footer scrolls in. */
+.site-foot{ overflow:hidden }
+.site-foot::after{ content:"SRMJ."; display:block; font-family:var(--mark); font-size:clamp(96px,29vw,440px); line-height:.78; letter-spacing:-.045em; text-align:center; white-space:nowrap; color:transparent; -webkit-text-stroke:1.5px rgba(99,216,188,.55); margin-bottom:-.06em; padding-top:8px; pointer-events:none; user-select:none }
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .site-foot::after{ animation:wordmark linear both; animation-timeline:view(); animation-range:entry 0% cover 45% }
+    @keyframes wordmark{ from{ transform:translateY(45%); opacity:.2 } to{ transform:none; opacity:1 } }
+  }
+}
+@media print{ .site-foot::after{ display:none } }
