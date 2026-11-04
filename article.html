@@ -12,6 +12,7 @@
 <meta property="og:url" content="https://srmjbusiness.com/article">
 <meta property="og:image" content="https://srmjbusiness.com/work-3-after.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#0B2527">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" as="font" type="font/woff2" href="newsreader-latin-400-normal.woff2" crossorigin>
@@ -43,6 +44,11 @@
 .example .pair{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px }
 .example img{ width:100%; background:var(--ph) }
 
+
+.toc{ display:flex; flex-wrap:wrap; gap:8px 24px; margin-top:32px; font-size:15px }
+.toc span{ width:100%; color:var(--muted); font-size:13px; letter-spacing:.08em; text-transform:uppercase; font-weight:600 }
+.toc a{ text-decoration:none; border-bottom:1px solid var(--line) }
+.toc a:hover{ color:var(--accent); border-color:var(--accent) }
 @media (max-width:760px){
   .sec{ grid-template-columns:1fr; gap:16px; padding-block:40px }
   .tbl{ font-size:15px }
@@ -64,9 +70,10 @@
   <header class="intro">
     <h1>How we edit a photograph</h1>
     <p class="lead">SRMJ offers one service: image enhancement for property photographs, across rentals, hospitality and real estate. This page sets out the standard we apply to every image.</p>
+    <nav class="toc" aria-label="On this page"><span>On this page</span><a href="#why">Why the standard is narrow</a><a href="#correct">What we correct</a><a href="#never">What we never do</a><a href="#checked">How each image is checked</a><a href="#receive">What you receive</a></nav>
   </header>
 
-  <section class="sec">
+  <section class="sec" id="why">
     <h2>Why the standard is narrow</h2>
     <div class="text">
       <p>A photograph of a rental, a hotel room or a property for sale makes a promise to the person who looks at it. The more closely the photograph matches the place, the more reliably that promise is kept.</p>
@@ -75,7 +82,7 @@
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec" id="correct">
     <h2>What we correct</h2>
     <div class="text">
       <p>We correct <strong>light</strong>, <strong>color</strong>, <strong>sharpness</strong> and <strong>straight lines</strong>. These are the technical qualities that decide how clearly a photograph shows the room, and together they keep it faithful to the place.</p>
@@ -90,7 +97,7 @@
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec" id="never">
     <h2>What we never do</h2>
     <div class="text">
       <p>The standard rests on a single principle. Nothing is added and nothing is hidden. The photograph must match the real place.</p>
@@ -106,7 +113,7 @@
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec" id="checked">
     <h2>How each image is checked</h2>
     <div class="text">
       <p>We do not deliver an image on the strength of the editing alone. Every image is checked against the original before it reaches you.</p>
@@ -119,7 +126,7 @@
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec" id="receive">
     <h2>What you receive</h2>
     <div class="text">
       <p>We take your photographs, edit them, and deliver the edited images to you within one day.</p>

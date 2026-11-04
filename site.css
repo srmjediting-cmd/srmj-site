@@ -105,3 +105,13 @@ p{ margin:0; text-wrap:pretty }
 .cmp.empty::after{ content:"Sample photographs will appear here."; position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:15px }
 .cap{ margin-top:14px; font-size:14px; color:var(--muted) }
 
+
+/* Print: plain black on white, no sticky header, no phone bar or buttons, link addresses shown. */
+@media print{
+  :root{ --bg:#fff; --text:#000; --muted:#333; --line:#bbb; --band:#fff; --on-band:#000; --on-band-muted:#333 }
+  .site-head{ position:static }
+  .skip,.mbar,.nav,.row,.copy,.deck,.deck-start{ display:none !important }
+  .band,.site-foot{ background:#fff; color:#000 }
+  main a[href^="http"]::after{ content:" (" attr(href) ")"; font-size:12px; word-break:break-all }
+  img{ break-inside:avoid }
+}
