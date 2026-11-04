@@ -240,3 +240,12 @@ h1 em,h2 em{ font-style:italic; color:#63D8BC }
 .phead .trail img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; animation:none; transform:scale(1.22); transform-origin:100% 100% }
 @keyframes trail{ 0%{ opacity:0; transform:scale(.6) rotate(var(--rot)) } 18%{ opacity:1; transform:scale(1) rotate(var(--rot)) } 70%{ opacity:1 } 100%{ opacity:0; transform:scale(.85) translateY(30px) rotate(var(--rot)) } }
 .phead .phead-copy{ z-index:3 }
+
+/* v10: soft mint spotlight that follows the mouse over dark bands (idea from Cursify). */
+.spot{ position:relative }
+.spot::after{ content:""; position:absolute; top:0; bottom:0; left:0; right:0; z-index:1; pointer-events:none; opacity:0; transition:opacity .4s ease;
+  background:radial-gradient(520px circle at var(--mx,50%) var(--my,50%), rgba(99,216,188,.42), rgba(99,216,188,.12) 38%, transparent 70%); mix-blend-mode:screen }
+.intro.ink.spot::after{ left:calc(50% - 50vw); right:auto; width:100vw }
+.spot.lit::after{ opacity:1 }
+.spot > *{ position:relative; z-index:2 }
+.spot > canvas{ z-index:-1 }

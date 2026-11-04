@@ -283,3 +283,18 @@
     setTimeout(function () { t.remove(); live--; }, 1100);
   });
 })();
+
+// v10: mouse spotlight on dark bands (Cursify-style). Mouse only, off with reduced motion.
+(function () {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.intro.ink, .ahead, .marquee').forEach(function (el) {
+    el.classList.add('spot');
+    el.addEventListener('pointermove', function (e) {
+      var r = el.classList.contains('intro') ? { left: 0, top: el.getBoundingClientRect().top } : el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      el.classList.add('lit');
+    });
+    el.addEventListener('pointerleave', function () { el.classList.remove('lit'); });
+  });
+})();
