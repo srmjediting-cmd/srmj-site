@@ -35,6 +35,9 @@
 .pair{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px }
 .pair img{ width:100%; background:var(--ph) }
 .pair.tall{ max-width:860px }
+.lbl{ position:relative }
+.lbl::before{ content:attr(data-l); position:absolute; top:10px; left:10px; z-index:1; padding:5px 10px; background:rgba(11,37,39,.82); color:#fff; font:600 11px/1.4 var(--body); letter-spacing:.12em; text-transform:uppercase }
+.lbl[data-l="After"]::before{ background:#0F7A66 }
 .next{ margin:0 0 clamp(64px,9vw,120px); padding-top:28px; border-top:2px solid var(--text); font-family:var(--display); font-size:clamp(21px,2.6vw,27px); line-height:1.4; max-width:34em }
 
 @media (max-width:640px){
@@ -71,6 +74,20 @@
         <div class="pair tall">
           <img src="work-4-before-700.jpg" srcset="work-4-before-700.jpg 700w, work-4-before.jpg 1080w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1080" height="1448" alt="Before: a cabin living room with a stone chimney, dark and dull." loading="lazy">
           <img src="work-4-after-700.jpg" srcset="work-4-after-700.jpg 700w, work-4-after.jpg 1080w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1080" height="1448" alt="After: the same room with brighter light and natural wood color." loading="lazy">
+        </div>
+      </figure>
+      <figure>
+        <figcaption><b>Cabin living room</b><span>Interior</span></figcaption>
+        <div class="pair">
+          <div class="lbl" data-l="Before"><img src="sample-before-640.jpg" srcset="sample-before-640.jpg 640w, sample-before-1000.jpg 1000w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1448" height="1086" alt="Before: a log cabin living room with a stone fireplace, soft focus and an orange cast." loading="lazy"></div>
+          <div class="lbl" data-l="After"><img src="sample-after-640.jpg" srcset="sample-after-640.jpg 640w, sample-after-1000.jpg 1000w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1448" height="1086" alt="After: the same room, sharp, with even light and natural color." loading="lazy"></div>
+        </div>
+      </figure>
+      <figure>
+        <figcaption><b>Bedroom and sitting area</b><span>Interior</span></figcaption>
+        <div class="pair">
+          <div class="lbl" data-l="Before"><img src="sample2-before-640.jpg" srcset="sample2-before-640.jpg 640w, sample2-before-1000.jpg 1000w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1448" height="1086" alt="Before: a log cabin bedroom and sitting area in flat light." loading="lazy"></div>
+          <div class="lbl" data-l="After"><img src="sample2-after-640.jpg" srcset="sample2-after-640.jpg 640w, sample2-after-1000.jpg 1000w" sizes="(max-width: 640px) calc(100vw - 40px), 520px" width="1448" height="1086" alt="After: the same room with clearer light and natural color." loading="lazy"></div>
         </div>
       </figure>
       <figure>
