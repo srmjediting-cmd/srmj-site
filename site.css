@@ -206,3 +206,19 @@ body::after{ content:""; position:fixed; inset:-50%; z-index:9999; pointer-event
   @view-transition{ navigation:none }
 }
 @media print{ body::after,.marquee{ display:none } }
+
+/* v6: italic mint accents in display type, and a bold Daylight contact block on every page. */
+h1 em,h2 em{ font-style:italic; color:#63D8BC }
+.band.contact{ background:#63D8BC; color:#0B2527 }
+.band.contact h2{ font-size:clamp(48px,8.6vw,132px); line-height:.95; letter-spacing:-.03em; max-width:12ch; color:#0B2527 }
+.band.contact h2 em{ color:#0B2527 }
+.band.contact p,.band.contact .send li{ color:rgba(11,37,39,.78) }
+.band.contact a,.band.contact .addr{ color:#0B2527 }
+.band.contact .addr{ font-size:clamp(24px,3.4vw,40px) }
+.band.contact .btn.solid{ background:#0B2527; color:#fff }
+.band.contact .btn.solid:hover{ background:#14353A }
+.band.contact .btn.line{ border-color:#0B2527; color:#0B2527 }
+.band.contact :focus-visible{ outline-color:#0B2527 }
+.band.contact .send{ color:#0B2527 }
+.band.contact .send li::before{ border-color:#0B2527 }
+.band.contact .copied{ color:#0B2527 }

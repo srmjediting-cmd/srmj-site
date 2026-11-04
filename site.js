@@ -173,11 +173,18 @@
 (function () {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   document.querySelectorAll('.stage-copy h1, .phead h1, .ahead h1, .intro.ink h1').forEach(function (h) {
-    var text = h.textContent.trim(), i = 0;
-    h.setAttribute('aria-label', text);
-    h.innerHTML = text.split(/\s+/).map(function (w) {
-      return '<span class="w" aria-hidden="true"><span style="--i:' + (i++) + '">' + w.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</span></span>';
-    }).join(' ');
+    var i = 0, out = [];
+    h.setAttribute('aria-label', h.textContent.trim());
+    // Keep <em> accents: split text nodes and <em> children word by word.
+    h.childNodes.forEach(function (n) {
+      var em = n.nodeType === 1 && n.tagName === 'EM';
+      (n.textContent || '').split(/\s+/).forEach(function (w) {
+        if (!w) return;
+        var t = w.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+        out.push('<span class="w" aria-hidden="true"><span style="--i:' + (i++) + '">' + (em ? '<em>' + t + '</em>' : t) + '</span></span>');
+      });
+    });
+    h.innerHTML = out.join(' ');
     h.classList.add('kin');
   });
   if (!('IntersectionObserver' in window)) return;
