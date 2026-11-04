@@ -26,6 +26,10 @@
 .doc ul{ padding-left:20px }
 .doc li{ margin-top:8px }
 .doc a{ text-decoration-color:var(--accent); text-underline-offset:3px }
+.doc:has(> .intro.ink){ padding-top:0 }
+.doc .intro.ink{ padding-block:clamp(48px,8vw,104px) clamp(36px,5vw,56px); margin-bottom:clamp(32px,5vw,56px) }
+.intro.ink .updated{ color:#9FB5AE }
+.intro.ink .lead{ color:#DCE7E3 }
 </style>
 </head>
 <body>
@@ -39,9 +43,11 @@
 
 <main id="main">
   <article class="wrap doc">
-    <h1>Privacy notice</h1>
-    <p class="updated">Last updated 3 November 2026</p>
-    <p class="lead">We keep as little about you as we can, we say where we found it, and we delete it when you ask.</p>
+    <header class="intro ink">
+      <h1>Privacy <em>notice</em></h1>
+      <p class="updated">Last updated 3 November 2026</p>
+      <p class="lead">We keep as little about you as we can, we say where we found it, and we delete it when you ask.</p>
+    </header>
 
     <h2>Who we are</h2>
     <p>SRMJ (Sebastian Rogat and Magnus J&oslash;rgensen), Via Luca Ghini, 20141 Milano, Italy. Email: <a href="mailto:info@srmjbusiness.com">info@srmjbusiness.com</a>. We are responsible for the personal data described here.</p>

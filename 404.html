@@ -18,6 +18,15 @@
 .lost h1{ font-size:clamp(40px,6vw,72px); line-height:1.04 }
 .lost p{ color:var(--muted); font-size:19px; max-width:40ch }
 .lost-links a{ color:var(--text); text-decoration-color:var(--accent); text-underline-offset:3px }
+/* v18: bold 404 on Ink with a giant outlined number. */
+body{ background:#0B2527; color:#F1F6F4 }
+.lost{ position:relative }
+.lost::before{ content:"404"; display:block; font-family:var(--mark); font-size:clamp(120px,32vw,420px); line-height:.8; letter-spacing:-.05em; color:transparent; -webkit-text-stroke:1.5px rgba(99,216,188,.7); margin-bottom:clamp(16px,3vw,32px) }
+.lost h1{ color:#fff }
+.lost p{ color:#C9D8D3 }
+.lost a{ color:#63D8BC }
+.lost .btn.solid{ background:#63D8BC; color:#0B2527 }
+.lost .btn.line{ border-color:rgba(241,246,244,.5); color:#F1F6F4 }
 </style>
 </head>
 <body>
