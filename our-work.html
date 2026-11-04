@@ -28,17 +28,18 @@
 .intro h1{ font-size:clamp(40px,6vw,72px); line-height:1.04 }
 .intro p{ margin-top:22px; font-size:clamp(18px,2vw,21px); color:var(--muted); max-width:46ch }
 
-.work{ display:grid; gap:clamp(48px,7vw,88px); padding-bottom:clamp(48px,7vw,88px) }
-.work figure{ margin:0; border-top:1px solid var(--line); padding-top:clamp(20px,3vw,28px) }
-.work figcaption{ display:flex; justify-content:space-between; gap:16px; margin-bottom:16px; font-size:15px; color:var(--muted) }
+.work-sec{ padding-block:clamp(56px,8vw,112px) }
+.work{ display:grid; gap:clamp(80px,11vw,152px) }
+.work figure{ margin:0 }
+.work figcaption{ display:flex; justify-content:space-between; gap:16px; margin-bottom:20px; font-size:15px; color:var(--muted) }
 .work figcaption b{ font-family:var(--display); font-weight:400; font-size:22px; color:var(--text) }
-.pair{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px }
+.pair{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px }
 .pair img{ width:100%; background:var(--ph) }
 .pair.tall{ max-width:860px }
 .lbl{ position:relative }
 .lbl::before{ content:attr(data-l); position:absolute; top:10px; left:10px; z-index:1; padding:5px 10px; background:rgba(11,37,39,.82); color:#fff; font:600 11px/1.4 var(--body); letter-spacing:.12em; text-transform:uppercase }
 .lbl[data-l="After"]::before{ background:#0F7A66 }
-.next{ margin:0 0 clamp(64px,9vw,120px); padding-top:28px; border-top:2px solid var(--text); font-family:var(--display); font-size:clamp(21px,2.6vw,27px); line-height:1.4; max-width:34em }
+.next{ margin:0; padding-block:clamp(56px,8vw,104px); font-family:var(--display); font-size:clamp(21px,2.6vw,27px); line-height:1.4; max-width:34em }
 
 @media (max-width:640px){
   .pair{ grid-template-columns:1fr; gap:8px }
@@ -60,7 +61,10 @@
       <h1>Our work</h1>
       <p>Property photographs before and after enhancement: balanced light, true color, straight lines. Shown with the owners' permission.</p>
     </div>
+  </div>
 
+  <section class="mist work-sec">
+   <div class="wrap">
     <div class="work">
       <figure>
         <figcaption><b>Cabin exterior</b><span>Exterior</span></figcaption>
@@ -112,6 +116,10 @@
         </div>
       </figure>
     </div>
+   </div>
+  </section>
+
+  <div class="wrap">
     <p class="next">Want to see your own place like this? Send a link to your listing and we will edit a photograph as a free sample.</p>
   </div>
 

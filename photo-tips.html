@@ -24,15 +24,16 @@
 <link rel="stylesheet" href="site.css">
 <style>
 /* Photo tips: a reading column with numbered tips. */
-.intro{ padding-block:clamp(48px,8vw,104px) clamp(36px,5vw,56px); border-bottom:1px solid var(--line) }
+.intro{ padding-block:clamp(48px,8vw,104px) clamp(36px,5vw,56px) }
 .intro h1{ font-size:clamp(38px,6.4vw,68px); line-height:1.05; max-width:14em }
 .intro .lead{ margin-top:28px; font-family:var(--display); font-size:clamp(21px,2.6vw,27px); line-height:1.42; max-width:30em }
-.tips{ counter-reset:t }
+.tips{ counter-reset:t; padding-block:clamp(24px,4vw,48px) }
+.tip:last-child{ border-bottom:0 }
 .tip{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(28px,5vw,72px); padding-block:48px; border-bottom:1px solid var(--line); counter-increment:t }
 .tip h2{ font-weight:500; font-size:clamp(24px,3vw,30px); line-height:1.2 }
 .tip h2::before{ content:counter(t); display:block; color:var(--accent); margin-bottom:8px }
 .tip p{ max-width:680px }
-.close{ padding-block:48px }
+.close{ padding-block:clamp(56px,8vw,104px) }
 .close p{ max-width:680px }
 .close a{ text-decoration-color:var(--accent); text-underline-offset:3px }
 @media (max-width:760px){
@@ -50,13 +51,14 @@
 </header>
 
 <main id="main">
-<article class="wrap">
-  <header class="intro">
+<article>
+  <header class="intro wrap">
     <h1>How to photograph your rental</h1>
     <p class="lead">You do not need a camera. A phone, daylight and a few habits are enough to show your place clearly. Here is what we would do.</p>
   </header>
 
-  <div class="tips">
+  <div class="tips mist">
+  <div class="wrap">
   <section class="tip">
     <h2>Shoot in daylight, with the lights on and the blinds open</h2>
     <p>Natural light is the best light for a phone camera. Open every blind and curtain, then switch on the lamps so shadowed corners do not go dark. Avoid the flash, which flattens a room.</p>
@@ -94,8 +96,9 @@
     <p>Photograph the place as it is, including the view, the bathroom and the size of the bedrooms. If something is worn or unusual, do not hide it. Guests who find what the photographs promised leave better reviews.</p>
   </section>
   </div>
+  </div>
 
-  <section class="close">
+  <section class="close wrap">
     <p>If you already have photographs, we can correct the light, color and lines without changing what the place is. You can see <a href="our-work">examples of our work</a>, or write to us below.</p>
   </section>
 </article>

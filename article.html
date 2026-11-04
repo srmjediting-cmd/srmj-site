@@ -24,18 +24,18 @@
 <link rel="stylesheet" href="site.css">
 <style>
 /* Standards article: a reading column with the section title in a narrow left column. */
-.intro{ padding-block:clamp(48px,8vw,104px) clamp(36px,5vw,56px); border-bottom:1px solid var(--line) }
+.intro{ padding-block:clamp(48px,8vw,104px) clamp(36px,5vw,56px) }
 .intro h1{ font-size:clamp(38px,6.4vw,68px); line-height:1.05; max-width:14em }
 .intro .lead{ margin-top:28px; font-family:var(--display); font-size:clamp(21px,2.6vw,27px); line-height:1.42; max-width:30em }
 
-.sec{ display:grid; grid-template-columns:240px minmax(0,1fr); gap:48px; padding-block:56px; border-bottom:1px solid var(--line) }
-.sec:last-of-type{ border-bottom:0 }
+.sec{ padding-block:clamp(56px,8vw,96px) }
+.sec-in{ display:grid; grid-template-columns:240px minmax(0,1fr); gap:48px }
 .sec h2{ font-weight:500; font-size:clamp(26px,3.4vw,32px); line-height:1.2 }
 .text{ max-width:680px; display:grid; gap:20px }
 .text strong{ font-weight:600 }
 
 .tbl{ width:100%; border-collapse:collapse; font-size:16px }
-.tbl th{ font-size:12px; letter-spacing:.12em; text-transform:uppercase; text-align:left; color:var(--muted); font-weight:600; padding:12px 24px 12px 0; border-bottom:1px solid var(--text); width:50% }
+.tbl th{ font-size:15px; text-align:left; color:var(--muted); font-weight:600; padding:12px 24px 12px 0; border-bottom:1px solid var(--text); width:50% }
 .tbl th:first-child{ color:var(--accent) }
 .tbl td{ padding:14px 24px 14px 0; border-bottom:1px solid var(--line); vertical-align:top }
 .tbl th:last-child,.tbl td:last-child{ padding-right:0 }
@@ -50,11 +50,12 @@
 
 
 .toc{ display:flex; flex-wrap:wrap; gap:8px 24px; margin-top:32px; font-size:15px }
-.toc span{ width:100%; color:var(--muted); font-size:13px; letter-spacing:.08em; text-transform:uppercase; font-weight:600 }
+.toc span{ width:100%; color:var(--muted); font-size:14px; font-weight:500 }
 .toc a{ text-decoration:none; border-bottom:1px solid var(--line) }
 .toc a:hover{ color:var(--accent); border-color:var(--accent) }
 @media (max-width:760px){
-  .sec{ grid-template-columns:1fr; gap:16px; padding-block:40px }
+  .sec{ padding-block:48px }
+  .sec-in{ grid-template-columns:1fr; gap:16px }
   .tbl{ font-size:15px }
   .tbl th,.tbl td{ padding-right:12px }
 }
@@ -70,23 +71,26 @@
 </header>
 
 <main id="main">
-<article class="wrap">
-  <header class="intro">
+<article>
+  <header class="intro wrap">
     <h1>How we edit a photograph</h1>
     <p class="lead">We offer one service: enhancing property photographs for rentals, hospitality and real estate. This page describes the standard we apply to every image.</p>
     <nav class="toc" aria-label="On this page"><span>On this page</span><a href="#why">Why the standard is narrow</a><a href="#correct">What we correct</a><a href="#never">What we never do</a><a href="#checked">How each image is checked</a><a href="#receive">What you receive</a></nav>
   </header>
 
-  <section class="sec" id="why">
+  <section class="sec mist" id="why">
+   <div class="wrap sec-in">
     <h2>Why the standard is narrow</h2>
     <div class="text">
       <p>A photograph of a rental, a hotel room or a property for sale makes a promise to the person looking at it. The closer the photograph is to the place, the better that promise is kept.</p>
       <p>So our scope is deliberately narrow. We improve how the place is seen. We do not change what the place is. Each correction below serves the first aim, and each limit serves the second.</p>
       <p>A narrow scope is easy to state, apply and verify. Every image gets the same standard, whatever the property.</p>
     </div>
+   </div>
   </section>
 
   <section class="sec" id="correct">
+   <div class="wrap sec-in">
     <h2>What we correct</h2>
     <div class="text">
       <p>We correct <strong>light</strong>, <strong>color</strong>, <strong>sharpness</strong> and <strong>straight lines</strong>. These decide how clearly a photograph shows the room, and correcting them keeps it faithful to the place.</p>
@@ -99,9 +103,11 @@
         <figcaption class="cap">The same room before and after. Light and color corrected; nothing added or removed.</figcaption>
       </figure>
     </div>
+   </div>
   </section>
 
-  <section class="sec" id="never">
+  <section class="sec mist" id="never">
+   <div class="wrap sec-in">
     <h2>What we never do</h2>
     <div class="text">
       <p>The standard rests on one principle: nothing is added and nothing is hidden. The photograph must match the real place.</p>
@@ -115,9 +121,11 @@
       </table>
       <p>A guest, tenant or buyer who arrives should find what the photograph showed. That is what we protect, and it is the test for every edit.</p>
     </div>
+   </div>
   </section>
 
   <section class="sec" id="checked">
+   <div class="wrap sec-in">
     <h2>How each image is checked</h2>
     <div class="text">
       <p>We do not deliver an image on the editing alone. Every image is checked against the original before it reaches you.</p>
@@ -128,15 +136,18 @@
       </ol>
       <p>We never alter the originals.</p>
     </div>
+   </div>
   </section>
 
-  <section class="sec" id="receive">
+  <section class="sec mist" id="receive">
+   <div class="wrap sec-in">
     <h2>What you receive</h2>
     <div class="text">
       <p>You send your photographs. We edit them and deliver the edited images, with a watermark, within one day.</p>
       <p>You see every edited image first and decide which ones to use.</p>
       <p>You get photographs you have reviewed, that we have checked against the originals, and that show the property as it is. If you have a question about an image, write to us at the address below.</p>
     </div>
+   </div>
   </section>
 </article>
 

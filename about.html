@@ -40,14 +40,14 @@
 .portrait:not(:has(img)) .initials{ font-size:34px; color:var(--bg) }
 .people:not(:has(img)){ max-width:none; padding-bottom:clamp(40px,6vw,72px) }
 
-.how{ border-top:1px solid var(--line); padding-block:clamp(56px,8vw,96px); display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(28px,6vw,90px) }
+.how,.facts{ padding-block:clamp(56px,8vw,112px) }
+.two{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(28px,6vw,90px) }
 .how h2{ font-size:clamp(28px,3.8vw,44px); line-height:1.12 }
 .rules{ list-style:none; margin:0; padding:0; border-top:2px solid var(--text) }
 .rules li{ padding:20px 0; border-bottom:1px solid var(--line); display:grid; gap:6px }
 .rules b{ font-family:var(--display); font-weight:400; font-size:22px; line-height:1.25 }
 .rules span{ color:var(--muted) }
 
-.facts{ border-top:1px solid var(--line); padding-block:clamp(56px,8vw,96px) clamp(64px,9vw,112px); display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(28px,6vw,90px) }
 .facts h2{ font-size:clamp(28px,3.8vw,44px); line-height:1.12 }
 .facts dl{ margin:0; display:grid; grid-template-columns:160px minmax(0,1fr); border-top:2px solid var(--text) }
 .facts dt,.facts dd{ margin:0; padding:16px 0; border-bottom:1px solid var(--line) }
@@ -58,7 +58,7 @@
 @media (max-width:760px){
   .people{ grid-template-columns:1fr }
   .portrait{ aspect-ratio:1/1 }
-  .how,.facts{ grid-template-columns:1fr }
+  .two{ grid-template-columns:1fr }
   .facts dl{ grid-template-columns:1fr }
   .facts dt{ padding-bottom:0; border-bottom:0 }
   .facts dd{ padding-top:4px }
@@ -102,17 +102,19 @@
     </div>
   </div>
 
-  <div class="wrap">
-    <section class="how" aria-labelledby="how-h">
+  <section class="how mist" aria-labelledby="how-h">
+   <div class="wrap two">
       <h2 id="how-h">How we work</h2>
       <ul class="rules">
         <li><b>Honest edits only.</b><span>We correct light, color, sharpness and straight lines. Nothing is added and nothing that belongs to the place is hidden.</span></li>
         <li><b>You see everything first.</b><span>All edited photographs are sent with a watermark. You decide what to use, and you pay only for that.</span></li>
         <li><b>Your originals stay yours.</b><span>We never alter the original files, and we delete your details when you ask us to.</span></li>
       </ul>
-    </section>
+   </div>
+  </section>
 
-    <section class="facts" aria-labelledby="facts-h">
+  <section class="facts" aria-labelledby="facts-h">
+   <div class="wrap two">
       <h2 id="facts-h">The business</h2>
       <dl>
         <dt>Name</dt><dd>SRMJ</dd>
@@ -121,8 +123,8 @@
         <dt>Payments</dt><dd>Through PayPal. <a href="pay">How payment works</a></dd>
         <dt>Your data</dt><dd><a href="privacy">Privacy notice</a></dd>
       </dl>
-    </section>
-  </div>
+   </div>
+  </section>
 
   <section class="band contact" id="contact">
     <div class="wrap inner">

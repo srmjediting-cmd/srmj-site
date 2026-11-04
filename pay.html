@@ -21,7 +21,8 @@
 .intro h1{ font-size:clamp(40px,6vw,72px); line-height:1.04 }
 .intro p{ margin-top:24px; font-family:var(--display); font-size:clamp(21px,2.6vw,27px); line-height:1.42; max-width:30em }
 
-.grid{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(32px,6vw,88px); align-items:start; padding-bottom:clamp(64px,9vw,120px) }
+.grid{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(32px,6vw,88px); align-items:start }
+.grid-wrap{ padding-block:clamp(56px,8vw,112px) }
 .grid h2{ font-size:clamp(26px,3.2vw,34px); line-height:1.15; margin-bottom:20px }
 .steps{ list-style:none; margin:0; padding:0; border-top:2px solid var(--text); counter-reset:s }
 .steps li{ display:grid; grid-template-columns:44px 1fr; gap:8px; padding:18px 0; border-bottom:1px solid var(--line); counter-increment:s }
@@ -29,7 +30,7 @@
 .steps b{ display:block; font-weight:600 }
 .steps span{ color:var(--muted) }
 
-.box{ border:1px solid var(--line); padding:clamp(24px,3vw,36px); display:grid; gap:18px; position:sticky; top:104px }
+.box{ background:var(--bg); border:1px solid var(--line); padding:clamp(24px,3vw,36px); display:grid; gap:18px; position:sticky; top:104px }
 .box h2{ margin:0 }
 .box p{ color:var(--muted) }
 .box .btn{ width:100%; min-height:52px; font-size:16px }
@@ -64,7 +65,10 @@
       <h1>Payment</h1>
       <p>You pay only after you have seen your edited photographs and decided to use them.</p>
     </div>
+  </div>
 
+  <div class="mist grid-wrap">
+   <div class="wrap">
     <div class="grid">
       <section aria-labelledby="how-h">
         <h2 id="how-h">How it works</h2>
@@ -96,6 +100,7 @@
         </ul>
       </aside>
     </div>
+   </div>
   </div>
 
   <section class="band contact" id="contact">

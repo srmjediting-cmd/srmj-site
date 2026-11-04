@@ -71,6 +71,9 @@ p{ margin:0; text-wrap:pretty }
 .band .btn.line:hover{ border-color:var(--on-band) }
 .band :focus-visible{ outline-color:var(--accent-on-band) }
 
+/* Alternate section background (design v3: Paper, Mist, Paper...) */
+.mist{ background:var(--mist) }
+
 /* Dark contact band */
 .band{ background:var(--band); color:var(--on-band) }
 .contact{ padding-block:clamp(64px,9vw,120px) }
