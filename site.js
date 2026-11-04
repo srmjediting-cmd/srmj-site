@@ -127,7 +127,7 @@
       if (window.HTMLDialogElement) {
         var hint = document.createElement('p');
         hint.className = 'cap work-hint';
-        hint.textContent = 'Tap or click a photo to see it full size.';
+        hint.textContent = 'Drag across a photo to compare before and after.';
         bar.appendChild(hint);
       }
     }
@@ -197,7 +197,7 @@
     var below = els.map(function (el) { return el.getBoundingClientRect().top >= vh; });
     els.forEach(function (el, n) { if (!below[n]) return; el.classList.add(cls); el.style.transitionDelay = (n % 3) * 0.09 + 's'; io.observe(el); });
   }
-  mark('.who-img, .h3t, .ahead-img, .work .pair, .example .pair', 'wipe');
+  mark('.who-img, .h3t, .ahead-img, .work .cmp, .example .pair', 'wipe');
   mark('.sec-h, .promise li, .who-big, .who-note, .lead.stack, .tip, .sec h2, .person, .faq details, .contact h2', 'rise-in');
 })();
 
