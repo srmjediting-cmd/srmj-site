@@ -239,3 +239,27 @@
     c.addEventListener('pointerup', function () { cur.classList.remove('down'); });
   });
 })();
+
+// v8: slow animated mesh gradient (Paper Shaders) behind the dark title bands. Loaded only when a band exists,
+// WebGL2 is available and motion is allowed; the flat Ink colour stays as the fallback.
+(function () {
+  var bands = document.querySelectorAll('.intro.ink, .ahead');
+  if (!bands.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  try { if (!document.createElement('canvas').getContext('webgl2')) return; } catch (e) { return; }
+  var go = function () {
+    import('./paper-shaders.mjs').then(function (P) {
+      var colors = ['#0B2527', '#0F4A44', '#0B2527', '#0F7A66', '#12383B'].map(P.getShaderColorFromString);
+      bands.forEach(function (el) {
+        el.classList.add('has-shader');
+        try {
+          new P.ShaderMount(el, P.meshGradientFragmentShader, {
+            u_colors: colors, u_colorsCount: colors.length, u_distortion: 0.85, u_swirl: 0.35,
+            u_grainMixer: 0, u_grainOverlay: 0, u_scale: 1, u_rotation: 0, u_offsetX: 0, u_offsetY: 0,
+            u_fit: 0, u_originX: 0.5, u_originY: 0.5, u_worldWidth: 0, u_worldHeight: 0
+          }, undefined, 0.18);
+        } catch (e) { el.classList.remove('has-shader'); }
+      });
+    }).catch(function () {});
+  };
+  ('requestIdleCallback' in window) ? requestIdleCallback(go, { timeout: 2000 }) : setTimeout(go, 800);
+})();

@@ -229,3 +229,8 @@ h1 em,h2 em{ font-style:italic; color:#63D8BC }
 .drag-cur.down{ transform:scale(.82) }
 @media (hover:hover) and (pointer:fine){ .cmp.has-cur, .cmp.has-cur input{ cursor:none } }
 .btn.mag{ transition:color .35s ease, translate .25s cubic-bezier(.2,.8,.2,1) }
+
+/* v8: mesh gradient canvas (Paper Shaders) sits behind the band content; full width even inside the .wrap column. */
+.has-shader{ position:relative; isolation:isolate }
+.has-shader > canvas{ position:absolute !important; top:0; bottom:0; height:100% !important; left:calc(50% - 50vw) !important; width:100vw !important; z-index:-1; pointer-events:none }
+.ahead.has-shader > canvas{ left:0 !important; width:100% !important }
