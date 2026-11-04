@@ -8,33 +8,29 @@
 <link rel="canonical" href="https://srmjbusiness.com/pay">
 <meta property="og:image" content="https://srmjbusiness.com/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="color-scheme" content="light">
-<meta name="theme-color" content="#14110D">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" as="font" type="font/woff2" href="fraunces-latin-opsz-wght.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="public-sans-latin-400-normal.woff2" crossorigin>
-<link rel="stylesheet" href="site.css">
-<link rel="stylesheet" href="sub.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#112619">
+<link rel="preload" as="font" type="font/woff2" href="anton-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="archivo-latin.woff2" crossorigin>
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/sub.css">
 </head>
-<body class="sub">
+<body class="sub" id="top">
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-head">
-  <div class="wrap">
-    <a class="logo" href="/" aria-label="SRMJ, home">SRMJ<i>.</i></a>
-    <nav class="nav" aria-label="Main"><a href="our-work">Our work</a><a href="article">Standards</a><a href="about">About</a><a href="#contact">Contact</a></nav>
-  </div>
-</header>
+<header class="site-head"><div class="wrap"><a class="logo" href="/" aria-label="SRMJ, home">SRMJ</a><nav class="nav" aria-label="Main"><a href="/our-work">Our work</a><a href="/article">Standards</a><a href="/about">About</a></nav></div></header>
 
 <main id="main">
   <div class="wrap">
     <div class="intro">
-      <h1>Pay only for what you <em>use</em></h1>
+      <h1>Pay only for what you use</h1>
       <p>You pay only after you have seen your edited photographs and decided to use them.</p>
     </div>
   </div>
+  <div class="ridge-strip" aria-hidden="true"></div>
 
-  <div class="mist grid-wrap">
+  <div class="pay-wrap">
    <div class="wrap">
     <div class="grid">
       <section aria-labelledby="how-h">
@@ -70,21 +66,13 @@
    </div>
   </div>
 
-  <section class="band contact" id="contact">
-    <div class="wrap inner">
-      <h2>Questions before you pay?</h2>
-      <p>Write to us. One of us will answer.</p>
-      <a class="addr" href="mailto:info@srmjbusiness.com?subject=Payment">info@srmjbusiness.com</a>
-    </div>
-  </section>
+  <section class="close2" id="contact"><div class="wrap"><h2>Questions before you pay?</h2><p>Write to us. One of us will answer.</p></div></section>
 </main>
 
-<footer class="site-foot">
-  <div class="wrap">
-    <div class="foot-id"><span class="logo">SRMJ<i>.</i></span><p>Image enhancement for property photographs.</p><address>SRMJ, Via Luca Ghini, 20141 Milano, Italy<br><a href="mailto:info@srmjbusiness.com">info@srmjbusiness.com</a></address></div>
-    <nav aria-label="Footer"><a href="our-work">Our work</a><a href="article">Standards</a><a href="photo-tips">Photo tips</a><a href="cover-photo">Cover photo</a><a href="about">About</a><a href="pay">Payment</a><a href="privacy">Privacy</a><a href="#top">Back to top</a></nav>
-  </div>
-</footer>
+<footer class="site-foot"><div class="in">
+  <div class="foot-id"><b>SRMJ</b><p>Image enhancement for property photographs.</p><address>SRMJ, Via Luca Ghini, 20141 Milano, Italy<br><a href="mailto:info@srmjbusiness.com">info@srmjbusiness.com</a></address></div>
+  <nav aria-label="Footer"><a href="/our-work">Our work</a><a href="/article">Standards</a><a href="/photo-tips">Photo tips</a><a href="/cover-photo">Cover photo</a><a href="/about">About</a><a href="/pay">Payment</a><a href="/privacy">Privacy</a><a href="#top">Back to top</a></nav>
+</div></footer>
 <script>
 (function () {
   var box = document.getElementById('paybox'), url = box.getAttribute('data-paypal').trim();
@@ -92,6 +80,6 @@
   if (/^https:\/\/(www\.)?(paypal\.com|paypal\.me)\//.test(url)) { document.getElementById('paylink').href = url; box.classList.add('ready'); }
 })();
 </script>
-<script src="site.js" defer></script>
+<script src="/sub.js" defer></script>
 </body>
 </html>

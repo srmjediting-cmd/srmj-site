@@ -1,60 +1,67 @@
-// Home page: drives the "Lights on" reveal from scroll position. Without the .anim class (reduced motion) nothing runs.
-(function () {
-  var root = document.documentElement, rv = document.querySelector('.reveal'), head = document.querySelector('.site-head');
-  if (!rv) return;
-  var hh = 73;
-  var track = rv.querySelector('.rv-track'), stick = rv.querySelector('.rv-stick'), photo = rv.querySelector('.rv-photo');
-  var tb = rv.querySelector('.tb'), ta = rv.querySelector('.ta'), body = document.body;
-  var G = {}, ticking = false, last = '';
-  function c(x) { return x < 0 ? 0 : x > 1 ? 1 : x; }
-  function ss(x) { x = c(x); return x * x * (3 - 2 * x); }
-  function measure() {
-    hh = head.offsetHeight; rv.style.setProperty('--hh', hh + 'px');
-    if (!root.classList.contains('anim')) return;
-    var vw = innerWidth, sw = stick.offsetWidth, sh = stick.offsetHeight;
-    var gxAbs = Math.max(0, (vw - 1320) / 2) + Math.max(20, 0.045 * vw), gx = gxAbs - (vw - sw) / 2;
-    rv.style.setProperty('--gx', gx + 'px');
-    var Wp = photo.offsetWidth, Hp = photo.offsetHeight, phone = vw <= 720, s, tx = 0, ty = 0;
-    if (phone) {
-      s = (sw - 2 * gx) / Wp; ty = 16 + Hp * s / 2 - sh / 2;
-      rv.style.setProperty('--ey', (16 + Hp * s + 24) + 'px');
-    } else {
-      s = Math.min(0.9 * sh / Hp, 0.6 * sw / Wp); tx = gx + Wp * s / 2 - sw / 2;
-      rv.style.setProperty('--ex', (gx + Wp * s + 56) + 'px');
-    }
-    var fx = phone ? 0.52 : 0.5;  // phone crop: recliner and sofa sit near the middle of the frame
-    G = { sw: sw, sh: sh, Wp: Wp, Hp: Hp, ox: (Wp - sw) * fx, tx0: (0.5 - fx) * (Wp - sw), s: s, tx: tx, ty: ty, soft: 0.14 * sw, wB: tb.offsetWidth, hB: tb.offsetHeight, wA: ta.offsetWidth };
-    rv.style.setProperty('--pw', sw + 'px'); rv.style.setProperty('--soft', G.soft + 'px');
-  }
-  measure();
-  if (!root.classList.contains('anim')) return;
-  function draw() {
-    ticking = false;
-    var r = track.getBoundingClientRect(), run = r.height - G.sh;
-    var p = run > 0 ? c((hh - r.top) / run) : 0;
-    var hf = ss(p / 0.12), wp = ss((p - 0.16) / 0.54), q = ss((p - 0.74) / 0.2), t = ss((p - 0.86) / 0.12);
-    var travel = G.sw + G.soft + 0.05 * G.sw, E = wp * travel;            // edge position, stage pixels
-    var ob = 1 - c((E - (G.sw - 16 - G.wB)) / G.wB), oa = c((E - G.soft * 0.5 - 16) / G.wA);
-    if (wp >= 1) { ob = 0; oa = 1; }
-    var s = 1 + (G.s - 1) * q, tx = G.tx0 + (G.tx - G.tx0) * q, ty = G.ty * q;
-    var pl = G.sw / 2 + tx - G.Wp * s / 2, pt = G.sh / 2 + ty - G.Hp * s / 2, pr = pl + G.Wp * s;
-    var ax = Math.max(pl, 0) + 16, ay = Math.max(pt, 0) + 16, bx = Math.min(pr, G.sw) - 16 - G.wB;
-    var v = [hf, 1 - hf, G.ox + E, wp > 0 && wp < 1 ? c(wp * 12) * c((1 - wp) * 12) : 0, q, t, ob, oa, s, tx, ty, ax, ay, bx].map(function (n) { return +n.toFixed(3); });
-    var key = v.join();
-    if (key === last) return;
-    last = key;
-    var set = function (k, val) { rv.style.setProperty(k, val); };
-    set('--hf', v[0]); set('--dim', v[1]); set('--e', v[2] + 'px'); set('--sw', v[3]); set('--t', v[5]);
-    set('--ob', v[6]); set('--oa', v[7]); set('--s', v[8]); set('--tx', v[9] + 'px'); set('--ty', v[10] + 'px');
-    ta.style.transform = 'translate(' + v[11] + 'px,' + v[12] + 'px)'; tb.style.transform = 'translate(' + v[13] + 'px,' + v[12] + 'px)';
-    body.style.setProperty('--k', v[4]);
-    rv.classList.toggle('hoff', hf > 0.98);
-    rv.classList.toggle('on', t > 0.05);
-    rv.classList.toggle('done', wp >= 1);
-    body.classList.toggle('paper', q > 0.5);
-  }
-  function tick() { if (!ticking) { ticking = true; requestAnimationFrame(draw); } }
-  addEventListener('scroll', tick, { passive: true });
-  addEventListener('resize', function () { measure(); last = ''; tick(); });
-  draw();
+/* SRMJ home. Small and plain: slider, headline fit, word fit, print-on, swap. Scroll motion is CSS. */
+(function(){
+var root=document.documentElement,still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var hero=document.getElementById('top'),dv=document.getElementById('div'),nw=hero.querySelector('.layer.new');
+/* the faded state is a copy of the full poster: same markup, same positions */
+var old=nw.cloneNode(true);old.className='layer old';old.setAttribute('aria-hidden','true');
+old.querySelectorAll('[id]').forEach(function(e){e.removeAttribute('id')});
+old.querySelectorAll('a').forEach(function(a){a.tabIndex=-1});
+var oi=old.querySelector('.ph img');oi.src=oi.dataset.b;oi.srcset=oi.dataset.bset;oi.alt='';oi.removeAttribute('fetchpriority');
+var fade={'#8F2A1C':'#B6A98F','#1F3A2D':'#8D8A78'};
+old.querySelectorAll('.rd svg').forEach(function(s,i){s.querySelectorAll('path').forEach(function(p){var c=p.getAttribute('fill');if(i<2)p.setAttribute('fill',fade[c]||c);else p.setAttribute('fill','url(#ff)')});
+ if(i==2)s.insertAdjacentHTML('afterbegin','<defs><linearGradient id="ff" gradientUnits="userSpaceOnUse" x1="0" y1="240" x2="0" y2="330"><stop offset="0" stop-color="#7A7563"/><stop offset="1" stop-color="#112619"/></linearGradient></defs>')});
+hero.insertBefore(old,nw);
+
+var cv=document.createElement('canvas').getContext('2d');
+function tw(txt){cv.font='400 100px Anton';return cv.measureText(txt).width}
+var mq=matchMedia('(max-width:760px)');
+function fit(){
+ var lines=mq.matches?['See it the','way guests','will.']:['See it the way guests will.'];
+ var W=nw.querySelector('.hl').clientWidth;
+ var m=Math.max.apply(0,lines.map(function(s){return tw(s.toUpperCase())}));
+ var sA=100*(W-8)/m;
+ hero.style.setProperty('--nl',lines.length);hero.style.setProperty('--lh',Math.round(sA*.92)+'px');hero.style.setProperty('--hs',sA.toFixed(1)+'px');
+ hero.querySelectorAll('.hl').forEach(function(h){h.innerHTML=lines.map(function(s){return'<span>'+s+'</span>'}).join('')});
+}
+var p=50,nudged=0;
+function set(v){p=Math.max(0,Math.min(100,v));hero.style.setProperty('--x',p+'%');dv.setAttribute('aria-valuenow',Math.round(p))}
+var q=new URLSearchParams(location.search).get('x');set(q!==null?+q:50);
+fit();
+var ready=(document.fonts&&document.fonts.load)?Promise.all([document.fonts.load('400 100px Anton'),document.fonts.ready]):Promise.resolve();
+ready.then(function(){fit();fitWord();
+ if(q===null&&!still){var t0=performance.now();
+  var step=function(t){if(nudged)return;var u=Math.min(1,(t-t0)/1100);set(50-9*Math.sin(Math.PI*u)*(1-.15*u));if(u<1)requestAnimationFrame(step);else set(50)};
+  setTimeout(function(){requestAnimationFrame(step)},500)}});
+addEventListener('resize',function(){fit();fitWord()});
+dv.addEventListener('pointerdown',function(e){nudged=1;dv.setPointerCapture(e.pointerId);dv._g=1});
+dv.addEventListener('pointermove',function(e){if(dv._g){var r=hero.getBoundingClientRect();set((e.clientX-r.left)/r.width*100)}});
+dv.addEventListener('pointerup',function(){dv._g=0});dv.addEventListener('pointercancel',function(){dv._g=0});
+dv.addEventListener('keydown',function(e){nudged=1;var s=e.shiftKey?10:2,m={ArrowLeft:-s,ArrowRight:s,ArrowDown:-s,ArrowUp:s};
+ if(e.key in m){set(p+m[e.key]);e.preventDefault()}else if(e.key=='Home'){set(0);e.preventDefault()}else if(e.key=='End'){set(100);e.preventDefault()}});
+
+/* the wall: word fits its column; prints on once; swap */
+var word=document.getElementById('word');
+function fitWord(){
+ var wl=document.querySelector('.wl'),big=document.querySelector('.big'),mob=mq.matches;
+ cv.font='400 100px Anton';var cap=cv.measureText('H').actualBoundingBoxAscent/100;
+ [].forEach.call(word.children,function(sp){var f=100*(wl.clientWidth-(mob?0:44))/tw(sp.textContent.toUpperCase());
+  sp.style.fontSize=f+'px';sp.dataset.h=f;
+  var k=mob?1:Math.min(1.7,(big.offsetHeight*.6)/(cap*f));sp.style.transform='scaleY('+k.toFixed(3)+')'});
+ word.style.height=mob?word.children[0].dataset.h+'px':'';
+}
+fitWord();
+function print(){word.classList.remove('go');void word.offsetWidth;word.classList.add('go')}
+if('IntersectionObserver' in window&&!still){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();print()}},{threshold:.35});io.observe(document.querySelector('.wl'))}else word.classList.add('go');
+var pin=document.getElementById('pin'),lab=document.getElementById('lab'),after=true;
+pin.addEventListener('click',function(){after=!after;
+ document.getElementById('bigA').classList.toggle('off',!after);document.getElementById('bigB').classList.toggle('off',after);
+ document.getElementById('pinA').classList.toggle('off',after);document.getElementById('pinB').classList.toggle('off',!after);
+ word.children[0].classList.toggle('on',after);word.children[1].classList.toggle('on',!after);
+ var t=after?'See before':'See after';lab.textContent=t;
+ pin.setAttribute('aria-label',t+': show the '+(after?'original':'edited')+' photo large');
+ if(!still){print();pin.classList.remove('swing');void pin.offsetWidth;pin.classList.add('swing')}});
+
+/* the closing stamp lands once */
+var st=document.querySelector('.stamp');
+if(st&&'IntersectionObserver' in window&&!still){var so=new IntersectionObserver(function(e){if(e[0].isIntersecting){so.disconnect();st.classList.add('go')}},{threshold:.6});so.observe(st)}
 })();
