@@ -59,6 +59,13 @@
   .tbl{ font-size:15px }
   .tbl th,.tbl td{ padding-right:12px }
 }
+/* v21: a full-width drag-to-compare photo with an oversized statement. */
+.bigcmp{ background:#0B2527; color:#F1F6F4; padding-block:clamp(64px,9vw,120px) clamp(40px,6vw,72px) }
+.bigcmp h2{ font-size:clamp(40px,6.2vw,92px); line-height:1; letter-spacing:-.02em; color:#fff; max-width:14ch; margin-bottom:clamp(32px,5vw,56px) }
+.bigcmp h2 em{ color:#63D8BC }
+.bigcmp .cmp{ max-height:88vh }
+.bigcmp .cmp.burnt img{ transform:scale(1.2); transform-origin:100% 100% }
+.bigcmp .cap{ margin-top:16px; color:#9FB5AE }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How we edit a photograph", "description": "The SRMJ standard for property photographs: what we correct, what we never do, and how every image is checked.", "author": {"@type": "Organization", "name": "SRMJ", "url": "https://srmjbusiness.com/"}, "publisher": {"@type": "Organization", "name": "SRMJ"}, "image": "https://srmjbusiness.com/og-image.jpg", "mainEntityOfPage": "https://srmjbusiness.com/article"}</script>
 </head>
@@ -96,15 +103,20 @@
     <div class="text">
       <p>We correct <strong>light</strong>, <strong>color</strong>, <strong>sharpness</strong> and <strong>straight lines</strong>. These decide how clearly a photograph shows the room, and correcting them keeps it faithful to the place.</p>
       <p>If a scene has temporary clutter, such as a remote control on a sofa, we may remove it. Temporary clutter is not part of the place, so removing it does not change what the place is.</p>
-      <figure class="example">
-        <div class="pair">
-          <img src="work-3-before-700.jpg" srcset="work-3-before-700.jpg 700w, work-3-before.jpg 1186w" sizes="(max-width: 760px) calc(50vw - 24px), 340px" width="1186" height="773" alt="Before: a living room with a stone fireplace, in flat light." loading="lazy">
-          <img src="work-3-after-700.jpg" srcset="work-3-after-700.jpg 700w, work-3-after.jpg 1186w" sizes="(max-width: 760px) calc(50vw - 24px), 340px" width="1186" height="773" alt="After: the same room with even light and true color. Nothing added or removed." loading="lazy">
-        </div>
-        <figcaption class="cap">The same room before and after. Light and color corrected; nothing added or removed.</figcaption>
-      </figure>
     </div>
    </div>
+  </section>
+
+  <section class="bigcmp" aria-labelledby="bigcmp-h">
+    <div class="wrap"><h2 id="bigcmp-h">Light and color <em>corrected.</em> Nothing added, nothing removed.</h2></div>
+    <div class="cmp burnt" style="aspect-ratio:1186/773" role="group" aria-label="A living room with a stone fireplace: before and after">
+      <img loading="lazy" decoding="async" src="work-3-before-700.jpg" srcset="work-3-before-700.jpg 700w, work-3-before.jpg 1186w" sizes="100vw" width="1186" height="773" alt="Before: a living room with a stone fireplace, in flat light." loading="lazy">
+      <img class="after" loading="lazy" decoding="async" src="work-3-after-700.jpg" srcset="work-3-after-700.jpg 700w, work-3-after.jpg 1186w" sizes="100vw" width="1186" height="773" alt="After: the same room with even light and true color. Nothing added or removed." loading="lazy">
+      <span class="tag l" aria-hidden="true">Before</span><span class="tag r" aria-hidden="true">After</span>
+      <div class="bar"></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+    </div>
+    <p class="wrap cap">Drag across the photo. The same room, before and after.</p>
   </section>
 
   <section class="sec mist" id="never">
