@@ -73,7 +73,9 @@ p{max-width:68ch}
 .signpost ul{list-style:none;padding:0;margin:0}
 .signpost a{display:block;padding:9px 34px 9px 16px;color:var(--t);text-decoration:none;font-size:15px;font-weight:700;line-height:1.3}
 .signpost a:hover{text-decoration:underline}
-.signpost a[aria-current=true]{background:var(--o);color:var(--d);clip-path:polygon(0 0,calc(100% - 20px) 0,100% 50%,calc(100% - 20px) 100%,0 100%)}
+.signpost a{position:relative;z-index:1}
+.signpost a[aria-current=true]{color:var(--d)}
+.signpost .mk{position:absolute;left:0;top:0;width:100%;height:0;background:var(--o);clip-path:polygon(0 0,calc(100% - 20px) 0,100% 50%,calc(100% - 20px) 100%,0 100%);transition:transform .35s cubic-bezier(.2,.7,.2,1),height .35s}
 @media(max-width:900px){.tipsgrid{display:block}.signpost{display:none}}
 .close.wrap{padding-top:var(--rh);padding-bottom:var(--rh)}
 .close p{font-size:clamp(18px,1.5vw,21px)}
@@ -105,7 +107,7 @@ p{max-width:68ch}
 .trail.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
 .trail-in{position:relative;display:flex;gap:clamp(36px,5vw,72px);width:max-content;padding:8px 0 0 22px;margin:0}
 .trail-in:after{content:"";flex:0 0 70vw}
-.trail-in:before{content:"";position:absolute;left:0;right:0;top:92px;border-top:8px dotted var(--o)}
+.trail-in:before{content:"";position:absolute;left:0;right:0;top:92px;border-top:8px dotted var(--o);clip-path:inset(0 calc((1 - var(--draw,1))*100%) 0 0)}
 .stop{position:relative;scroll-snap-align:start;flex:0 0 auto;list-style:none}
 .stop .sign{position:relative;display:inline-flex;flex-direction:column;background:var(--o);color:var(--d);padding:10px 18px 12px;min-width:200px;max-width:80vw;z-index:1;box-shadow:0 0 0 4px var(--d),0 0 0 7px var(--o)}
 .stop .sign b{font:400 28px/1.1 var(--disp);text-transform:uppercase}
@@ -117,7 +119,7 @@ p{max-width:68ch}
  .trail{overflow:visible;padding:0 var(--m);cursor:auto}
  .trail-in{flex-direction:column;width:auto;padding:0 0 0 34px;gap:48px}
  .trail-in:after{display:none}
- .trail-in:before{left:10px;right:auto;top:0;bottom:0;border-top:0;border-left:8px dotted var(--o)}
+ .trail-in:before{left:10px;right:auto;top:0;bottom:0;border-top:0;border-left:8px dotted var(--o);clip-path:inset(0 0 calc((1 - var(--draw,1))*100%) 0)}
  .stop .sign{min-width:0}
  .stop .sign:after{left:-26px;top:50%;width:26px;height:8px}
  .stop .cmp{height:auto;width:100%;margin-top:30px}
@@ -146,8 +148,9 @@ dt{font-weight:700;color:var(--o)}dd{margin:0}
 .close2{padding:var(--rh) 0}
 .close2 h2{font:400 var(--d1)/.96 var(--disp);text-wrap:balance;margin-bottom:.35em}
 .close2 p{font-size:clamp(18px,1.5vw,21px);margin-bottom:28px}
-.cta2{display:block;text-align:center;background:var(--o);color:var(--d);text-decoration:none;font:400 var(--d1)/1 var(--disp);text-transform:uppercase;padding:.32em .2em;margin-top:clamp(20px,2.4vw,36px)}
-.cta2:hover{background:var(--r);color:var(--o)}
+.cta2{display:block;text-align:center;background:var(--o) linear-gradient(var(--r),var(--r)) no-repeat 0 0/0% 100%;color:var(--d);text-decoration:none;font:400 var(--d1)/1 var(--disp);text-transform:uppercase;padding:.32em .2em;margin-top:clamp(20px,2.4vw,36px);transition:background-size .35s ease,color .35s ease}
+.cta2:hover,.cta2:focus-visible{background-size:100% 100%;color:var(--o)}
+.cta2:active{transform:translateY(2px)}
 @media(max-width:760px){.cta2{font-size:11.5vw}.close2 h2{font-size:13vw}}
 
 /* footer */
@@ -164,6 +167,7 @@ dt{font-weight:700;color:var(--o)}dd{margin:0}
 /* buttons (pay, 404) */
 .btn{display:inline-block;background:var(--o);color:var(--d)!important;font:400 22px/1 var(--disp);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:18px 28px}
 .btn:hover{background:var(--r);color:var(--o)!important}
+.btn:active{transform:translateY(2px)}
 .btn.line{background:transparent;color:var(--o)!important;box-shadow:inset 0 0 0 3px var(--o)}
 
 /* pay: calm */
@@ -193,3 +197,22 @@ dt{font-weight:700;color:var(--o)}dd{margin:0}
 .lost h1{color:var(--o);text-shadow:none;max-width:none}
 .lost .row{display:flex;flex-wrap:wrap;gap:14px;margin:24px 0}
 .lost a{color:var(--o)}
+
+/* motion: only when the page is allowed to move (class m), each effect once, transform and opacity */
+.half,.person,.stop .sign{transition:transform .8s cubic-bezier(.2,.9,.3,1.2),opacity .5s}
+.half{transform-origin:50% 0}
+.half+.half{transition-delay:.15s}
+.m .parksign:not(.in) .half{opacity:0;transform:rotate(-6deg) translateY(-12px)}
+.no li span{background:linear-gradient(var(--o),var(--o)) no-repeat 0 55%/100% 3px;transition:background-size .5s ease}
+.m .parksign:not(.in) .no li span{background-size:0% 3px}
+.no li:nth-child(1) span{transition-delay:.7s}.no li:nth-child(2) span{transition-delay:.95s}.no li:nth-child(3) span{transition-delay:1.2s}
+.m .person:not(.in){opacity:0;transform:rotate(-2.5deg) translateY(18px)}
+.person:nth-child(2){transition-delay:.12s}
+.m .stop:not(.in) .sign{opacity:0;transform:translateY(-18px)}
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.18s}
+@media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+
+/* struck text under "We never" read as a double negative and was hard to read */
+.parksign .half.no li span{text-decoration:none!important;background:none!important}
+.parksign .half.no li span::before,.parksign .half.no li span::after,.parksign .half.no li::before,.parksign .half.no li::after{display:none!important}

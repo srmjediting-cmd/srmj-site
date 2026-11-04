@@ -19,8 +19,9 @@ a,button,.div{-webkit-tap-highlight-color:transparent}
 .hero,.pg{--hr:calc(var(--lh,.92*8vw)*var(--nl,1) + 28px);--PHt:min(590px,46vw);--RH:clamp(220px,28vw,420px)}
 .hero{position:relative;overflow:hidden;
  height:calc(var(--navh) + var(--hr) + 56px + var(--PHt) + 40px + var(--RH)*.62);
- background:var(--o) repeating-conic-gradient(from 0deg at 54% 36%,transparent 0 6deg,rgba(143,42,28,.07) 6deg 12deg)}
-.layer.new:before{content:"";position:absolute;inset:0;background:var(--r);opacity:0;pointer-events:none}
+ background:var(--o)}
+.rays{position:absolute;left:54%;top:36%;width:220vmax;height:220vmax;margin:-110vmax 0 0 -110vmax;background:repeating-conic-gradient(from 0deg,transparent 0 6deg,rgba(143,42,28,.07) 6deg 12deg);pointer-events:none}
+.layer.new:before{content:"";position:absolute;inset:0;background:var(--r);opacity:var(--dusk,0);pointer-events:none}
 .layer{position:absolute;inset:0;isolation:isolate}
 .js .layer.new{clip-path:inset(0 0 0 var(--x,50%))}
 .layer.new{--ink:var(--f);--cta:var(--r);--ctat:var(--o);--k1:var(--r);--k2:var(--f);--sh:var(--r)}
@@ -37,6 +38,7 @@ a,button,.div{-webkit-tap-highlight-color:transparent}
 .pg h1 span{display:block;white-space:nowrap;height:var(--lh);line-height:var(--lh)}
 .copy{grid-column:1/4;grid-row:3;margin-top:56px;padding-right:32px;position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
 .cta{display:flex;align-items:center;justify-content:center;width:100%;height:var(--ch);text-decoration:none;white-space:nowrap;background:var(--cta);color:var(--ctat);font:400 23px/1 var(--disp);letter-spacing:.07em;text-transform:uppercase}
+.copy .sub{margin-top:16px;font-size:16px;line-height:1.4;font-weight:500}
 .copy small{display:block;margin-top:14px;line-height:18px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .ph{grid-column:4/11;grid-row:3;margin:56px 0 0;height:var(--PHt);position:relative;z-index:2;box-shadow:0 0 0 clamp(5px,.7vw,10px) var(--k1),0 0 0 clamp(11px,1.5vw,22px) var(--k2)}
 .ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
@@ -44,6 +46,8 @@ a,button,.div{-webkit-tap-highlight-color:transparent}
 .rd svg{position:absolute;left:0;right:0;bottom:-70px;width:100%;height:calc(100% + 70px);will-change:transform}
 .div{display:none;position:absolute;top:0;bottom:0;left:var(--x,50%);width:48px;margin-left:-24px;z-index:20;touch-action:pan-y;cursor:ew-resize}
 .js .div{display:block}
+.dl{position:absolute;left:50%;top:calc(50% - 76px);transform:translateX(-50%);white-space:nowrap;background:var(--d);color:var(--o);font:400 15px/1 var(--disp);letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;pointer-events:none;transition:opacity .4s}
+.dl.gone{opacity:0}
 .div:before{content:"";position:absolute;left:22px;width:4px;top:0;bottom:0;background:var(--d)}
 .knob{position:absolute;top:50%;left:0;width:48px;height:64px;margin-top:-32px;background:var(--o);border:3px solid var(--d);display:grid;place-items:center}
 .div:focus-visible{outline:none}
@@ -52,7 +56,8 @@ a,button,.div{-webkit-tap-highlight-color:transparent}
 @media(max-width:760px){
  :root{--navh:52px}
  .hero,.pg{--hr:calc(var(--lh,.92*13vw)*var(--nl,3) + 28px);--PHt:calc((100vw - 2*var(--m))*.75);--RH:200px}
- .hero{height:calc(var(--navh) + var(--hr) + var(--PHt) + 34px + 100px + var(--RH)*.55)}
+ .hero{height:calc(var(--navh) + var(--hr) + var(--PHt) + 34px + 190px + var(--RH)*.55)}
+ .copy .sub{font-size:15px;margin-top:12px}
  .pg{padding:0;column-gap:0;--ch:56px;--nw:84px;
   grid-template-columns:var(--m) minmax(0,1fr) var(--m);grid-template-rows:var(--navh) var(--hr) calc(var(--PHt) + 34px) 1fr}
  .pg header{padding:0 var(--m)}
@@ -75,8 +80,11 @@ a,button,.div{-webkit-tap-highlight-color:transparent}
 .wall small{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--o)}
 .imgwrap{grid-column:7/13;grid-row:1;margin-right:calc(-1*var(--m));position:relative}
 .big{position:relative;aspect-ratio:4/5;box-shadow:var(--key);overflow:hidden}
-.big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transition:opacity .35s}
-.big img.off{opacity:0}
+.big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;clip-path:inset(0);transition:clip-path .65s cubic-bezier(.2,.7,.2,1)}
+.big img.off{clip-path:inset(0 100% 0 0)}
+.m .big{clip-path:inset(-30px 100% -30px -30px);transition:clip-path .9s cubic-bezier(.2,.7,.2,1)}
+.m .big.in{clip-path:inset(-30px)}
+.wline{font-size:clamp(18px,1.6vw,22px);font-weight:700;color:#F1D69A;max-width:30ch;line-height:1.35}
 .pin{position:absolute;left:-110px;top:-28px;width:min(220px,26vw);border:0;background:#fff;padding:10px;transform:rotate(-2.2deg);transform-origin:50% 0;box-shadow:5px 7px 0 rgba(0,0,0,.35);cursor:pointer;z-index:3;display:block;font:inherit}
 .pin .in{position:relative;display:block;aspect-ratio:4/5;overflow:hidden}
 .pin img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transition:opacity .35s}
@@ -114,7 +122,6 @@ a,button,.div{-webkit-tap-highlight-color:transparent}
 .close{background:var(--d);padding:0 var(--m) var(--rh)}
 .cta-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--gap);align-items:stretch}
 .cta2{display:block;text-align:center;background:var(--o);color:var(--d);text-decoration:none;font:400 var(--d1)/1 var(--disp);text-transform:uppercase;padding:.32em .2em}
-.cta2:hover{background:var(--r);color:var(--o)}
 .stamp{display:block;width:clamp(96px,13vw,190px);aspect-ratio:1;border:4px solid var(--o);transform:rotate(-4deg);overflow:hidden}
 .stamp svg{display:block;width:100%;height:100%}
 .site-foot{background:var(--d);padding:0 var(--m) calc(var(--rh)*.6);color:rgba(217,164,65,.78);font-size:15px}
@@ -134,10 +141,7 @@ a,button,.div{-webkit-tap-highlight-color:transparent}
  .cta2{font-size:11.5vw}
 }
 
-/* ===== motion: native scroll timelines, only when motion is welcome ===== */
-@keyframes sink{to{transform:translate3d(0,var(--sink),0)}}
-@keyframes dusk{0%{opacity:0}25%{opacity:.14}50%{opacity:.28}75%{opacity:.42}}
-@keyframes ink{to{clip-path:inset(0 0 0 0)}}
+/* ===== motion: plain CSS animations started by a small script; all of it off with reduced motion ===== */
 @keyframes inkMain{0%,54%{opacity:0;translate:-6px 4px}55%{opacity:1;translate:-6px 4px}75%{translate:3px -2px}100%{opacity:1;translate:0 0}}
 @keyframes regR{0%{opacity:0;translate:-.05em .04em}6%{opacity:1}55%{opacity:1;translate:-.05em .04em}99%{opacity:1;translate:0 0}100%{opacity:0}}
 @keyframes regF{0%,25%{opacity:0;translate:.04em -.03em}30%{opacity:1}55%{opacity:1;translate:.04em -.03em}99%{opacity:1;translate:0 0}100%{opacity:0}}
@@ -152,20 +156,31 @@ a,button,.div{-webkit-tap-highlight-color:transparent}
  .js .stamp{opacity:0}
  .stamp.go{animation:stampIn .5s ease-out both}
 }
-@supports (animation-timeline:scroll()){
- @media(prefers-reduced-motion:no-preference){
-  .rd svg{animation:sink linear both;animation-timeline:scroll(root);animation-range:0 120vh}
-  .rd svg:nth-child(1){--sink:70px}.rd svg:nth-child(2){--sink:42px}.rd svg:nth-child(3){--sink:14px}
-  .layer.new:before{animation:dusk steps(1,end) both;animation-timeline:scroll(root);animation-range:15vh 90vh}
-  @media(min-width:761px){
-   .ltrack{height:280vh;view-timeline:--lt block}
-   .lstick{position:sticky;top:0;height:100svh;display:flex;align-items:center}
-   .lstick .col{padding:0;width:100%}
-   .floor p.ln{color:rgba(217,164,65,.2)}
-   .floor p.ln:after{content:attr(data-t);position:absolute;inset:0;color:var(--o);clip-path:inset(0 100% 0 0);animation:ink linear both;animation-timeline:--lt}
-   .floor p.ln:nth-child(1):after{animation-range:cover 28% cover 40%}
-   .floor p.ln:nth-child(2):after{animation-range:cover 42% cover 54%}
-   .floor p.ln:nth-child(3):after{animation-range:cover 56% cover 68%}
-  }
- }
+@keyframes stampw{0%{opacity:0;transform:scale(1.35)}100%{opacity:1;transform:scale(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes press{0%{transform:scale(1.6);opacity:0}100%{transform:scale(1);opacity:1}}
+.w{display:inline-block;font-weight:inherit}
+.m .stampit .w{animation:stampw .22s cubic-bezier(.2,.9,.3,1.2) both;animation-delay:calc(var(--i)*32ms)}
+@media(min-width:761px){.m .rays{animation:spin 360s linear infinite}.m .hero.off .rays{animation-play-state:paused}}
+.m .pct:not(.in){opacity:0}
+.pct{display:inline-block;color:#fff1cf}
+.m .pct.in{animation:press .45s cubic-bezier(.2,.9,.3,1.2) both}
+/* the three lines: pinned on desktop, ink fills as you scroll; plain stacked text everywhere else */
+.m .floor p.ln{color:transparent;-webkit-text-fill-color:transparent;background-image:linear-gradient(var(--o),var(--o)),linear-gradient(rgba(217,164,65,.22),rgba(217,164,65,.22));background-repeat:no-repeat;background-size:var(--fill,100%) 100%,100% 100%;-webkit-background-clip:text;background-clip:text}
+@media(min-width:761px){
+ .m .ltrack{height:280vh}
+ .m .lstick{position:sticky;top:0;height:100svh;display:flex;align-items:center}
+ .m .lstick .col{padding:0;width:100%}
 }
+/* buttons: ink floods from the left on hover and focus; press sinks 2px */
+.cta2{background-image:linear-gradient(var(--r),var(--r));background-repeat:no-repeat;background-size:0% 100%;transition:background-size .35s ease,color .35s ease}
+.cta2:hover,.cta2:focus-visible{background-size:100% 100%;color:var(--o)}
+.cta2:active{transform:translateY(2px)}
+.cta2:hover{background-color:var(--o)}
+.faq details{overflow:hidden}
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.18s}
+@media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+
+/* label sits below the knob, so it does not cover the middle of the photo */
+.dl{top:calc(50% + 44px)}
