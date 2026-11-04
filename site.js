@@ -263,3 +263,23 @@
   };
   ('requestIdleCallback' in window) ? requestIdleCallback(go, { timeout: 2000 }) : setTimeout(go, 800);
 })();
+
+// v9: image trail on the Our work header (idea from Hyperiux components): small photos follow the mouse and fade out.
+(function () {
+  var head = document.querySelector('.phead');
+  if (!head || !window.matchMedia('(hover: hover) and (pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var srcs = [1, 2, 3, 4, 5].map(function (n) { return 'work-' + n + '-after-700.jpg'; });
+  srcs.forEach(function (s) { var i = new Image(); i.src = s; });
+  var n = 0, lx = 0, ly = 0, live = 0;
+  head.addEventListener('pointermove', function (e) {
+    if (Math.hypot(e.clientX - lx, e.clientY - ly) < 90 || live > 6) return;
+    lx = e.clientX; ly = e.clientY;
+    var r = head.getBoundingClientRect(), t = document.createElement('span');
+    t.className = 'trail'; t.setAttribute('aria-hidden', 'true');
+    t.style.left = (e.clientX - r.left) + 'px'; t.style.top = (e.clientY - r.top) + 'px';
+    t.style.setProperty('--rot', ((n % 2 ? 1 : -1) * (3 + n % 4)) + 'deg');
+    t.innerHTML = '<img src="' + srcs[n++ % srcs.length] + '" alt="">';
+    head.appendChild(t); live++;
+    setTimeout(function () { t.remove(); live--; }, 1100);
+  });
+})();
