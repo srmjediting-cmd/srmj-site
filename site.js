@@ -214,3 +214,28 @@
   addEventListener('resize', draw);
   draw();
 })();
+
+// v7: magnetic primary buttons and a round "Drag" cursor over sliders. Mouse only, off with reduced motion.
+(function () {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.btn.solid').forEach(function (b) {
+    b.classList.add('mag');
+    b.addEventListener('mousemove', function (e) {
+      var r = b.getBoundingClientRect();
+      b.style.translate = ((e.clientX - r.left - r.width / 2) * 0.25).toFixed(1) + 'px ' + ((e.clientY - r.top - r.height / 2) * 0.35).toFixed(1) + 'px';
+    });
+    b.addEventListener('mouseleave', function () { b.style.translate = ''; });
+  });
+  var sliders = document.querySelectorAll('.cmp');
+  if (!sliders.length) return;
+  var cur = document.createElement('div');
+  cur.className = 'drag-cur'; cur.setAttribute('aria-hidden', 'true'); cur.textContent = 'Drag';
+  document.body.appendChild(cur);
+  sliders.forEach(function (c) {
+    c.classList.add('has-cur');
+    c.addEventListener('pointermove', function (e) { cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; cur.classList.add('on'); });
+    c.addEventListener('pointerleave', function () { cur.classList.remove('on', 'down'); });
+    c.addEventListener('pointerdown', function () { cur.classList.add('down'); });
+    c.addEventListener('pointerup', function () { cur.classList.remove('down'); });
+  });
+})();

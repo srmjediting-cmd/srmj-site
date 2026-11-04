@@ -222,3 +222,10 @@ h1 em,h2 em{ font-style:italic; color:#63D8BC }
 .band.contact .send{ color:#0B2527 }
 .band.contact .send li::before{ border-color:#0B2527 }
 .band.contact .copied{ color:#0B2527 }
+
+/* v7: custom drag cursor over before/after sliders (mouse only). */
+.drag-cur{ position:fixed; left:0; top:0; z-index:50; width:84px; height:84px; margin:-42px 0 0 -42px; display:grid; place-items:center; border-radius:50%; background:#63D8BC; color:#0B2527; font:600 13px/1 var(--body); letter-spacing:.08em; text-transform:uppercase; pointer-events:none; transform:scale(0); transition:transform .25s cubic-bezier(.2,.8,.2,1) }
+.drag-cur.on{ transform:scale(1) }
+.drag-cur.down{ transform:scale(.82) }
+@media (hover:hover) and (pointer:fine){ .cmp.has-cur, .cmp.has-cur input{ cursor:none } }
+.btn.mag{ transition:color .35s ease, translate .25s cubic-bezier(.2,.8,.2,1) }
