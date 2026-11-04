@@ -191,7 +191,12 @@
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-  function mark(sel, cls) { document.querySelectorAll(sel).forEach(function (el, n) { if (el.getBoundingClientRect().top < innerHeight) return; /* already on screen: never hide it */ el.classList.add(cls); el.style.transitionDelay = (n % 3) * 0.09 + 's'; io.observe(el); }); }
+  // Read every position first, then write classes, so the browser lays out only once (no forced reflow).
+  function mark(sel, cls) {
+    var els = [].slice.call(document.querySelectorAll(sel)), vh = innerHeight;
+    var below = els.map(function (el) { return el.getBoundingClientRect().top >= vh; });
+    els.forEach(function (el, n) { if (!below[n]) return; el.classList.add(cls); el.style.transitionDelay = (n % 3) * 0.09 + 's'; io.observe(el); });
+  }
   mark('.who-img, .h3t, .ahead-img, .work .pair, .example .pair', 'wipe');
   mark('.sec-h, .promise li, .who-big, .who-note, .lead.stack, .tip, .sec h2, .person, .faq details, .contact h2', 'rise-in');
 })();
