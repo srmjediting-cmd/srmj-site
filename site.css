@@ -263,3 +263,7 @@ h1 em,h2 em{ font-style:italic; color:#63D8BC }
 
 /* Fix: italic accent words were clipped by the word mask in kinetic headlines (the J in "SRMJ"). */
 .kin .w{ padding-right:.12em; margin-right:-.12em }
+
+/* Accent words: teal on light backgrounds (readable), mint only on dark bands. */
+h1 em,h2 em{ color:var(--accent) }
+.stage h1 em,.phead h1 em,.ahead h1 em,.intro.ink h1 em,.faqx h2 em,.scrub h2 em,.band:not(.contact) h2 em{ color:#63D8BC }

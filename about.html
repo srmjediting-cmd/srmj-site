@@ -64,6 +64,11 @@
 .rules span{ color:var(--muted) }
 
 .facts h2{ font-size:clamp(28px,3.8vw,44px); line-height:1.12 }
+/* v19: the left-hand headings are big and stay in view while the list beside them scrolls. */
+.how h2,.facts h2{ font-size:clamp(44px,6.4vw,92px); line-height:.98; letter-spacing:-.02em; align-self:start; position:sticky; top:96px }
+.how h2 em,.facts h2 em{ color:var(--accent) }
+.how .rules b{ font-size:clamp(24px,2.6vw,32px) }
+@media (max-width:760px){ .how h2,.facts h2{ position:static } }
 .facts dl{ margin:0; display:grid; grid-template-columns:160px minmax(0,1fr); border-top:2px solid var(--text) }
 .facts dt,.facts dd{ margin:0; padding:16px 0; border-bottom:1px solid var(--line) }
 .facts dt{ color:var(--muted); font-size:15px }
@@ -125,7 +130,7 @@
 
   <section class="how mist" aria-labelledby="how-h">
    <div class="wrap two">
-      <h2 id="how-h">How we work</h2>
+      <h2 id="how-h">How we <em>work</em></h2>
       <ul class="rules">
         <li><b>Honest edits only.</b><span>We correct light, color, sharpness and straight lines. Nothing is added and nothing that belongs to the place is hidden.</span></li>
         <li><b>You see everything first.</b><span>All edited photographs are sent with a watermark. You decide what to use, and you pay only for that.</span></li>
@@ -136,7 +141,7 @@
 
   <section class="facts" aria-labelledby="facts-h">
    <div class="wrap two">
-      <h2 id="facts-h">The business</h2>
+      <h2 id="facts-h">The <em>business</em></h2>
       <dl>
         <dt>Name</dt><dd>SRMJ</dd>
         <dt>Postal address</dt><dd>Via Luca Ghini, 20141 Milano, Italy</dd>
