@@ -76,6 +76,15 @@ section{ padding-block:clamp(56px,7vw,96px) }
 .scrub-copy h2{ font-size:clamp(36px,5.6vw,80px); line-height:1; letter-spacing:-.02em; max-width:14ch; color:#fff }
 .scrub-copy p{ margin-top:16px; max-width:46ch; color:#DCE7E3 }
 @media (prefers-reduced-motion: reduce){ .scrub{ height:auto } .scrub-pin{ position:relative; height:80vh } .scrub{ --p:50%; --oa:1 } }
+.yesno{ display:grid; grid-template-columns:1fr 1fr; padding:0 }
+.yn{ padding:clamp(64px,11vh,120px) max(var(--gutter), 5vw) }
+.yn h3{ font-family:var(--body); font-size:clamp(16px,1.5vw,20px); font-weight:600; letter-spacing:.02em; margin-bottom:clamp(18px,3vw,32px) }
+.yn p{ font-family:var(--display); font-size:clamp(40px,5.6vw,88px); line-height:1.02; letter-spacing:-.02em; max-width:9ch }
+.yn.yes{ background:#0B2527; color:#fff }
+.yn.yes h3{ color:#63D8BC }
+.yn.no{ background:#63D8BC; color:#0B2527 }
+.yn.no s{ text-decoration-thickness:.07em; text-decoration-color:#0B2527 }
+@media (max-width:760px){ .yesno{ grid-template-columns:1fr } }
 .how3{ width:100%; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px }
 .h3t{ position:relative; aspect-ratio:4/5; overflow:hidden; background:#14282B }
 /* The files have Before/After labels burnt into the top-left corner: zoom from the bottom-right to keep them out of frame. */
@@ -251,13 +260,18 @@ section{ padding-block:clamp(56px,7vw,96px) }
       <div class="body">
         <p class="lead">We take the photographs you already have and bring out what is good in them.</p>
         <p>Every edit stays true to the property. We correct light, color and perspective. We add nothing and hide nothing, so the photographs match the place your guests will find.</p>
-        <ul class="list">
-          <li>Light and exposure balanced</li>
-          <li>Color corrected to look natural</li>
-          <li>Verticals and horizons straightened</li>
-          <li>Sharpness and detail refined</li>
-        </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="yesno" aria-label="What we change and what we never change">
+    <div class="yn yes">
+      <h3>We change</h3>
+      <p>Light. Color. Straight lines. Detail.</p>
+    </div>
+    <div class="yn no">
+      <h3>We never</h3>
+      <p><s>Add what is not there.</s> <s>Hide what is.</s></p>
     </div>
   </section>
 

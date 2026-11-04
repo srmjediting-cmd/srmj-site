@@ -260,3 +260,6 @@ h1 em,h2 em{ font-style:italic; color:#63D8BC }
   }
 }
 @media print{ .site-foot::after{ display:none } }
+
+/* Fix: italic accent words were clipped by the word mask in kinetic headlines (the J in "SRMJ"). */
+.kin .w{ padding-right:.12em; margin-right:-.12em }
