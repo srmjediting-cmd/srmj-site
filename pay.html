@@ -34,10 +34,11 @@
 .box p{ color:var(--muted) }
 .box .btn{ width:100%; min-height:52px; font-size:16px }
 .box .note{ font-size:14px }
-.box .haslink{ display:grid; gap:18px }
-.box .nolink{ display:none }
-.box.empty .haslink{ display:none }
-.box.empty .nolink{ display:grid; gap:18px }
+/* The pay button only shows once a valid PayPal link is set (no dead button, also without JavaScript). */
+.box .haslink{ display:none }
+.box .nolink{ display:grid; gap:18px }
+.box.ready .haslink{ display:grid; gap:18px }
+.box.ready .nolink{ display:none }
 .safe{ display:grid; gap:10px; margin:4px 0 0; padding:16px 0 0; border-top:1px solid var(--line); list-style:none; font-size:15px }
 .safe li{ padding-left:22px; position:relative }
 .safe li::before{ content:""; position:absolute; left:0; top:.55em; width:10px; height:6px; border-left:2px solid var(--accent); border-bottom:2px solid var(--accent); transform:rotate(-45deg) }
@@ -116,8 +117,7 @@
 (function () {
   var box = document.getElementById('paybox'), url = box.getAttribute('data-paypal').trim();
   // Only PayPal addresses are accepted, so a typo can never send customers somewhere else.
-  if (/^https:\/\/(www\.)?(paypal\.com|paypal\.me)\//.test(url)) document.getElementById('paylink').href = url;
-  else box.classList.add('empty');
+  if (/^https:\/\/(www\.)?(paypal\.com|paypal\.me)\//.test(url)) { document.getElementById('paylink').href = url; box.classList.add('ready'); }
 })();
 </script>
 <script src="site.js" defer></script>
