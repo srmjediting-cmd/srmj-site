@@ -17,9 +17,9 @@
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){ --bg:#0A1517; --text:#EAF1EF; --muted:#9FB3B0; --line:#223A3C; --mist:#0F1E20; --accent:#4FCBAE; --band:#102022; --ph:#102022; color-scheme:dark }
+  :root:not([data-theme="light"]){ --bg:#0A1517; --text:#EAF1EF; --muted:#9FB3B0; --line:#223A3C; --mist:#14282B; --accent:#4FCBAE; --band:#102022; --ph:#102022; color-scheme:dark }
 }
-:root[data-theme="dark"]{ --bg:#0A1517; --text:#EAF1EF; --muted:#9FB3B0; --line:#223A3C; --mist:#0F1E20; --accent:#4FCBAE; --band:#102022; --ph:#102022; color-scheme:dark }
+:root[data-theme="dark"]{ --bg:#0A1517; --text:#EAF1EF; --muted:#9FB3B0; --line:#223A3C; --mist:#14282B; --accent:#4FCBAE; --band:#102022; --ph:#102022; color-scheme:dark }
 
 *,*::before,*::after{ box-sizing:border-box }
 html{ -webkit-text-size-adjust:100%; scroll-padding-top:88px }
@@ -87,9 +87,8 @@ p{ margin:0; text-wrap:pretty }
 .copied{ font-size:14px; color:var(--accent-on-band); min-height:1.4em }
 
 /* Read-next links at the end of long pages */
-.related{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:2px solid var(--text); margin-bottom:clamp(56px,8vw,96px) }
-.related a{ display:grid; gap:6px; padding:22px 24px 22px 0; text-decoration:none; border-bottom:1px solid var(--line) }
-.related a + a{ padding-left:24px; border-left:1px solid var(--line) }
+.related{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(24px,4vw,56px); margin-bottom:clamp(56px,8vw,96px) }
+.related a{ display:grid; gap:6px; text-decoration:none }
 .related b{ font-family:var(--display); font-weight:400; font-size:clamp(21px,2.2vw,24px); text-decoration:underline; text-decoration-color:var(--accent); text-decoration-thickness:2px; text-underline-offset:6px }
 .related span{ color:var(--muted); font-size:15px }
 .related a:hover b{ color:var(--accent) }
@@ -132,7 +131,7 @@ p{ margin:0; text-wrap:pretty }
 .cmp:has(input:focus-visible){ outline:2px solid var(--accent); outline-offset:3px }
 .cmp.empty img,.cmp.empty .tag,.cmp.empty .bar,.cmp.empty input{ display:none }
 .cmp.empty::after{ content:"Sample photographs will appear here."; position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:15px }
-.cap{ margin-top:14px; font-size:14px; color:var(--muted) }
+.cap{ margin-top:14px; font-size:15px; color:var(--muted) }
 
 
 /* Print: plain black on white, no sticky header, no phone bar or buttons, link addresses shown. */
