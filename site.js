@@ -244,7 +244,8 @@
 // WebGL2 is available and motion is allowed; the flat Ink colour stays as the fallback.
 (function () {
   var bands = document.querySelectorAll('.intro.ink, .ahead');
-  if (!bands.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Desktop only: on phones the ~200 KB WebGL module costs too much main-thread time (Lighthouse TBT).
+  if (!bands.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !window.matchMedia('(min-width: 821px)').matches) return;
   try { if (!document.createElement('canvas').getContext('webgl2')) return; } catch (e) { return; }
   var go = function () {
     import('./paper-shaders.mjs').then(function (P) {
@@ -261,7 +262,8 @@
       });
     }).catch(function () {});
   };
-  ('requestIdleCallback' in window) ? requestIdleCallback(go, { timeout: 2000 }) : setTimeout(go, 800);
+  var later = function () { ('requestIdleCallback' in window) ? requestIdleCallback(go, { timeout: 3000 }) : setTimeout(go, 1500); };
+  (document.readyState === 'complete') ? later() : addEventListener('load', later, { once: true });
 })();
 
 // v9: image trail on the Our work header (idea from Hyperiux components): small photos follow the mouse and fade out.
