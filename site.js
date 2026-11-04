@@ -133,6 +133,20 @@
     }
   }
 
+  // Front page gallery: tap a tile to toggle the original (hover does it on a mouse); tiles fade in once.
+  document.querySelectorAll('.tile').forEach(function (t) {
+    t.addEventListener('click', function () { t.classList.toggle('show'); });
+    t.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t.classList.toggle('show'); } });
+  });
+  var rev = document.querySelectorAll('[data-reveal]');
+  if (rev.length) {
+    if (still || !('IntersectionObserver' in window)) rev.forEach(function (el) { el.classList.add('in'); });
+    else {
+      var ro = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } }); }, { threshold: 0.15 });
+      rev.forEach(function (el, i) { el.style.transitionDelay = (i * 0.08) + 's'; ro.observe(el); });
+    }
+  }
+
   // Keep the address bar clean after jumping to a #section on the same page.
   function clean() { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} }
   document.addEventListener('click', function (e) {
