@@ -1,0 +1,152 @@
+/* Sub pages (everything except the home page). Same paper look as home.css, scoped to body.sub so the home page is untouched.
+   Palette: paper #F6F1E7, night #14110D, ink #1C1A16, lamp #E8A33D (the one CTA only). */
+@font-face{ font-family:"Fraunces"; font-style:normal; font-weight:300 700; font-display:swap; src:url(fraunces-latin-opsz-wght.woff2) format("woff2") }
+
+body.sub{
+  --bg:#F6F1E7; --text:#1C1A16; --muted:#5E574B; --line:rgba(28,26,22,.22); --mist:transparent; --accent:#1C1A16; --ph:#E9E2D3;
+  --band:#14110D; --on-band:#F6F1E7; --on-band-muted:#B5AC9B; --accent-on-band:#F6F1E7; --lamp:#E8A33D;
+  --display:"Fraunces", Georgia, "Times New Roman", serif;
+  color-scheme:light;
+}
+body.sub::after, body.sub .site-foot::after{ display:none }
+body.sub .wrap{ max-width:1320px; padding-inline:max(20px, 4.5vw) }
+body.sub h1, body.sub h2, body.sub h3, body.sub .related b, body.sub .addr{ font-weight:400; font-optical-sizing:none; font-variation-settings:"opsz" 30 }
+body.sub em, body.sub h1 em, body.sub h2 em, body.sub .band.contact h2 em{ font-style:normal; color:inherit }
+body.sub .btn::before{ display:none }
+
+/* Header and footer: same as home */
+body.sub .site-foot{ border-top:0 }
+
+/* Buttons. .go is the one amber CTA. */
+.go{ display:inline-flex; align-items:center; justify-content:center; min-height:60px; padding:16px 32px; background:var(--lamp); color:#14110D; font:600 18px/1.2 var(--body); text-decoration:none; white-space:nowrap; box-shadow:inset 0 0 0 2px #14110D; transition:background-color .15s, transform .15s }
+.go:hover{ background:#F2BB6A }
+.go:active{ transform:translateY(1px) }
+.go:focus-visible{ outline:3px solid #F6F1E7; outline-offset:4px }
+body.sub .btn.solid:hover{ background:#3A342B }
+
+/* Title block: a plain large headline on paper */
+body.sub .intro{ padding-block:clamp(56px,9vw,140px) clamp(40px,6vw,88px) }
+body.sub h1{ font-size:clamp(44px,7.2vw,112px); line-height:1; letter-spacing:-.01em; max-width:14em }
+body.sub .intro p{ margin-top:clamp(20px,2.4vw,32px); font-size:clamp(19px,1.8vw,24px); line-height:1.5; max-width:50ch; color:var(--muted) }
+body.sub .intro p.updated{ font-size:15px }
+body.sub .toc{ margin-top:clamp(28px,4vw,48px) }
+
+/* Reading sections: title left, text right, a thin line between */
+body.sub .sec, body.sub .how, body.sub .facts{ padding-block:clamp(48px,7vw,104px); border-top:1px solid var(--line) }
+body.sub .sec-in, body.sub .two{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(24px,5vw,80px) }
+body.sub .sec h2, body.sub .how h2, body.sub .facts h2, body.sub .tip h2{ font-size:clamp(28px,3.4vw,48px); line-height:1.1; letter-spacing:-.005em; align-self:start }
+body.sub .text{ max-width:680px; display:grid; gap:20px }
+body.sub .text strong{ font-weight:600 }
+body.sub .tbl{ width:100%; border-collapse:collapse; font-size:16px }
+body.sub .tbl th{ font-size:15px; text-align:left; color:var(--muted); font-weight:600; padding:12px 24px 12px 0; border-bottom:1px solid var(--text); width:50% }
+body.sub .tbl td{ padding:14px 24px 14px 0; border-bottom:1px solid var(--line); vertical-align:top }
+body.sub .tbl th:last-child, body.sub .tbl td:last-child{ padding-right:0 }
+body.sub .steps{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line); counter-reset:s }
+body.sub .steps li{ display:grid; grid-template-columns:40px 1fr; gap:8px; padding:16px 0; border-bottom:1px solid var(--line); counter-increment:s }
+body.sub .steps li::before{ content:counter(s); font-family:var(--display); font-size:22px; line-height:1.3; color:var(--muted) }
+body.sub .toc{ display:flex; flex-wrap:wrap; gap:8px 24px; font-size:15px }
+body.sub .toc span{ width:100%; color:var(--muted); font-size:14px; font-weight:500 }
+body.sub .toc a{ text-decoration:none; border-bottom:1px solid var(--line) }
+body.sub .toc a:hover{ border-color:var(--text) }
+
+/* Big drag-to-compare photo on the Standards page */
+body.sub .bigcmp{ border-top:1px solid var(--line); padding-block:clamp(48px,7vw,104px) }
+body.sub .bigcmp h2{ font-size:clamp(34px,5.4vw,84px); line-height:1.02; letter-spacing:-.01em; max-width:16ch; margin-bottom:clamp(28px,4vw,56px) }
+body.sub .bigcmp .cmp{ max-height:88vh; width:calc(100% - 2 * max(20px, 4.5vw)); max-width:1240px; margin-inline:auto }
+body.sub .cap{ margin-top:16px; color:var(--muted) }
+
+/* Guides: numbered tips */
+body.sub .tips{ counter-reset:t; padding-block:0 clamp(24px,4vw,48px) }
+body.sub .tip{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(24px,5vw,80px); padding-block:clamp(32px,4.5vw,64px); border-top:1px solid var(--line); counter-increment:t }
+body.sub .tip h2::before{ content:counter(t, decimal-leading-zero); display:block; margin-bottom:12px; font:600 15px/1 var(--body); letter-spacing:.08em; color:var(--muted); -webkit-text-stroke:0; transition:none }
+body.sub .tip p{ max-width:680px; font-size:18px }
+body.sub .close{ padding-block:clamp(48px,7vw,104px); border-top:1px solid var(--line) }
+body.sub .close p{ max-width:680px; font-size:clamp(19px,1.8vw,24px); line-height:1.5 }
+body.sub .close a, body.sub .doc a{ text-decoration-color:var(--text); text-underline-offset:3px }
+
+/* Read next, contact band */
+body.sub .related{ border-top:1px solid var(--line) }
+body.sub .related b{ font-size:clamp(24px,2.6vw,34px); text-decoration-color:var(--text) }
+body.sub .band.contact{ background:var(--band); color:var(--on-band); padding-block:clamp(80px,12vw,200px) }
+body.sub .band.contact h2{ font-size:clamp(44px,8vw,128px); line-height:.98; letter-spacing:-.01em; max-width:12ch; color:var(--on-band) }
+body.sub .band.contact p{ color:#CFC6B4; font-size:clamp(19px,1.8vw,24px); max-width:40ch }
+body.sub .band.contact a, body.sub .band.contact .addr{ color:var(--on-band) }
+body.sub .band.contact .go{ color:#14110D }
+body.sub .band.contact .addr{ font-family:var(--body); font-size:clamp(18px,1.8vw,22px); width:max-content; max-width:100% }
+body.sub .band.contact .inner{ gap:clamp(20px,2.6vw,36px) }
+
+/* Our work */
+body.sub .work-sec{ padding-block:0 clamp(48px,7vw,104px) }
+body.sub .work{ display:grid; gap:clamp(72px,10vw,152px) }
+body.sub .work figure{ margin:0 }
+body.sub .work figcaption{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:clamp(16px,2vw,28px); font-size:15px; color:var(--muted) }
+body.sub .work figcaption b{ font-weight:400; font-size:clamp(26px,3.4vw,48px); line-height:1.1; letter-spacing:-.005em; color:var(--text) }
+body.sub .work .cmp{ width:100%; aspect-ratio:auto }
+body.sub .work .cmp.tall{ max-width:640px }
+body.sub .work-filter{ margin-bottom:clamp(32px,5vw,56px) }
+body.sub .next{ margin:0; padding-block:clamp(40px,6vw,88px); font-size:clamp(19px,1.8vw,24px); line-height:1.5; max-width:40em }
+/* Photos with a label burnt into the corner are zoomed from the opposite corner to keep it out of frame. */
+body.sub .cmp.burnt img{ transform:scale(1.2); transform-origin:100% 100% }
+body.sub .cmp .tag{ background:rgba(20,17,13,.82) }
+body.sub .cmp .bar::after{ color:#14110D }
+
+/* About */
+body.sub .people{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(24px,5vw,80px); padding-bottom:clamp(48px,7vw,104px) }
+body.sub .person{ margin:0 }
+body.sub .person h2{ font-size:clamp(32px,4.4vw,64px); line-height:1.02 }
+body.sub .person .role{ margin-top:14px; font-size:15px; font-weight:600; color:var(--muted) }
+body.sub .person p:not(.role){ margin-top:14px; max-width:44ch }
+body.sub .rules{ list-style:none; margin:0; padding:0; display:grid; gap:28px }
+body.sub .rules li{ display:grid; gap:6px }
+body.sub .rules b{ font-family:var(--display); font-weight:400; font-size:clamp(24px,2.6vw,32px); line-height:1.25 }
+body.sub .rules span{ color:var(--muted) }
+body.sub .facts dl{ margin:0; display:grid; grid-template-columns:160px minmax(0,1fr); border-top:1px solid var(--text) }
+body.sub .facts dt, body.sub .facts dd{ margin:0; padding:16px 0; border-bottom:1px solid var(--line) }
+body.sub .facts dt{ color:var(--muted); font-size:15px }
+body.sub .facts dd a{ text-decoration:none; border-bottom:1px solid var(--line) }
+body.sub .facts dd a:hover{ border-color:var(--text) }
+
+/* Payment: steps on the left, the pay slot on the right (no card) */
+body.sub .grid{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(32px,6vw,88px); align-items:start }
+body.sub .grid-wrap{ padding-block:clamp(48px,7vw,104px); border-top:1px solid var(--line) }
+body.sub .grid h2{ font-size:clamp(28px,3.4vw,48px); line-height:1.1; margin-bottom:20px }
+body.sub .grid .steps{ border-top:1px solid var(--text) }
+body.sub .grid .steps li{ grid-template-columns:44px 1fr; padding:18px 0 }
+body.sub .grid .steps b{ display:block; font-weight:600 }
+body.sub .grid .steps span{ color:var(--muted) }
+body.sub .box{ border-top:1px solid var(--text); padding-top:24px; display:grid; gap:18px; position:sticky; top:104px }
+body.sub .box h2{ margin:0 }
+body.sub .box p{ color:var(--muted) }
+body.sub .box .btn{ width:100%; min-height:52px; font-size:16px }
+body.sub .box .note{ font-size:14px }
+/* The pay button only shows once a valid PayPal link is set (no dead button, also without JavaScript). */
+body.sub .box .haslink{ display:none }
+body.sub .box .nolink{ display:grid; gap:18px }
+body.sub .box.ready .haslink{ display:grid; gap:18px }
+body.sub .box.ready .nolink{ display:none }
+body.sub .safe{ display:grid; gap:10px; margin:4px 0 0; padding:16px 0 0; border-top:1px solid var(--line); list-style:none; font-size:15px }
+body.sub .safe li{ padding-left:22px; position:relative }
+body.sub .safe li::before{ content:""; position:absolute; left:0; top:.55em; width:10px; height:6px; border-left:2px solid var(--text); border-bottom:2px solid var(--text); transform:rotate(-45deg) }
+
+/* Privacy: one reading column, plain headings */
+body.sub .doc{ padding-block:0 clamp(64px,9vw,120px) }
+body.sub .doc > *:not(.intro){ max-width:720px }
+body.sub .doc h2{ margin-top:48px; padding-top:28px; border-top:1px solid var(--line); font-size:clamp(24px,2.8vw,34px); line-height:1.2 }
+body.sub .doc p, body.sub .doc ul{ margin-top:16px }
+body.sub .doc ul{ padding-left:20px }
+body.sub .doc li{ margin-top:8px }
+
+/* 404 */
+body.sub .lost{ min-height:60vh; display:grid; align-content:center; justify-items:start; gap:24px; padding-block:clamp(64px,10vw,140px) }
+body.sub .lost p{ color:var(--muted); font-size:19px; max-width:40ch }
+body.sub .lost-links a{ color:var(--text); text-decoration-color:var(--text); text-underline-offset:3px }
+
+@media (max-width:820px){
+  body.sub .grid, body.sub .sec-in, body.sub .two, body.sub .tip, body.sub .people{ grid-template-columns:1fr }
+  body.sub .sec-in, body.sub .tip{ gap:16px }
+  body.sub .box{ position:static }
+  body.sub .facts dl{ grid-template-columns:1fr }
+  body.sub .facts dt{ padding-bottom:0; border-bottom:0 }
+  body.sub .facts dd{ padding-top:4px }
+  body.sub .related{ grid-template-columns:1fr }
+}

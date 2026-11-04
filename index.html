@@ -15,203 +15,19 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="A cabin living room before and after enhancement by SRMJ.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#0B2527">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#14110D">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" as="font" type="font/woff2" href="newsreader-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fraunces-latin-opsz-wght.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="public-sans-latin-400-normal.woff2" crossorigin>
-<link rel="preload" as="image" href="sample-before-1000.jpg" imagesrcset="sample-before-640.jpg 640w, sample-before-1000.jpg 1000w, sample-before.jpg 1448w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" href="room-before.webp" imagesrcset="room-before-800.webp 800w, room-before.webp 1448w" imagesizes="100vw" fetchpriority="high">
+<script>document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('anim')</script>
 <link rel="stylesheet" href="site.css">
-<style>
-/* Front page, design v3 (website/next-source/DESIGN.md): the photograph leads. One bold moment, an edge-to-edge
-   before/after under the headline; the rest is quiet, with sections separated by Paper and Mist backgrounds. */
-section{ padding-block:clamp(56px,7vw,96px) }
-
-.hero-text{ padding-block:clamp(32px,4.5vw,64px) clamp(28px,3.5vw,44px) }
-.hero-text h1{ font-size:clamp(42px,6.6vw,76px); line-height:1.02; max-width:13ch; letter-spacing:-.02em }
-.hero-text h1 + p{ margin-top:24px; font-size:clamp(18px,1.8vw,21px); color:var(--muted); max-width:42ch }
-.hero-text .row{ margin-top:32px }
-.hero-photo .cmp{ aspect-ratio:auto; height:min(78vh,62vw); min-height:300px }
-.hero-photo .cmp img{ object-position:50% 60% }
-.hero-cap{ padding-block:14px clamp(56px,8vw,96px) }
-.hero-cap .cap{ margin:0 }
-
-.cols{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(28px,6vw,90px) }
-.cols h2,.sec-h{ font-size:clamp(30px,4vw,44px); line-height:1.1 }
-.body{ display:grid; gap:22px; color:var(--muted); min-width:0 }
-.lead.stack{ margin-top:14px; color:var(--muted); max-width:40ch }
-.lead{ color:var(--text); font-family:var(--display); font-size:clamp(21px,2.4vw,27px); line-height:1.35 }
-.list{ list-style:none; margin:8px 0 0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px 32px }
-.list li{ padding-left:20px; color:var(--text); position:relative }
-.list li::before{ content:""; position:absolute; left:0; top:.6em; width:8px; height:8px; background:var(--accent) }
-
-.promise{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(28px,4vw,56px); margin:0; padding:0; list-style:none; counter-reset:st }
-.promise li{ counter-increment:st }
-.promise li::before{ content:counter(st); display:block; font-family:var(--display); font-size:clamp(84px,10vw,150px); line-height:.9; letter-spacing:-.04em; color:transparent; -webkit-text-stroke:1.5px var(--accent); margin-bottom:12px }
-.promise b{ display:block; font-family:var(--display); font-weight:400; font-size:clamp(22px,2.4vw,27px); line-height:1.2; margin-bottom:10px }
-.promise span{ color:var(--muted); font-size:16px }
-
-.who-big{ font-family:var(--display); font-size:clamp(28px,4.2vw,48px); line-height:1.18; letter-spacing:-.01em; max-width:24ch }
-.who-big em{ font-style:normal }
-.who-note{ margin-top:20px; color:var(--muted); font-size:clamp(17px,1.8vw,19px) }
-.who-in{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(32px,5vw,72px); align-items:center }
-.who-img{ position:relative; aspect-ratio:4/5; overflow:hidden; background:var(--ph) }
-/* The file has an "After" label burnt into the top-left corner: zoom from the bottom-right to keep it out of frame. */
-.who-img img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.2); transform-origin:100% 100% }
-@media (max-width:820px){ .who-in{ grid-template-columns:1fr } .who-img{ aspect-ratio:4/3 } }
-
-.deck{ position:relative; aspect-ratio:16/9; width:100%; margin-top:clamp(28px,4vw,48px); background:var(--band); overflow:hidden }
-.deck iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
-.deck-start{ position:absolute; inset:0; width:100%; display:grid; align-content:center; justify-items:start; gap:28px; padding:24px clamp(24px,5vw,64px); border:0; background:var(--band); color:var(--on-band); cursor:pointer; font:inherit; text-align:left }
-.scrub{ position:relative; height:240vh; background:#0B2527 }
-.scrub-pin{ position:sticky; top:0; height:100vh; height:100svh; overflow:hidden }
-.scrub img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
-.scrub .sa{ clip-path:inset(0 calc(100% - var(--p, 0%)) 0 0) }
-.scrub-line{ position:absolute; top:0; bottom:0; left:var(--p, 0%); width:2px; margin-left:-1px; background:#63D8BC; box-shadow:0 0 24px rgba(99,216,188,.7) }
-.scrub-tag{ position:absolute; top:clamp(96px,14vh,120px); transition:opacity .3s ease; padding:6px 12px; font:600 12px/1.4 var(--body); letter-spacing:.12em; text-transform:uppercase; color:#fff; background:rgba(11,37,39,.8) }
-.scrub-tag.t-a{ left:clamp(16px,3vw,32px); background:#0F7A66; opacity:var(--oa, 0) }
-.scrub-tag.t-b{ right:clamp(16px,3vw,32px); opacity:var(--ob, 1) }
-.scrub-copy{ position:absolute; left:0; right:0; bottom:0; padding:clamp(120px,20vh,200px) 0 clamp(36px,6vh,64px); background:linear-gradient(to top, rgba(6,18,19,.88), rgba(6,18,19,0)); color:#F1F6F4 }
-.scrub-copy h2{ font-size:clamp(36px,5.6vw,80px); line-height:1; letter-spacing:-.02em; max-width:14ch; color:#fff }
-.scrub-copy p{ margin-top:16px; max-width:46ch; color:#DCE7E3 }
-@media (prefers-reduced-motion: reduce){ .scrub{ height:auto } .scrub-pin{ position:relative; height:80vh } .scrub{ --p:50%; --oa:1 } }
-.yesno{ display:grid; grid-template-columns:1fr 1fr; padding:0 }
-.yn{ padding:clamp(64px,11vh,120px) max(var(--gutter), 5vw) }
-.yn h3{ font-family:var(--body); font-size:clamp(16px,1.5vw,20px); font-weight:600; letter-spacing:.02em; margin-bottom:clamp(18px,3vw,32px) }
-.yn p{ font-family:var(--display); font-size:clamp(40px,5.6vw,88px); line-height:1.02; letter-spacing:-.02em; max-width:9ch }
-.yn.yes{ background:#0B2527; color:#fff }
-.yn.yes h3{ color:#63D8BC }
-.yn.no{ background:#63D8BC; color:#0B2527 }
-.yn.no s{ text-decoration-thickness:.07em; text-decoration-color:#0B2527 }
-@media (max-width:760px){ .yesno{ grid-template-columns:1fr } }
-.how3{ width:100%; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px }
-.h3t{ position:relative; aspect-ratio:4/5; overflow:hidden; background:#14282B }
-/* The files have Before/After labels burnt into the top-left corner: zoom from the bottom-right to keep them out of frame. */
-.h3t img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.2); transform-origin:100% 100%; transition:transform 1.2s ease }
-.deck-start:hover .h3t img{ transform:scale(1.24) }
-.h3c{ position:absolute; left:0; right:0; bottom:0; padding:56px 16px 16px; background:linear-gradient(to top, rgba(6,18,19,.9), rgba(6,18,19,0)); color:#fff; font-family:var(--display); font-size:clamp(18px,2.2vw,26px); line-height:1.2; display:grid; gap:6px }
-.h3c b{ font-family:var(--body); font-size:14px; font-weight:600; color:#63D8BC }
-@media (max-width:640px){ .how3{ grid-template-columns:1fr } .h3t{ aspect-ratio:16/10 } }
-@media (prefers-reduced-motion: reduce){ .h3t img{ transition:none } }
-.deck-start .btn.solid{ background:var(--accent-on-band); color:#06221E }
-.deck-start:hover .btn.solid{ background:#86E6CF }
-/* Before it starts, the panel only needs room for its text; the 16:9 frame comes back with the walkthrough. */
-.deck:has(.deck-start){ aspect-ratio:auto }
-.deck:has(.deck-start) .deck-start{ position:relative; inset:auto; padding:clamp(40px,6vw,72px) clamp(24px,5vw,64px) }
-
-.wide{ margin-top:clamp(28px,4vw,48px) }
-.wide .cmp{ aspect-ratio:16/10 }
-.links{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(24px,4vw,56px); margin-top:clamp(40px,5vw,64px) }
-.links a{ display:grid; gap:6px; text-decoration:none }
-.links b{ font-family:var(--display); font-weight:400; font-size:clamp(22px,2.4vw,27px); text-decoration:underline; text-decoration-color:var(--accent); text-decoration-thickness:2px; text-underline-offset:6px }
-.links span{ color:var(--muted); font-size:16px }
-.links a:hover b{ color:var(--accent) }
-.more{ font-weight:600; text-decoration:none; border-bottom:2px solid var(--accent); padding-bottom:3px }
-.more:hover{ color:var(--accent) }
-.send{ list-style:none; margin:0; padding:0; display:grid; gap:10px; color:var(--on-band) }
-.send li{ position:relative; padding-left:26px }
-.send li::before{ content:""; position:absolute; left:2px; top:.5em; width:10px; height:6px; border-left:2px solid var(--accent-on-band); border-bottom:2px solid var(--accent-on-band); transform:rotate(-45deg) }
-/* Phone-only contact bar: shown between the hero and the contact band (site.js). Hidden from screen readers: the same link is in the page. */
-.mbar{ display:none }
-@media (max-width:720px){
-  .mbar{ display:block; position:fixed; left:12px; right:12px; bottom:calc(12px + env(safe-area-inset-bottom,0px)); z-index:25; padding:15px 20px; background:var(--text); color:var(--bg); font-weight:600; font-size:15px; text-align:center; text-decoration:none; transform:translateY(160%); transition:transform .25s ease }
-  .mbar.on{ transform:none }
-}
-@media (prefers-reduced-motion: reduce){ .mbar{ transition:none } }
-.faqx{ background:#0B2527; color:#F1F6F4; padding-block:clamp(72px,10vw,140px) }
-.faqx h2{ font-size:clamp(44px,7vw,96px); line-height:1; letter-spacing:-.025em; color:#fff; max-width:12ch; margin-bottom:clamp(32px,5vw,64px) }
-.faqx .faq{ counter-reset:q }
-.faqx .faq details{ counter-increment:q; border-bottom:1px solid rgba(241,246,244,.16) }
-.faqx .faq details:first-child{ border-top:1px solid rgba(241,246,244,.16) }
-.faqx .faq summary{ display:grid; grid-template-columns:clamp(64px,9vw,120px) minmax(0,1fr) auto; align-items:center; gap:clamp(12px,2vw,28px); padding:clamp(20px,2.6vw,30px) 0; font-size:clamp(22px,2.8vw,36px); line-height:1.15; color:#fff; transition:color .3s ease, padding-left .35s cubic-bezier(.2,.8,.2,1) }
-.faqx .faq summary::before{ content:counter(q, decimal-leading-zero); font-family:var(--display); font-size:clamp(40px,5.4vw,72px); line-height:1; color:transparent; -webkit-text-stroke:1.2px #63D8BC }
-.faqx .faq summary::after{ content:"+"; width:44px; height:44px; display:grid; place-items:center; border:1px solid rgba(99,216,188,.6); color:#63D8BC; font-size:24px; transition:transform .35s cubic-bezier(.2,.8,.2,1), background .3s ease, color .3s ease }
-.faqx .faq details[open] summary::after{ content:"\2212"; background:#63D8BC; color:#0B2527 }
-.faqx .faq summary:hover{ color:#63D8BC; padding-left:8px }
-.faqx .faq details p{ padding:0 0 clamp(22px,3vw,34px) calc(clamp(64px,9vw,120px) + clamp(12px,2vw,28px)); color:#C9D8D3; font-size:clamp(17px,1.6vw,19px); max-width:calc(60ch + 140px) }
-.faqx .faq a{ color:#63D8BC; text-decoration-color:#63D8BC }
-.faqx :focus-visible{ outline-color:#63D8BC }
-@supports selector(::details-content){ @media (prefers-reduced-motion: no-preference){
-  .faqx .faq details{ interpolate-size:allow-keywords }
-  .faqx .faq details::details-content{ height:0; overflow:clip; transition:height .45s cubic-bezier(.2,.8,.2,1), content-visibility .45s allow-discrete }
-  .faqx .faq details[open]::details-content{ height:auto }
-} }
-@media (max-width:640px){ .faqx .faq summary{ grid-template-columns:48px minmax(0,1fr) auto } .faqx .faq details p{ padding-left:0 } }
-.faq details{ border-bottom:1px solid var(--line) }
-.faq details:first-child{ border-top:1px solid var(--line) }
-.faq summary{ display:flex; justify-content:space-between; gap:16px; padding:20px 0; cursor:pointer; list-style:none; font-family:var(--display); font-size:clamp(19px,2vw,22px); line-height:1.3 }
-.faq summary::-webkit-details-marker{ display:none }
-.faq summary::after{ content:"+"; flex:none; font-family:var(--body); font-size:22px; line-height:1.2; color:var(--accent) }
-.faq details[open] summary::after{ content:"\2212" }
-.faq summary:hover{ color:var(--accent) }
-.faq details p{ padding:0 32px 22px 0; color:var(--muted); max-width:60ch }
-.faq a{ color:var(--text); text-decoration-color:var(--accent); text-underline-offset:3px }
-
-@media (max-width:820px){
-  .cols{ grid-template-columns:1fr }
-  .promise{ grid-template-columns:1fr }
-  .list{ grid-template-columns:1fr }
-  .links{ grid-template-columns:1fr }
-  .hero-photo .cmp{ height:auto; aspect-ratio:4/3; min-height:0 }
-  /* the slides need room: a taller frame on phones */
-  .deck{ aspect-ratio:16/12 }
-  .wide .cmp{ aspect-ratio:4/3 }
-}
-
-/* v4: full-screen stage. The photo fills the first screen; the headline sits on a dark scrim for legibility. */
-.stage{ position:relative; padding:0; height:calc(100svh - 72px); min-height:560px; max-height:980px; overflow:hidden; background:#0B2527 }
-.stage .cmp{ position:absolute; inset:0; height:100%; aspect-ratio:auto }
-.stage .cmp img{ object-position:50% 55% }
-.stage-copy{ position:absolute; left:0; right:0; bottom:0; z-index:4; padding:clamp(120px,22vh,220px) 0 clamp(36px,6vh,64px); background:linear-gradient(to top, rgba(6,18,19,.86) 0%, rgba(6,18,19,.62) 45%, rgba(6,18,19,0) 100%); color:#F1F6F4; pointer-events:none }
-.stage-copy .wrap{ pointer-events:none }
-.stage-copy h1{ font-size:clamp(44px,7.4vw,104px); line-height:.98; letter-spacing:-.025em; max-width:12ch; color:#fff }
-.stage-copy h1 + p{ margin-top:22px; font-size:clamp(18px,1.8vw,22px); max-width:40ch; color:rgba(241,246,244,.86) }
-.stage-copy .row{ margin-top:28px; pointer-events:auto; width:max-content; max-width:100% }
-.stage-copy .btn.solid{ background:#63D8BC; color:#06221E }
-.stage-copy .btn.solid:hover{ background:#86E6CF }
-.stage-copy .btn.line{ border-color:rgba(241,246,244,.55); color:#F1F6F4 }
-.stage-copy .btn.line:hover{ border-color:#fff }
-.stage-cap{ margin-top:22px; font-size:14px; color:rgba(241,246,244,.7) }
-
-/* v4: gallery of three large examples; hover or tap swaps to the original. */
-.hs-track{ display:flex; gap:clamp(12px,1.6vw,20px); margin-top:clamp(28px,4vw,44px); padding-inline:max(var(--gutter), calc(50vw - 540px)); overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none }
-.hs-track::-webkit-scrollbar{ display:none }
-.hs-track .tile{ flex:0 0 auto; width:min(78vw,520px); aspect-ratio:4/5; scroll-snap-align:start }
-.hs-end{ flex:0 0 auto; width:min(78vw,420px); display:grid; align-content:end; gap:24px; padding:32px; background:#0B2527; color:#F1F6F4; scroll-snap-align:start }
-.hs-end a{ display:grid; gap:6px; text-decoration:none; color:#F1F6F4 }
-.hs-end b{ font-family:var(--display); font-weight:400; font-size:clamp(24px,2.6vw,32px); line-height:1.15 }
-.hs-end span{ color:#9FB5AE; font-size:15px }
-.hs-end a:hover b{ color:#63D8BC }
-.hs-on{ padding-block:0 }
-.hs-on .hs-pin{ position:sticky; top:0; height:100vh; height:100svh; display:flex; flex-direction:column; justify-content:center; overflow:hidden }
-.hs-on .hs-track{ overflow:visible; scroll-snap-type:none; will-change:transform }
-.hs-on .hs-track .tile{ width:clamp(300px,30vw,480px) }
-.bento{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:auto auto; gap:clamp(12px,1.6vw,20px); margin-top:clamp(32px,4vw,48px) }
-.tile{ position:relative; margin:0; overflow:hidden; background:var(--ph); cursor:pointer; aspect-ratio:4/3 }
-.tile.big{ grid-row:span 2; aspect-ratio:auto }
-/* The work photos have Before/After burnt into the top-left corner: a small zoom from the bottom-right keeps that label out of frame. */
-.tile img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.18); transform-origin:100% 100%; transition:opacity .45s ease, transform 1.2s ease }
-.tile .t-before{ opacity:0 }
-.tile:hover .t-before,.tile:focus-visible .t-before,.tile.show .t-before{ opacity:1 }
-.tile:hover img{ transform:scale(1.21) }
-.tile figcaption{ position:absolute; left:0; right:0; bottom:0; padding:48px 18px 16px; background:linear-gradient(to top, rgba(6,18,19,.82), rgba(6,18,19,0)); color:#F1F6F4; display:grid; gap:2px }
-.tile figcaption b{ font-family:var(--display); font-weight:400; font-size:clamp(19px,2vw,24px) }
-.tile figcaption span{ font-size:14px; color:rgba(241,246,244,.75) }
-[data-reveal]{ opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease }
-[data-reveal].in{ opacity:1; transform:none }
-@media (prefers-reduced-motion: reduce){ [data-reveal]{ opacity:1; transform:none; transition:none } .tile img{ transition:none } }
-@media (max-width:820px){
-  .stage{ height:auto; min-height:0; max-height:none; display:flex; flex-direction:column }
-  .stage .cmp{ position:relative; inset:auto; aspect-ratio:4/3; height:auto }
-  .stage-copy{ position:relative; padding:28px 0 40px; background:#0B2527 }
-  .bento{ grid-template-columns:1fr }
-  .tile.big{ grid-row:auto; aspect-ratio:3/4 }
-}
-</style>
+<link rel="stylesheet" href="home.css">
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Organization", "name": "SRMJ", "url": "https://srmjbusiness.com/", "logo": "https://srmjbusiness.com/favicon.svg", "email": "info@srmjbusiness.com", "description": "Image enhancement for property photographs.", "address": {"@type": "PostalAddress", "streetAddress": "Via Luca Ghini", "postalCode": "20141", "addressLocality": "Milano", "addressCountry": "IT"}, "founder": [{"@type": "Person", "name": "Sebastian Rogat"}, {"@type": "Person", "name": "Magnus Jørgensen"}]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How did you find me?", "acceptedAnswer": {"@type": "Answer", "text": "Through the contact details you publish on your own website or listing page. Our first email says where we found them. Reply \"no thanks\" and we remove you within 10 business days and never write again."}}, {"@type": "Question", "name": "Will my place look different from reality?", "acceptedAnswer": {"@type": "Answer", "text": "No. We correct light, color, sharpness and straight lines. Nothing is added and nothing that belongs to the place is hidden, so guests find what the photographs show."}}, {"@type": "Question", "name": "When do I pay?", "acceptedAnswer": {"@type": "Answer", "text": "Only after you have seen every edited photograph with a watermark and decided to use them. Payment goes through PayPal."}}, {"@type": "Question", "name": "What do you need from me?", "acceptedAnswer": {"@type": "Answer", "text": "A link to your listing or website, or the photographs themselves. That is all."}}, {"@type": "Question", "name": "Where can I use the edited photographs?", "acceptedAnswer": {"@type": "Answer", "text": "Anywhere you like: Airbnb, Vrbo, Booking.com or your own website. They are your photographs."}}, {"@type": "Question", "name": "What happens to my photographs and details?", "acceptedAnswer": {"@type": "Answer", "text": "We use them only for your edits. We never publish them without your permission, and we delete your details when you ask."}}]}]</script>
 </head>
-<body>
+<body class="home">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head">
   <div class="wrap">
@@ -221,164 +37,121 @@ section{ padding-block:clamp(56px,7vw,96px) }
 </header>
 
 <main id="main">
-  <section class="stage" id="top" aria-labelledby="hero-h">
-    <div class="cmp" role="group" aria-label="A living room before and after enhancement">
-        <img src="sample-before-1000.jpg" srcset="sample-before-640.jpg 640w, sample-before-1000.jpg 1000w, sample-before.jpg 1448w" sizes="100vw" width="1448" height="1086" alt="Before: a log cabin living room with a stone fireplace, soft focus and an orange cast." fetchpriority="high">
-        <img class="after" src="sample-after-1000.jpg" srcset="sample-after-640.jpg 640w, sample-after-1000.jpg 1000w, sample-after.jpg 1448w" sizes="100vw" width="1448" height="1086" alt="After: the same room, sharp, with even light and natural color.">
-        <span class="tag l" aria-hidden="true">Before</span><span class="tag r" aria-hidden="true">After</span>
-        <div class="bar"></div>
-        <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
-    </div>
-    <div class="stage-copy">
-      <div class="wrap">
-        <h1 id="hero-h">Photographs that show the place at its <em>best.</em></h1>
-        <p>We enhance property photographs: balanced light, true color, straight lines. Nothing added, nothing hidden.</p>
-        <div class="row">
-          <a class="btn solid" href="#contact">Email us</a>
-          <a class="btn line" href="our-work">See our work</a>
+  <section class="reveal" id="top" aria-labelledby="hero-h">
+    <div class="rv-track">
+      <div class="rv-stick">
+        <div class="rv-media">
+          <div class="rv-photo" role="group" aria-label="A cabin bedroom and sitting area, before and after">
+            <div class="rv-pane b"><img src="room-before.webp" srcset="room-before-800.webp 800w, room-before.webp 1448w" sizes="100vw" width="1448" height="1086" alt="Before: a log cabin bedroom and sitting area in flat light, with an orange cast." fetchpriority="high" decoding="async"></div>
+            <div class="rv-pane a"><img src="room-after.webp" srcset="room-after-800.webp 800w, room-after.webp 1448w" sizes="100vw" width="1448" height="1086" alt="After: the same room with clearer light and natural color." decoding="async"></div>
+            <span class="rv-sweep" aria-hidden="true"></span>
+          </div>
+          <span class="rv-grad" aria-hidden="true"></span>
+          <span class="rv-tag tb" aria-hidden="true">Before</span><span class="rv-tag ta" aria-hidden="true">After</span>
         </div>
-        <p class="stage-cap">Drag the photo to compare. A cabin living room, shown with the owner's permission.</p>
+        <div class="rv-head">
+          <h1 id="hero-h">Your place is better than your photos.</h1>
+          <a class="go" href="mailto:info@srmjbusiness.com?subject=Photos%20for%20my%20rental&amp;body=Hi%20SRMJ%2C%0A%0ALink%20to%20my%20listing%20or%20website%3A%0A%0AWhat%20I%20would%20like%20improved%3A%0A%0AThanks%2C%0A">Send us your listing</a>
+          <p class="rv-cue" aria-hidden="true">Scroll to compare</p>
+        </div>
+        <div class="rv-end">
+          <p class="rv-note">A cabin bedroom and sitting area, shown with the owner&rsquo;s permission.</p>
+          <p class="rv-big">Same room. Same furniture. Better light.</p>
+          <div class="rv-side">
+            <p>See every edit first. Pay only for the ones you use.</p>
+            <a class="go" href="mailto:info@srmjbusiness.com?subject=Photos%20for%20my%20rental&amp;body=Hi%20SRMJ%2C%0A%0ALink%20to%20my%20listing%20or%20website%3A%0A%0AWhat%20I%20would%20like%20improved%3A%0A%0AThanks%2C%0A">Send us your listing</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="marquee" aria-hidden="true"><div class="mq-track"><span>Cabins</span><i>&#8226;</i><span>Lodges</span><i>&#8226;</i><span>Guest houses</span><i>&#8226;</i><span>B&amp;Bs</span><i>&#8226;</i><span>Vacation homes</span><i>&#8226;</i><span>Small inns</span><i>&#8226;</i><span>Cabins</span><i>&#8226;</i><span>Lodges</span><i>&#8226;</i><span>Guest houses</span><i>&#8226;</i><span>B&amp;Bs</span><i>&#8226;</i><span>Vacation homes</span><i>&#8226;</i><span>Small inns</span><i>&#8226;</i></div></div>
+  <section class="proofs" aria-labelledby="proof-h">
+    <div class="hw">
+      <h2 id="proof-h">Three more places, before and after.</h2>
+      <p class="sub">Drag the photo to compare. Arrow keys work too.</p>
+    </div>
+    <div class="hw wide">
+    <figure class="proof">
+      <div class="cmp" style="--ar:1186/768" role="group" aria-label="A cabin with a covered deck, before and after">
+        <img src="deck-before.webp" srcset="deck-before-800.webp 800w, deck-before.webp 1448w" sizes="(max-width: 1300px) 100vw, 1240px" width="1186" height="768" alt="Before: a wooden cabin with a covered deck among trees, in murky light." loading="lazy" decoding="async">
+        <img class="after" src="deck-after.webp" srcset="deck-after-800.webp 800w, deck-after.webp 1448w" sizes="(max-width: 1300px) 100vw, 1240px" width="1186" height="768" alt="After: the same cabin in clean daylight with natural green." loading="lazy" decoding="async">
+        <span class="tag l" aria-hidden="true">Before</span><span class="tag r" aria-hidden="true">After</span>
+        <div class="bar"></div>
+        <input type="range" min="0" max="100" value="50" aria-label="Compare before and after: A cabin with a covered deck">
+      </div>
+      <figcaption>A cabin with a covered deck</figcaption>
+    </figure>
+    <figure class="proof">
+      <div class="cmp" style="--ar:1186/706" role="group" aria-label="A living room with leather sofas, before and after">
+        <img src="work-3-before.webp" srcset="work-3-before-800.webp 800w, work-3-before.webp 1186w" sizes="(max-width: 1300px) 100vw, 1240px" width="1186" height="706" alt="Before: Living room with leather sofas and a stone fireplace." loading="lazy" decoding="async">
+        <img class="after" src="work-3-after.webp" srcset="work-3-after-800.webp 800w, work-3-after.webp 1186w" sizes="(max-width: 1300px) 100vw, 1240px" width="1186" height="706" alt="After: Living room with leather sofas and a stone fireplace." loading="lazy" decoding="async">
+        <span class="tag l" aria-hidden="true">Before</span><span class="tag r" aria-hidden="true">After</span>
+        <div class="bar"></div>
+        <input type="range" min="0" max="100" value="50" aria-label="Compare before and after: A living room with leather sofas">
+      </div>
+      <figcaption>A living room with leather sofas</figcaption>
+    </figure>
+    <figure class="proof">
+      <div class="cmp" style="--ar:1080/1336" role="group" aria-label="A tall living room with a stone chimney, before and after">
+        <img src="work-4-before.webp" srcset="work-4-before-800.webp 800w, work-4-before.webp 1080w" sizes="(max-width: 1300px) 100vw, 1240px" width="1080" height="1336" alt="Before: Tall living room with a stone chimney and a round rug." loading="lazy" decoding="async">
+        <img class="after" src="work-4-after.webp" srcset="work-4-after-800.webp 800w, work-4-after.webp 1080w" sizes="(max-width: 1300px) 100vw, 1240px" width="1080" height="1336" alt="After: Tall living room with a stone chimney and a round rug." loading="lazy" decoding="async">
+        <span class="tag l" aria-hidden="true">Before</span><span class="tag r" aria-hidden="true">After</span>
+        <div class="bar"></div>
+        <input type="range" min="0" max="100" value="50" aria-label="Compare before and after: A tall living room with a stone chimney">
+      </div>
+      <figcaption>A tall living room with a stone chimney</figcaption>
+    </figure>
+    </div>
+  </section>
 
-  <section class="mist" aria-label="How it works in three steps">
-    <div class="wrap">
-      <ol class="promise">
-        <li><b>Send a link to your listing.</b><span>Or attach a few photographs. That is all we need.</span></li>
-        <li><b>See every edit within one day.</b><span>All photographs come back with a watermark, so you can judge the full set.</span></li>
-        <li><b>Pay only for what you use.</b><span>You choose the photographs you want. If none of them are for you, you owe nothing.</span></li>
+  <section class="evidence" aria-labelledby="ev-h">
+    <div class="hw">
+      <h2 id="ev-h">Better photos, fuller calendars.</h2>
+      <p>A study of 7,423 Airbnb properties found that listings with verified photos had about 9% higher occupancy than those with host-taken photos.</p>
+      <p class="src"><a href="https://pubsonline.informs.org/doi/fpi/10.1287/mnsc.2021.4175" rel="noopener">Zhang et al., Management Science, 2022.</a> Your results may differ.</p>
+    </div>
+  </section>
+
+  <section class="steps" aria-labelledby="how-h">
+    <div class="hw">
+      <h2 id="how-h">How it works</h2>
+      <ol>
+        <li><b>Send a link to your listing.</b><span>Or attach a few photos. That's all we need.</span></li>
+        <li><b>See every edit within one day.</b><span>Every photo comes back with a watermark, so you can judge the whole set.</span></li>
+        <li><b>Pay only for what you use.</b><span>Pick the photos you want. If none suit you, you owe nothing.</span></li>
       </ol>
     </div>
   </section>
 
-  <section id="service">
-    <div class="wrap cols">
-      <h2>Image enhancement</h2>
-      <div class="body">
-        <p class="lead">We take the photographs you already have and bring out what is good in them.</p>
-        <p>Every edit stays true to the property. We correct light, color and perspective. We add nothing and hide nothing, so the photographs match the place your guests will find.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="yesno" aria-label="What we change and what we never change">
-    <div class="yn yes">
-      <h3>We change</h3>
-      <p>Light. Color. Straight lines. Detail.</p>
-    </div>
-    <div class="yn no">
-      <h3>We never</h3>
-      <p><s>Add what is not there.</s> <s>Hide what is.</s></p>
-    </div>
-  </section>
-
-
-  <section class="who mist" aria-labelledby="who-h">
-    <div class="wrap who-in">
-      <div>
-        <h2 id="who-h" class="visually-hidden">Who we work with</h2>
-        <p class="who-big">We work with <em>cabins and lodges</em>, <em>guest houses and B&amp;Bs</em>, <em>vacation homes</em> and <em>small inns</em>.</p>
-        <p class="who-note">Most are owners of one to three places who look after their own listings.</p>
-      </div>
-      <div class="who-img"><img src="work-5-after-700.jpg" srcset="work-5-after-700.jpg 700w, work-5-after.jpg 1186w" sizes="(max-width: 820px) 100vw, 440px" width="1186" height="835" alt="A wooden cabin with a covered deck among trees." loading="lazy"></div>
-    </div>
-  </section>
-
-  <section id="how">
-    <div class="wrap">
-      <h2 class="sec-h">How it works</h2>
-      <p class="lead stack">Three steps, from your photographs to the result.</p>
-      <div class="deck" id="deck">
-        <button class="deck-start" type="button" data-src="how-it-works.html">
-          <span class="how3"><span class="h3t"><img src="work-1-before-700.jpg" width="700" height="700" alt="" loading="lazy"><span class="h3c"><b>1</b>We take your photographs</span></span><span class="h3t"><img src="work-1-after-700.jpg" width="700" height="700" alt="" loading="lazy"><span class="h3c"><b>2</b>We enhance them</span></span><span class="h3t"><img src="work-3-after-700.jpg" width="700" height="700" alt="" loading="lazy"><span class="h3c"><b>3</b>You review and decide</span></span></span>
-          <span class="btn solid">Start the walkthrough</span>
-        </button>
-      </div>
-      <p class="cap">Use the arrows, or tap the slide, to move through the steps.</p>
-    </div>
-  </section>
-
-  <section class="scrub" aria-labelledby="scrub-h">
-    <div class="scrub-pin">
-      <img class="sb" src="sample2-before-1000.jpg" srcset="sample2-before-640.jpg 640w, sample2-before-1000.jpg 1000w, sample2-before.jpg 1448w" sizes="100vw" width="1448" height="1086" alt="Before: a cabin bedroom and sitting area in flat light." loading="lazy">
-      <img class="sa" src="sample2-after-1000.jpg" srcset="sample2-after-640.jpg 640w, sample2-after-1000.jpg 1000w, sample2-after.jpg 1448w" sizes="100vw" width="1448" height="1086" alt="After: the same room with clearer light and natural color." loading="lazy">
-      <span class="scrub-line" aria-hidden="true"></span>
-      <span class="scrub-tag t-a" aria-hidden="true">After</span><span class="scrub-tag t-b" aria-hidden="true">Before</span>
-      <div class="scrub-copy"><div class="wrap">
-        <h2 id="scrub-h">Keep scrolling. The same room, after our edit.</h2>
-        <p>Light, color and lines corrected. Nothing added, nothing removed. Shown with the owner&rsquo;s permission.</p>
-      </div></div>
-    </div>
-  </section>
-
-  <section class="mist gallery hs" aria-labelledby="gal-h">
-    <div class="hs-pin">
-      <div class="wrap hs-head">
-        <h2 id="gal-h" class="sec-h">Recent <em>work</em></h2>
-        <p class="lead stack">The same photographs, before and after. Nothing added, nothing hidden.</p>
-      </div>
-      <div class="hs-track">
-        <figure class="tile" tabindex="0">
-          <img class="t-after" src="work-4-after-700.jpg" srcset="work-4-after-700.jpg 700w, work-4-after.jpg 1080w" sizes="(max-width: 820px) 80vw, 520px" width="1080" height="1448" alt="After: a cabin living room with a stone chimney." loading="lazy">
-          <img class="t-before" src="work-4-before-700.jpg" srcset="work-4-before-700.jpg 700w, work-4-before.jpg 1080w" sizes="(max-width: 820px) 80vw, 520px" width="1080" height="1448" alt="Before: a cabin living room with a stone chimney." loading="lazy">
-          <figcaption><b>A cabin living room with a stone chimney</b><span>Hover or tap to see the original</span></figcaption>
-        </figure>
-        <figure class="tile" tabindex="0">
-          <img class="t-after" src="work-2-after-700.jpg" srcset="work-2-after-700.jpg 700w, work-2-after.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="1192" alt="After: a log cabin among trees." loading="lazy">
-          <img class="t-before" src="work-2-before-700.jpg" srcset="work-2-before-700.jpg 700w, work-2-before.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="1192" alt="Before: a log cabin among trees." loading="lazy">
-          <figcaption><b>A log cabin among trees</b><span>Hover or tap to see the original</span></figcaption>
-        </figure>
-        <figure class="tile" tabindex="0">
-          <img class="t-after" src="work-5-after-700.jpg" srcset="work-5-after-700.jpg 700w, work-5-after.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="835" alt="After: a cabin with a covered deck." loading="lazy">
-          <img class="t-before" src="work-5-before-700.jpg" srcset="work-5-before-700.jpg 700w, work-5-before.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="835" alt="Before: a cabin with a covered deck." loading="lazy">
-          <figcaption><b>A cabin with a covered deck</b><span>Hover or tap to see the original</span></figcaption>
-        </figure>
-        <figure class="tile" tabindex="0">
-          <img class="t-after" src="work-3-after-700.jpg" srcset="work-3-after-700.jpg 700w, work-3-after.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="773" alt="After: a living room with a stone fireplace." loading="lazy">
-          <img class="t-before" src="work-3-before-700.jpg" srcset="work-3-before-700.jpg 700w, work-3-before.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="773" alt="Before: a living room with a stone fireplace." loading="lazy">
-          <figcaption><b>A living room with a stone fireplace</b><span>Hover or tap to see the original</span></figcaption>
-        </figure>
-        <figure class="tile" tabindex="0">
-          <img class="t-after" src="work-1-after-700.jpg" srcset="work-1-after-700.jpg 700w, work-1-after.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="895" alt="After: a hot tub with a view of the fields." loading="lazy">
-          <img class="t-before" src="work-1-before-700.jpg" srcset="work-1-before-700.jpg 700w, work-1-before.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="895" alt="Before: a hot tub with a view of the fields." loading="lazy">
-          <figcaption><b>A hot tub with a view of the fields</b><span>Hover or tap to see the original</span></figcaption>
-        </figure>
-        <div class="hs-end">
-          <a href="our-work"><b>See all our work</b><span>Seven properties, before and after.</span></a>
-          <a href="article"><b>How we edit a photograph</b><span>What we correct, and what we never do.</span></a>
+  <section class="honest" aria-labelledby="honest-h">
+    <div class="hw">
+      <h2 id="honest-h" class="visually-hidden">What we change and what we never change</h2>
+      <div class="hn">
+        <div>
+          <h3>We change</h3>
+          <p>Light. Color. Straight lines. Detail.</p>
+        </div>
+        <div>
+          <h3>We never</h3>
+          <p><s>Add what is not there.</s> <s>Hide what is.</s></p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="guides" aria-labelledby="guides-h">
-    <div class="wrap">
-      <h2 id="guides-h" class="sec-h">Free guides for hosts</h2>
-      <p class="lead stack">Practical advice you can use today, with just a phone.</p>
-      <div class="links">
-        <a href="photo-tips"><b>How to photograph your rental</b><span>Nine plain tips: light, level lines, angles and clutter.</span></a>
-        <a href="cover-photo"><b>How to choose your cover photo</b><span>Seven points for the first photo a guest sees.</span></a>
-      </div>
+  <section class="who" aria-labelledby="who-h">
+    <div class="hw">
+      <h2 id="who-h">Who you deal with</h2>
+      <p class="lead">SRMJ is a small team: Sebastian Rogat and Magnus J&oslash;rgensen.</p>
+      <p>One of us answers every email, and we check the photographs ourselves before they reach you. You write to the people who do the work.</p>
+      <p><a class="more" href="about">More about us</a></p>
     </div>
   </section>
 
-  <section class="team mist">
-    <div class="wrap cols">
-      <h2>Who you deal with</h2>
-      <div class="body">
-        <p class="lead">SRMJ is a small team: Sebastian Rogat and Magnus J&oslash;rgensen.</p>
-        <p>One of us answers every email, and we check the photographs ourselves before they reach you. You write to the people who do the work.</p>
-        <p><a class="more" href="about">More about us</a></p>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" class="faqx" aria-labelledby="faq-h">
-    <div class="wrap">
-      <h2 id="faq-h">Questions hosts <em>ask</em></h2>
+  <section id="faq" class="hfaq" aria-labelledby="faq-h">
+    <div class="hw">
+      <h2 id="faq-h">Questions hosts ask</h2>
       <div class="faq">
         <details>
           <summary>How did you find me?</summary>
@@ -386,7 +159,7 @@ section{ padding-block:clamp(56px,7vw,96px) }
         </details>
         <details>
           <summary>Will my place look different from reality?</summary>
-          <p>No. We correct light, color, sharpness and straight lines. Nothing is added and nothing that belongs to the place is hidden, so guests find what the photographs show. <a href="article">Our standard</a></p>
+          <p>No. We correct light, color, sharpness and straight lines. We add nothing and hide nothing that belongs to the place, so guests find what the photographs show. <a href="article">Our standard</a></p>
         </details>
         <details>
           <summary>When do I pay?</summary>
@@ -408,21 +181,12 @@ section{ padding-block:clamp(56px,7vw,96px) }
     </div>
   </section>
 
-  <section class="band contact" id="contact">
-    <div class="wrap inner">
-      <h2>Tell us about your <em>photographs.</em></h2>
-      <p>Send a link to your listing, or attach a few photographs. We reply by email.</p>
-      <ul class="send">
-        <li>A link to your listing or website, or a few photographs</li>
-        <li>Which rooms or photos matter most to you</li>
-        <li>Anything you want left exactly as it is</li>
-      </ul>
-      <a class="addr" id="addr" href="mailto:info@srmjbusiness.com?subject=Photos%20for%20my%20rental&body=Hi%20SRMJ%2C%0A%0ALink%20to%20my%20listing%20or%20website%3A%0A%0AWhat%20I%20would%20like%20improved%3A%0A%0AThanks%2C%0A">info@srmjbusiness.com</a>
-      <div class="row">
-        <a class="btn solid" href="mailto:info@srmjbusiness.com?subject=Photos%20for%20my%20rental&body=Hi%20SRMJ%2C%0A%0ALink%20to%20my%20listing%20or%20website%3A%0A%0AWhat%20I%20would%20like%20improved%3A%0A%0AThanks%2C%0A">Email us</a>
-        <button class="btn line" id="copy" type="button">Copy address</button>
-      </div>
-      <p class="copied" id="copied" role="status"></p>
+  <section class="hcontact" id="contact" aria-labelledby="contact-h">
+    <div class="hw">
+      <h2 id="contact-h">Tell us about your photographs.</h2>
+      <p>Send a link or a few photos. We reply by email.</p>
+      <a class="go" href="mailto:info@srmjbusiness.com?subject=Photos%20for%20my%20rental&amp;body=Hi%20SRMJ%2C%0A%0ALink%20to%20my%20listing%20or%20website%3A%0A%0AWhat%20I%20would%20like%20improved%3A%0A%0AThanks%2C%0A">Send us your listing</a>
+      <a class="addr" href="mailto:info@srmjbusiness.com">info@srmjbusiness.com</a>
     </div>
   </section>
 </main>
@@ -433,7 +197,7 @@ section{ padding-block:clamp(56px,7vw,96px) }
     <nav aria-label="Footer"><a href="our-work">Our work</a><a href="article">Standards</a><a href="photo-tips">Photo tips</a><a href="cover-photo">Cover photo</a><a href="about">About</a><a href="pay">Payment</a><a href="privacy">Privacy</a><a href="#top">Back to top</a></nav>
   </div>
 </footer>
-<a class="mbar" id="mbar" href="mailto:info@srmjbusiness.com?subject=Photos%20for%20my%20rental&body=Hi%20SRMJ%2C%0A%0ALink%20to%20my%20listing%20or%20website%3A%0A%0AWhat%20I%20would%20like%20improved%3A%0A%0AThanks%2C%0A" aria-hidden="true" tabindex="-1">Email us about your photographs</a>
 <script src="site.js" defer></script>
+<script src="home.js" defer></script>
 </body>
 </html>

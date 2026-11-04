@@ -5,38 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Page not found | SRMJ</title>
 <meta name="robots" content="noindex">
-<meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#0B2527">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#14110D">
 <!-- GitHub Pages serves this file at any address, so every link here starts with / -->
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="/newsreader-latin-400-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/public-sans-latin-400-normal.woff2" crossorigin>
 <link rel="stylesheet" href="/site.css">
-<style>
-.lost{ min-height:60vh; display:grid; align-content:center; gap:24px; padding-block:clamp(64px,10vw,140px) }
-.lost h1{ font-size:clamp(40px,6vw,72px); line-height:1.04 }
-.lost p{ color:var(--muted); font-size:19px; max-width:40ch }
-.lost-links a{ color:var(--text); text-decoration-color:var(--accent); text-underline-offset:3px }
-/* v18: bold 404 on Ink with a giant outlined number. */
-body{ background:#0B2527; color:#F1F6F4 }
-.lost{ position:relative }
-.lost::before{ content:"404"; display:block; font-family:var(--mark); font-size:clamp(120px,32vw,420px); line-height:.8; letter-spacing:-.05em; color:transparent; -webkit-text-stroke:1.5px rgba(99,216,188,.7); margin-bottom:clamp(16px,3vw,32px) }
-.lost h1{ color:#fff }
-.lost p{ color:#C9D8D3 }
-.lost a{ color:#63D8BC }
-.lost .btn.solid{ background:#63D8BC; color:#0B2527 }
-.lost .btn.line{ border-color:rgba(241,246,244,.5); color:#F1F6F4 }
-</style>
+<link rel="stylesheet" href="/sub.css">
 </head>
-<body>
+<body class="sub">
 <header class="site-head">
   <div class="wrap">
     <a class="logo" href="/" aria-label="SRMJ, home">SRMJ<i>.</i></a>
     <nav class="nav" aria-label="Main"><a href="/our-work">Our work</a><a href="/article">Standards</a><a href="/about">About</a><a href="/#contact">Contact</a></nav>
   </div>
 </header>
-<main class="wrap lost">
+<main id="main" class="wrap lost">
   <h1>This page does not exist.</h1>
   <p>The link may be old or mistyped. The front page covers our work.</p>
   <div class="row"><a class="btn solid" href="/">Go to the front page</a><a class="btn line" href="mailto:info@srmjbusiness.com">Email us</a></div>

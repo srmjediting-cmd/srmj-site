@@ -169,24 +169,9 @@
   }
 })();
 
-// v5 motion pack: kinetic headlines and scroll reveals. Skipped entirely with reduced motion.
+// Scroll reveals. Skipped entirely with reduced motion.
 (function () {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('.stage-copy h1, .phead h1, .ahead h1, .intro.ink h1').forEach(function (h) {
-    var i = 0, out = [];
-    h.setAttribute('aria-label', h.textContent.trim());
-    // Keep <em> accents: split text nodes and <em> children word by word.
-    h.childNodes.forEach(function (n) {
-      var em = n.nodeType === 1 && n.tagName === 'EM';
-      (n.textContent || '').split(/\s+/).forEach(function (w) {
-        if (!w) return;
-        var t = w.replace(/&/g, '&amp;').replace(/</g, '&lt;');
-        out.push('<span class="w" aria-hidden="true"><span style="--i:' + (i++) + '">' + (em ? '<em>' + t + '</em>' : t) + '</span></span>');
-      });
-    });
-    h.innerHTML = out.join(' ');
-    h.classList.add('kin');
-  });
   if (!('IntersectionObserver' in window)) return;
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -197,7 +182,6 @@
     var below = els.map(function (el) { return el.getBoundingClientRect().top >= vh; });
     els.forEach(function (el, n) { if (!below[n]) return; el.classList.add(cls); el.style.transitionDelay = (n % 3) * 0.09 + 's'; io.observe(el); });
   }
-  mark('.who-img, .h3t, .ahead-img, .work .cmp, .example .pair', 'wipe');
   mark('.sec-h, .promise li, .who-big, .who-note, .lead.stack, .tip, .sec h2, .person, .faq details, .contact h2', 'rise-in');
 })();
 
@@ -218,92 +202,6 @@
   addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(draw); } }, { passive: true });
   addEventListener('resize', draw);
   draw();
-})();
-
-// v7: magnetic primary buttons and a round "Drag" cursor over sliders. Mouse only, off with reduced motion.
-(function () {
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('.btn.solid').forEach(function (b) {
-    b.classList.add('mag');
-    b.addEventListener('mousemove', function (e) {
-      var r = b.getBoundingClientRect();
-      b.style.translate = ((e.clientX - r.left - r.width / 2) * 0.25).toFixed(1) + 'px ' + ((e.clientY - r.top - r.height / 2) * 0.35).toFixed(1) + 'px';
-    });
-    b.addEventListener('mouseleave', function () { b.style.translate = ''; });
-  });
-  var sliders = document.querySelectorAll('.cmp');
-  if (!sliders.length) return;
-  var cur = document.createElement('div');
-  cur.className = 'drag-cur'; cur.setAttribute('aria-hidden', 'true'); cur.textContent = 'Drag';
-  document.body.appendChild(cur);
-  sliders.forEach(function (c) {
-    c.classList.add('has-cur');
-    c.addEventListener('pointermove', function (e) { cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; cur.classList.add('on'); });
-    c.addEventListener('pointerleave', function () { cur.classList.remove('on', 'down'); });
-    c.addEventListener('pointerdown', function () { cur.classList.add('down'); });
-    c.addEventListener('pointerup', function () { cur.classList.remove('down'); });
-  });
-})();
-
-// v8: slow animated mesh gradient (Paper Shaders) behind the dark title bands. Loaded only when a band exists,
-// WebGL2 is available and motion is allowed; the flat Ink colour stays as the fallback.
-(function () {
-  var bands = document.querySelectorAll('.intro.ink, .ahead');
-  // Desktop only: on phones the ~200 KB WebGL module costs too much main-thread time (Lighthouse TBT).
-  if (!bands.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !window.matchMedia('(min-width: 821px)').matches) return;
-  try { if (!document.createElement('canvas').getContext('webgl2')) return; } catch (e) { return; }
-  var go = function () {
-    import('./paper-shaders.mjs').then(function (P) {
-      var colors = ['#0B2527', '#0F4A44', '#0B2527', '#0F7A66', '#12383B'].map(P.getShaderColorFromString);
-      bands.forEach(function (el) {
-        el.classList.add('has-shader');
-        try {
-          new P.ShaderMount(el, P.meshGradientFragmentShader, {
-            u_colors: colors, u_colorsCount: colors.length, u_distortion: 0.85, u_swirl: 0.35,
-            u_grainMixer: 0, u_grainOverlay: 0, u_scale: 1, u_rotation: 0, u_offsetX: 0, u_offsetY: 0,
-            u_fit: 0, u_originX: 0.5, u_originY: 0.5, u_worldWidth: 0, u_worldHeight: 0
-          }, undefined, 0.18);
-        } catch (e) { el.classList.remove('has-shader'); }
-      });
-    }).catch(function () {});
-  };
-  var later = function () { ('requestIdleCallback' in window) ? requestIdleCallback(go, { timeout: 3000 }) : setTimeout(go, 1500); };
-  (document.readyState === 'complete') ? later() : addEventListener('load', later, { once: true });
-})();
-
-// v9: image trail on the Our work header (idea from Hyperiux components): small photos follow the mouse and fade out.
-(function () {
-  var head = document.querySelector('.phead');
-  if (!head || !window.matchMedia('(hover: hover) and (pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var srcs = [1, 2, 3, 4, 5].map(function (n) { return 'work-' + n + '-after-700.jpg'; });
-  srcs.forEach(function (s) { var i = new Image(); i.src = s; });
-  var n = 0, lx = 0, ly = 0, live = 0;
-  head.addEventListener('pointermove', function (e) {
-    if (Math.hypot(e.clientX - lx, e.clientY - ly) < 90 || live > 6) return;
-    lx = e.clientX; ly = e.clientY;
-    var r = head.getBoundingClientRect(), t = document.createElement('span');
-    t.className = 'trail'; t.setAttribute('aria-hidden', 'true');
-    t.style.left = (e.clientX - r.left) + 'px'; t.style.top = (e.clientY - r.top) + 'px';
-    t.style.setProperty('--rot', ((n % 2 ? 1 : -1) * (3 + n % 4)) + 'deg');
-    t.innerHTML = '<img src="' + srcs[n++ % srcs.length] + '" alt="">';
-    head.appendChild(t); live++;
-    setTimeout(function () { t.remove(); live--; }, 1100);
-  });
-})();
-
-// v10: mouse spotlight on dark bands (Cursify-style). Mouse only, off with reduced motion.
-(function () {
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('.intro.ink, .ahead, .marquee').forEach(function (el) {
-    el.classList.add('spot');
-    el.addEventListener('pointermove', function (e) {
-      var r = el.classList.contains('intro') ? { left: 0, top: el.getBoundingClientRect().top } : el.getBoundingClientRect();
-      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
-      el.classList.add('lit');
-    });
-    el.addEventListener('pointerleave', function () { el.classList.remove('lit'); });
-  });
 })();
 
 // v11: horizontal pinned gallery (idea from UI Layouts): vertical scroll moves the Recent work row sideways.

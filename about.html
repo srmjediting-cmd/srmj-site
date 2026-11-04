@@ -14,78 +14,16 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="A cabin living room before and after enhancement by SRMJ.">
-<meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#0B2527">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#14110D">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" as="font" type="font/woff2" href="newsreader-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fraunces-latin-opsz-wght.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="public-sans-latin-400-normal.woff2" crossorigin>
 <link rel="stylesheet" href="site.css">
-<style>
-/* About: short intro, the two people side by side, how we work, and the business details. */
-.ahead{ background:#0B2527; color:#F1F6F4; margin-bottom:clamp(56px,8vw,104px) }
-.ahead-in{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(32px,6vw,88px); align-items:end; padding-block:clamp(56px,9vw,128px) 0 }
-.ahead-copy{ padding-bottom:clamp(48px,7vw,96px) }
-.ahead h1{ font-size:clamp(48px,8vw,112px); line-height:.98; letter-spacing:-.025em; color:#fff }
-.ahead p{ margin-top:28px; font-family:var(--display); font-size:clamp(21px,2.6vw,27px); line-height:1.42; max-width:30em; color:#DCE7E3 }
-.ahead-img{ position:relative; aspect-ratio:4/5; overflow:hidden; background:#14282B }
-/* The file has an "After" label burnt into the top-left corner: zoom from the bottom-right to keep it out of frame. */
-.ahead-img img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.18); transform-origin:100% 100% }
-@media (max-width:760px){ .ahead-in{ grid-template-columns:1fr; gap:0; padding-top:48px } .ahead-copy{ padding-bottom:40px } .ahead-img{ aspect-ratio:4/3; margin-inline:calc(-1 * var(--gutter)) } }
-
-.people{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(24px,4vw,56px); max-width:820px; padding-bottom:clamp(56px,8vw,104px) }
-.person{ margin:0; display:grid; gap:18px; align-content:start }
-.portrait{ position:relative; aspect-ratio:4/5; background:var(--ph); overflow:hidden }
-.portrait img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
-.portrait .initials{ position:absolute; inset:0; display:grid; place-items:center; font-family:var(--mark); font-size:clamp(48px,8vw,96px); color:var(--muted); letter-spacing:-1px }
-.person h2{ font-size:clamp(26px,3vw,34px); line-height:1.15 }
-.person .role{ font-size:15px; color:var(--accent); font-weight:600 }
-.person p{ color:var(--muted); max-width:44ch }
-/* Until a portrait file is added (the <img> is commented out), show a small monogram instead of a large empty box. */
-.portrait:not(:has(img)){ width:96px; aspect-ratio:1/1; background:var(--text) }
-.portrait:not(:has(img)) .initials{ font-size:34px; color:var(--bg) }
-.people:not(:has(img)){ max-width:none; padding-bottom:clamp(40px,6vw,72px) }
-
-/* v17: until portraits exist, the two people are a big type duo: outlined names that fill in on hover. */
-.people:not(:has(img)){ grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; max-width:none; padding-bottom:clamp(56px,8vw,104px) }
-.people:not(:has(img)) .person{ padding:clamp(28px,4vw,56px) clamp(0px,3vw,40px) clamp(28px,4vw,56px) 0 }
-.people:not(:has(img)) .person + .person{ padding-left:clamp(20px,3vw,40px); border-left:1px solid var(--line) }
-.people:not(:has(img)) .portrait{ display:none }
-.people:not(:has(img)) h2{ font-size:clamp(44px,6.6vw,96px); line-height:.95; letter-spacing:-.02em; color:transparent; -webkit-text-stroke:1.4px var(--text); transition:color .4s ease }
-.people:not(:has(img)) .person:hover h2{ color:var(--accent); -webkit-text-stroke-color:var(--accent) }
-.people:not(:has(img)) .role{ font-size:clamp(16px,1.6vw,19px); margin-top:14px }
-@media (max-width:760px){ .people:not(:has(img)){ grid-template-columns:1fr } .people:not(:has(img)) .person + .person{ padding-left:0; border-left:0; border-top:1px solid var(--line) } }
-.how,.facts{ padding-block:clamp(56px,8vw,112px) }
-.two{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(28px,6vw,90px) }
-.how h2{ font-size:clamp(28px,3.8vw,44px); line-height:1.12 }
-.rules{ list-style:none; margin:0; padding:0; display:grid; gap:28px }
-.rules li{ display:grid; gap:6px }
-.rules b{ font-family:var(--display); font-weight:400; font-size:22px; line-height:1.25 }
-.rules span{ color:var(--muted) }
-
-.facts h2{ font-size:clamp(28px,3.8vw,44px); line-height:1.12 }
-/* v19: the left-hand headings are big and stay in view while the list beside them scrolls. */
-.how h2,.facts h2{ font-size:clamp(44px,6.4vw,92px); line-height:.98; letter-spacing:-.02em; align-self:start; position:sticky; top:96px }
-.how h2 em,.facts h2 em{ color:var(--accent) }
-.how .rules b{ font-size:clamp(24px,2.6vw,32px) }
-@media (max-width:760px){ .how h2,.facts h2{ position:static } }
-.facts dl{ margin:0; display:grid; grid-template-columns:160px minmax(0,1fr); border-top:2px solid var(--text) }
-.facts dt,.facts dd{ margin:0; padding:16px 0; border-bottom:1px solid var(--line) }
-.facts dt{ color:var(--muted); font-size:15px }
-.facts dd a{ text-decoration:none; border-bottom:1px solid var(--line) }
-.facts dd a:hover{ color:var(--accent); border-color:var(--accent) }
-
-@media (max-width:760px){
-  .people{ grid-template-columns:1fr }
-  .portrait{ aspect-ratio:1/1 }
-  .two{ grid-template-columns:1fr }
-  .facts dl{ grid-template-columns:1fr }
-  .facts dt{ padding-bottom:0; border-bottom:0 }
-  .facts dd{ padding-top:4px }
-}
-</style>
+<link rel="stylesheet" href="sub.css">
 </head>
-<body>
+<body class="sub">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head">
   <div class="wrap">
@@ -95,22 +33,17 @@
 </header>
 
 <main id="main">
-  <header class="ahead">
-    <div class="wrap ahead-in">
-      <div class="ahead-copy">
+  <header class="intro">
+    <div class="wrap">
         <h1>About <em>SRMJ</em></h1>
         <p>SRMJ is two people: Sebastian Rogat and Magnus J&oslash;rgensen. We enhance photographs of rentals and guest houses, and we deal with every client ourselves. We are both from Denmark. Sebastian works from Denmark, and Magnus is in Milan, Italy, for now on an exchange, which is why our postal address is in Milan.</p>
-      </div>
-      <div class="ahead-img"><img src="work-2-after-700.jpg" srcset="work-2-after-700.jpg 700w, work-2-after.jpg 1186w" sizes="(max-width: 760px) 100vw, 520px" width="1186" height="1192" alt="A log cabin in the woods, one of the rentals we have worked on." fetchpriority="high"></div>
     </div>
   </header>
 
   <div class="wrap">
 
-    <!-- To show a portrait: put team-sebastian.jpg / team-magnus.jpg (about 1200 x 1500 px) next to this page and remove the comment marks around its <img>. Until then the initials show. -->
     <div class="people">
       <figure class="person">
-        <div class="portrait"><span class="initials" aria-hidden="true">SR</span><!-- <img src="team-sebastian.jpg" alt="Sebastian Rogat" width="1200" height="1500"> --></div>
         <figcaption>
           <h2>Sebastian Rogat</h2>
           <p class="role">Co-founder, Denmark</p>
@@ -118,7 +51,6 @@
         </figcaption>
       </figure>
       <figure class="person">
-        <div class="portrait"><span class="initials" aria-hidden="true">MJ</span><!-- <img src="team-magnus.jpg" alt="Magnus J&oslash;rgensen" width="1200" height="1500"> --></div>
         <figcaption>
           <h2>Magnus J&oslash;rgensen</h2>
           <p class="role">Co-founder, Milan</p>
@@ -128,7 +60,7 @@
     </div>
   </div>
 
-  <section class="how mist" aria-labelledby="how-h">
+  <section class="how" aria-labelledby="how-h">
    <div class="wrap two">
       <h2 id="how-h">How we <em>work</em></h2>
       <ul class="rules">
@@ -157,7 +89,7 @@
       <h2>Tell us about your <em>photographs.</em></h2>
       <p>Send a link to your listing, or attach a few photographs. We reply by email.</p>
       <a class="addr" href="mailto:info@srmjbusiness.com?subject=Photos%20for%20my%20rental&body=Hi%20SRMJ%2C%0A%0ALink%20to%20my%20listing%20or%20website%3A%0A%0AWhat%20I%20would%20like%20improved%3A%0A%0AThanks%2C%0A">info@srmjbusiness.com</a>
-      <a class="btn solid" href="mailto:info@srmjbusiness.com?subject=Photos%20for%20my%20rental&body=Hi%20SRMJ%2C%0A%0ALink%20to%20my%20listing%20or%20website%3A%0A%0AWhat%20I%20would%20like%20improved%3A%0A%0AThanks%2C%0A">Email us</a>
+      <a class="go" href="mailto:info@srmjbusiness.com?subject=Photos%20for%20my%20rental&body=Hi%20SRMJ%2C%0A%0ALink%20to%20my%20listing%20or%20website%3A%0A%0AWhat%20I%20would%20like%20improved%3A%0A%0AThanks%2C%0A">Send us your listing</a>
     </div>
   </section>
 </main>
