@@ -298,3 +298,29 @@
     el.addEventListener('pointerleave', function () { el.classList.remove('lit'); });
   });
 })();
+
+// v11: horizontal pinned gallery (idea from UI Layouts): vertical scroll moves the Recent work row sideways.
+// Desktop with motion only; otherwise the row is a normal swipeable strip.
+(function () {
+  var sec = document.querySelector('.hs'), track = sec && sec.querySelector('.hs-track');
+  if (!track) return;
+  var mq = window.matchMedia('(min-width: 821px) and (prefers-reduced-motion: no-preference)');
+  var dist = 0, ticking = false;
+  function size() {
+    if (!mq.matches) { sec.classList.remove('hs-on'); sec.style.height = ''; track.style.transform = ''; return; }
+    sec.classList.add('hs-on');
+    dist = Math.max(0, track.scrollWidth - innerWidth);
+    sec.style.height = (innerHeight + dist) + 'px';
+    draw();
+  }
+  function draw() {
+    ticking = false;
+    if (!sec.classList.contains('hs-on')) return;
+    var k = Math.max(0, Math.min(1, -sec.getBoundingClientRect().top / (dist || 1)));
+    track.style.transform = 'translate3d(' + (-k * dist).toFixed(1) + 'px,0,0)';
+  }
+  addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(draw); } }, { passive: true });
+  addEventListener('resize', size);
+  addEventListener('load', size);
+  size();
+})();

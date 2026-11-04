@@ -147,6 +147,18 @@ section{ padding-block:clamp(56px,7vw,96px) }
 .stage-cap{ margin-top:22px; font-size:14px; color:rgba(241,246,244,.7) }
 
 /* v4: gallery of three large examples; hover or tap swaps to the original. */
+.hs-track{ display:flex; gap:clamp(12px,1.6vw,20px); margin-top:clamp(28px,4vw,44px); padding-inline:max(var(--gutter), calc(50vw - 540px)); overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none }
+.hs-track::-webkit-scrollbar{ display:none }
+.hs-track .tile{ flex:0 0 auto; width:min(78vw,520px); aspect-ratio:4/5; scroll-snap-align:start }
+.hs-end{ flex:0 0 auto; width:min(78vw,420px); display:grid; align-content:end; gap:24px; padding:32px; background:#0B2527; color:#F1F6F4; scroll-snap-align:start }
+.hs-end a{ display:grid; gap:6px; text-decoration:none; color:#F1F6F4 }
+.hs-end b{ font-family:var(--display); font-weight:400; font-size:clamp(24px,2.6vw,32px); line-height:1.15 }
+.hs-end span{ color:#9FB5AE; font-size:15px }
+.hs-end a:hover b{ color:#63D8BC }
+.hs-on{ padding-block:0 }
+.hs-on .hs-pin{ position:sticky; top:0; height:100vh; height:100svh; display:flex; flex-direction:column; justify-content:center; overflow:hidden }
+.hs-on .hs-track{ overflow:visible; scroll-snap-type:none; will-change:transform }
+.hs-on .hs-track .tile{ width:clamp(300px,30vw,480px) }
 .bento{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:auto auto; gap:clamp(12px,1.6vw,20px); margin-top:clamp(32px,4vw,48px) }
 .tile{ position:relative; margin:0; overflow:hidden; background:var(--ph); cursor:pointer; aspect-ratio:4/3 }
 .tile.big{ grid-row:span 2; aspect-ratio:auto }
@@ -269,30 +281,42 @@ section{ padding-block:clamp(56px,7vw,96px) }
     </div>
   </section>
 
-  <section class="mist gallery" aria-labelledby="gal-h">
-    <div class="wrap">
-      <h2 id="gal-h" class="sec-h">Recent work</h2>
-      <p class="lead stack">The same photographs, before and after. Nothing added, nothing hidden.</p>
-      <div class="bento">
-        <figure class="tile big" data-reveal tabindex="0">
-          <img class="t-after" src="work-4-after-700.jpg" srcset="work-4-after-700.jpg 700w, work-4-after.jpg 1080w" sizes="(max-width: 820px) 100vw, 50vw" width="1080" height="1448" alt="After: a cabin living room with a stone chimney." loading="lazy">
-          <img class="t-before" src="work-4-before-700.jpg" srcset="work-4-before-700.jpg 700w, work-4-before.jpg 1080w" sizes="(max-width: 820px) 100vw, 50vw" width="1080" height="1448" alt="Before: a cabin living room with a stone chimney." loading="lazy">
+  <section class="mist gallery hs" aria-labelledby="gal-h">
+    <div class="hs-pin">
+      <div class="wrap hs-head">
+        <h2 id="gal-h" class="sec-h">Recent <em>work</em></h2>
+        <p class="lead stack">The same photographs, before and after. Nothing added, nothing hidden.</p>
+      </div>
+      <div class="hs-track">
+        <figure class="tile" tabindex="0">
+          <img class="t-after" src="work-4-after-700.jpg" srcset="work-4-after-700.jpg 700w, work-4-after.jpg 1080w" sizes="(max-width: 820px) 80vw, 520px" width="1080" height="1448" alt="After: a cabin living room with a stone chimney." loading="lazy">
+          <img class="t-before" src="work-4-before-700.jpg" srcset="work-4-before-700.jpg 700w, work-4-before.jpg 1080w" sizes="(max-width: 820px) 80vw, 520px" width="1080" height="1448" alt="Before: a cabin living room with a stone chimney." loading="lazy">
           <figcaption><b>A cabin living room with a stone chimney</b><span>Hover or tap to see the original</span></figcaption>
         </figure>
-        <figure class="tile " data-reveal tabindex="0">
-          <img class="t-after" src="work-2-after-700.jpg" srcset="work-2-after-700.jpg 700w, work-2-after.jpg 1186w" sizes="(max-width: 820px) 100vw, 50vw" width="1186" height="1192" alt="After: a log cabin among trees." loading="lazy">
-          <img class="t-before" src="work-2-before-700.jpg" srcset="work-2-before-700.jpg 700w, work-2-before.jpg 1186w" sizes="(max-width: 820px) 100vw, 50vw" width="1186" height="1192" alt="Before: a log cabin among trees." loading="lazy">
+        <figure class="tile" tabindex="0">
+          <img class="t-after" src="work-2-after-700.jpg" srcset="work-2-after-700.jpg 700w, work-2-after.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="1192" alt="After: a log cabin among trees." loading="lazy">
+          <img class="t-before" src="work-2-before-700.jpg" srcset="work-2-before-700.jpg 700w, work-2-before.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="1192" alt="Before: a log cabin among trees." loading="lazy">
           <figcaption><b>A log cabin among trees</b><span>Hover or tap to see the original</span></figcaption>
         </figure>
-        <figure class="tile " data-reveal tabindex="0">
-          <img class="t-after" src="work-5-after-700.jpg" srcset="work-5-after-700.jpg 700w, work-5-after.jpg 1186w" sizes="(max-width: 820px) 100vw, 50vw" width="1186" height="835" alt="After: a cabin with a covered deck." loading="lazy">
-          <img class="t-before" src="work-5-before-700.jpg" srcset="work-5-before-700.jpg 700w, work-5-before.jpg 1186w" sizes="(max-width: 820px) 100vw, 50vw" width="1186" height="835" alt="Before: a cabin with a covered deck." loading="lazy">
+        <figure class="tile" tabindex="0">
+          <img class="t-after" src="work-5-after-700.jpg" srcset="work-5-after-700.jpg 700w, work-5-after.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="835" alt="After: a cabin with a covered deck." loading="lazy">
+          <img class="t-before" src="work-5-before-700.jpg" srcset="work-5-before-700.jpg 700w, work-5-before.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="835" alt="Before: a cabin with a covered deck." loading="lazy">
           <figcaption><b>A cabin with a covered deck</b><span>Hover or tap to see the original</span></figcaption>
         </figure>
-      </div>
-      <div class="links">
-        <a href="our-work"><b>See all our work</b><span>Seven properties, before and after.</span></a>
-        <a href="article"><b>How we edit a photograph</b><span>What we correct, and what we never do.</span></a>
+        <figure class="tile" tabindex="0">
+          <img class="t-after" src="work-3-after-700.jpg" srcset="work-3-after-700.jpg 700w, work-3-after.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="773" alt="After: a living room with a stone fireplace." loading="lazy">
+          <img class="t-before" src="work-3-before-700.jpg" srcset="work-3-before-700.jpg 700w, work-3-before.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="773" alt="Before: a living room with a stone fireplace." loading="lazy">
+          <figcaption><b>A living room with a stone fireplace</b><span>Hover or tap to see the original</span></figcaption>
+        </figure>
+        <figure class="tile" tabindex="0">
+          <img class="t-after" src="work-1-after-700.jpg" srcset="work-1-after-700.jpg 700w, work-1-after.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="895" alt="After: a hot tub with a view of the fields." loading="lazy">
+          <img class="t-before" src="work-1-before-700.jpg" srcset="work-1-before-700.jpg 700w, work-1-before.jpg 1186w" sizes="(max-width: 820px) 80vw, 520px" width="1186" height="895" alt="Before: a hot tub with a view of the fields." loading="lazy">
+          <figcaption><b>A hot tub with a view of the fields</b><span>Hover or tap to see the original</span></figcaption>
+        </figure>
+        <div class="hs-end">
+          <a href="our-work"><b>See all our work</b><span>Seven properties, before and after.</span></a>
+          <a href="article"><b>How we edit a photograph</b><span>What we correct, and what we never do.</span></a>
+        </div>
       </div>
     </div>
   </section>
