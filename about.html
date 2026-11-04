@@ -46,6 +46,15 @@
 .portrait:not(:has(img)) .initials{ font-size:34px; color:var(--bg) }
 .people:not(:has(img)){ max-width:none; padding-bottom:clamp(40px,6vw,72px) }
 
+/* v17: until portraits exist, the two people are a big type duo: outlined names that fill in on hover. */
+.people:not(:has(img)){ grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; max-width:none; padding-bottom:clamp(56px,8vw,104px) }
+.people:not(:has(img)) .person{ padding:clamp(28px,4vw,56px) clamp(0px,3vw,40px) clamp(28px,4vw,56px) 0 }
+.people:not(:has(img)) .person + .person{ padding-left:clamp(20px,3vw,40px); border-left:1px solid var(--line) }
+.people:not(:has(img)) .portrait{ display:none }
+.people:not(:has(img)) h2{ font-size:clamp(44px,6.6vw,96px); line-height:.95; letter-spacing:-.02em; color:transparent; -webkit-text-stroke:1.4px var(--text); transition:color .4s ease }
+.people:not(:has(img)) .person:hover h2{ color:var(--accent); -webkit-text-stroke-color:var(--accent) }
+.people:not(:has(img)) .role{ font-size:clamp(16px,1.6vw,19px); margin-top:14px }
+@media (max-width:760px){ .people:not(:has(img)){ grid-template-columns:1fr } .people:not(:has(img)) .person + .person{ padding-left:0; border-left:0; border-top:1px solid var(--line) } }
 .how,.facts{ padding-block:clamp(56px,8vw,112px) }
 .two{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(28px,6vw,90px) }
 .how h2{ font-size:clamp(28px,3.8vw,44px); line-height:1.12 }
@@ -99,7 +108,7 @@
         <div class="portrait"><span class="initials" aria-hidden="true">SR</span><!-- <img src="team-sebastian.jpg" alt="Sebastian Rogat" width="1200" height="1500"> --></div>
         <figcaption>
           <h2>Sebastian Rogat</h2>
-          <p class="role">Co-founder</p>
+          <p class="role">Co-founder, Denmark</p>
           <p>Sebastian is based in Denmark. He writes to the hosts and owners we work with and looks after each delivery.</p>
         </figcaption>
       </figure>
@@ -107,7 +116,7 @@
         <div class="portrait"><span class="initials" aria-hidden="true">MJ</span><!-- <img src="team-magnus.jpg" alt="Magnus J&oslash;rgensen" width="1200" height="1500"> --></div>
         <figcaption>
           <h2>Magnus J&oslash;rgensen</h2>
-          <p class="role">Co-founder</p>
+          <p class="role">Co-founder, Milan</p>
           <p>Magnus is in Milan for now on an exchange and handles the editing and the checks on every photograph.</p>
         </figcaption>
       </figure>
