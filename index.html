@@ -59,7 +59,15 @@ section{ padding-block:clamp(56px,7vw,96px) }
 .deck{ position:relative; aspect-ratio:16/9; width:100%; margin-top:clamp(28px,4vw,48px); background:var(--band); overflow:hidden }
 .deck iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
 .deck-start{ position:absolute; inset:0; width:100%; display:grid; align-content:center; justify-items:start; gap:28px; padding:24px clamp(24px,5vw,64px); border:0; background:var(--band); color:var(--on-band); cursor:pointer; font:inherit; text-align:left }
-.deck-steps{ font-family:var(--display); font-size:clamp(20px,3vw,34px); line-height:1.45 }
+.how3{ width:100%; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px }
+.h3t{ position:relative; aspect-ratio:4/5; overflow:hidden; background:#14282B }
+/* The files have Before/After labels burnt into the top-left corner: zoom from the bottom-right to keep them out of frame. */
+.h3t img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.2); transform-origin:100% 100%; transition:transform 1.2s ease }
+.deck-start:hover .h3t img{ transform:scale(1.24) }
+.h3c{ position:absolute; left:0; right:0; bottom:0; padding:56px 16px 16px; background:linear-gradient(to top, rgba(6,18,19,.9), rgba(6,18,19,0)); color:#fff; font-family:var(--display); font-size:clamp(18px,2.2vw,26px); line-height:1.2; display:grid; gap:6px }
+.h3c b{ font-family:var(--body); font-size:14px; font-weight:600; color:#63D8BC }
+@media (max-width:640px){ .how3{ grid-template-columns:1fr } .h3t{ aspect-ratio:16/10 } }
+@media (prefers-reduced-motion: reduce){ .h3t img{ transition:none } }
 .deck-start .btn.solid{ background:var(--accent-on-band); color:#06221E }
 .deck-start:hover .btn.solid{ background:#86E6CF }
 /* Before it starts, the panel only needs room for its text; the 16:9 frame comes back with the walkthrough. */
@@ -218,7 +226,7 @@ section{ padding-block:clamp(56px,7vw,96px) }
       <p class="lead stack">Three steps, from your photographs to the result.</p>
       <div class="deck" id="deck">
         <button class="deck-start" type="button" data-src="how-it-works.html">
-          <span class="deck-steps">We take your photographs<br>We enhance them<br>You review and decide</span>
+          <span class="how3"><span class="h3t"><img src="work-1-before-700.jpg" width="700" height="700" alt="" loading="lazy"><span class="h3c"><b>1</b>We take your photographs</span></span><span class="h3t"><img src="work-1-after-700.jpg" width="700" height="700" alt="" loading="lazy"><span class="h3c"><b>2</b>We enhance them</span></span><span class="h3t"><img src="work-3-after-700.jpg" width="700" height="700" alt="" loading="lazy"><span class="h3c"><b>3</b>You review and decide</span></span></span>
           <span class="btn solid">Start the walkthrough</span>
         </button>
       </div>
