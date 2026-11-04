@@ -90,6 +90,13 @@ p{ margin:0; text-wrap:pretty }
 .related a:hover b{ color:var(--accent) }
 @media (max-width:720px){ .related{ grid-template-columns:1fr } .related a,.related a + a{ padding-inline:0; border-left:0 } }
 
+/* Full-size photo viewer on Our work */
+.lightbox{ max-width:none; max-height:none; width:100vw; height:100dvh; margin:0; padding:0; border:0; background:rgba(6,18,19,.94); display:none }
+.lightbox[open]{ display:grid; place-items:center }
+.lightbox img{ max-width:96vw; max-height:88dvh; width:auto; height:auto; object-fit:contain; cursor:zoom-out }
+.lightbox::backdrop{ background:rgba(6,18,19,.94) }
+.lb-close{ position:fixed; top:16px; right:16px; padding:10px 16px; border:1px solid rgba(241,246,244,.5); background:transparent; color:#F1F6F4; font:600 14px var(--body); cursor:pointer }
+
 /* Footer */
 .site-foot{ background:var(--band); color:var(--on-band-muted); font-size:14px; border-top:1px solid rgba(241,246,244,.14) }
 .site-foot .wrap{ display:flex; justify-content:space-between; align-items:flex-start; gap:28px 48px; flex-wrap:wrap; padding-block:40px 48px }

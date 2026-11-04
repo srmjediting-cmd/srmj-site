@@ -85,6 +85,27 @@
     new IntersectionObserver(function (e) { near = e[0].isIntersecting || e[0].boundingClientRect.top < 0; show(); }).observe(contact);
   }
 
+  // Our work: tap a photo to see it full size. Uses the native <dialog> (Esc and focus handling come free).
+  var gallery = document.querySelector('.work');
+  if (gallery && window.HTMLDialogElement) {
+    var dlg = document.createElement('dialog');
+    dlg.className = 'lightbox';
+    dlg.innerHTML = '<img alt=""><button type="button" class="lb-close" aria-label="Close">Close</button>';
+    document.body.appendChild(dlg);
+    var big = dlg.querySelector('img');
+    gallery.querySelectorAll('.pair img').forEach(function (im) {
+      im.tabIndex = 0;
+      im.style.cursor = 'zoom-in';
+      function open() {
+        var src = im.getAttribute('srcset') ? im.getAttribute('srcset').split(',').pop().trim().split(' ')[0] : im.src;
+        big.src = src; big.alt = im.alt; dlg.showModal();
+      }
+      im.addEventListener('click', open);
+      im.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+    dlg.addEventListener('click', function (e) { if (e.target !== big) dlg.close(); });
+  }
+
   // Keep the address bar clean after jumping to a #section on the same page.
   function clean() { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} }
   document.addEventListener('click', function (e) {
