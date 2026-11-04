@@ -143,3 +143,11 @@ p{ margin:0; text-wrap:pretty }
   main a[href^="http"]::after{ content:" (" attr(href) ")"; font-size:12px; word-break:break-all }
   img{ break-inside:avoid }
 }
+
+/* v4: dark title band for text pages (Standards, guides). The shadow + clip-path paint it full width without extra markup. */
+.intro.ink{ background:#0B2527; box-shadow:0 0 0 100vmax #0B2527; clip-path:inset(0 -100vmax); color:#F1F6F4 }
+.intro.ink h1{ color:#fff; font-size:clamp(46px,7.6vw,100px); line-height:1; letter-spacing:-.025em }
+.intro.ink .lead{ color:#DCE7E3 }
+.intro.ink .toc span{ color:#9FB5AE }
+.intro.ink .toc a{ color:#F1F6F4; border-color:rgba(241,246,244,.35) }
+.intro.ink .toc a:hover{ color:#63D8BC; border-color:#63D8BC }
