@@ -188,3 +188,22 @@
   mark('.who-img, .h3t, .ahead-img, .work .pair, .example .pair', 'wipe');
   mark('.sec-h, .promise li, .who-big, .who-note, .lead.stack, .tip, .sec h2, .person, .faq details, .contact h2', 'rise-in');
 })();
+
+// Scroll-scrubbed before/after: the edit sweeps across the photo as the section scrolls past.
+(function () {
+  var sec = document.querySelector('.scrub');
+  if (!sec || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ticking = false;
+  function draw() {
+    ticking = false;
+    var r = sec.getBoundingClientRect(), run = r.height - innerHeight;
+    var k = Math.max(0, Math.min(1, -r.top / (run || 1)));
+    k = Math.max(0, Math.min(1, (k - 0.1) / 0.75)); // hold a moment at both ends
+    sec.style.setProperty('--p', (k * 100).toFixed(2) + '%');
+    sec.style.setProperty('--oa', k > 0.55 ? 1 : 0);
+    sec.style.setProperty('--ob', k < 0.45 ? 1 : 0);
+  }
+  addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(draw); } }, { passive: true });
+  addEventListener('resize', draw);
+  draw();
+})();
