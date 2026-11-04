@@ -40,6 +40,7 @@ section{ padding-block:clamp(64px,9vw,120px) }
 .cols{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(28px,6vw,90px) }
 .cols h2,.sec-h{ font-size:clamp(30px,4vw,44px); line-height:1.1 }
 .body{ display:grid; gap:22px; color:var(--muted); min-width:0 }
+.lead.stack{ margin-top:14px; color:var(--muted); max-width:40ch }
 .lead{ color:var(--text); font-family:var(--display); font-size:clamp(21px,2.4vw,27px); line-height:1.35 }
 .list{ list-style:none; margin:8px 0 0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px 32px }
 .list li{ padding-left:20px; color:var(--text); position:relative }
@@ -173,7 +174,8 @@ section{ padding-block:clamp(64px,9vw,120px) }
 
   <section id="how">
     <div class="wrap">
-      <div class="cols"><h2>How it works</h2><div class="body"><p class="lead">Three steps, from your photographs to the result.</p></div></div>
+      <h2 class="sec-h">How it works</h2>
+      <p class="lead stack">Three steps, from your photographs to the result.</p>
       <div class="deck" id="deck">
         <button class="deck-start" type="button" data-src="how-it-works.html">
           <span class="deck-steps">We take your photographs<br>We enhance them<br>You review and decide</span>
@@ -186,7 +188,8 @@ section{ padding-block:clamp(64px,9vw,120px) }
 
   <section class="mist">
     <div class="wrap">
-      <div class="cols"><h2>The difference</h2><div class="body"><p class="lead">Balanced light, true color, straight lines.</p></div></div>
+      <h2 class="sec-h">The difference</h2>
+      <p class="lead stack">Balanced light, true color, straight lines.</p>
       <div class="wide">
         <div class="cmp" role="group" aria-label="A bedroom and sitting area before and after enhancement">
           <img src="sample2-before-1000.jpg" srcset="sample2-before-640.jpg 640w, sample2-before-1000.jpg 1000w, sample2-before.jpg 1448w" sizes="(max-width: 1080px) calc(100vw - 40px), 1040px" width="1448" height="1086" alt="Before: a log cabin bedroom and sitting area in flat light." loading="lazy">
