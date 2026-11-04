@@ -168,3 +168,23 @@
     setTimeout(function () { if (target) target.scrollIntoView({ block: 'start' }); clean(); }, 50);
   }
 })();
+
+// v5 motion pack: kinetic headlines and scroll reveals. Skipped entirely with reduced motion.
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.stage-copy h1, .phead h1, .ahead h1, .intro.ink h1').forEach(function (h) {
+    var text = h.textContent.trim(), i = 0;
+    h.setAttribute('aria-label', text);
+    h.innerHTML = text.split(/\s+/).map(function (w) {
+      return '<span class="w" aria-hidden="true"><span style="--i:' + (i++) + '">' + w.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</span></span>';
+    }).join(' ');
+    h.classList.add('kin');
+  });
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  function mark(sel, cls) { document.querySelectorAll(sel).forEach(function (el, n) { if (el.getBoundingClientRect().top < innerHeight) return; /* already on screen: never hide it */ el.classList.add(cls); el.style.transitionDelay = (n % 3) * 0.09 + 's'; io.observe(el); }); }
+  mark('.who-img, .h3t, .ahead-img, .work .pair, .example .pair', 'wipe');
+  mark('.sec-h, .promise li, .who-big, .who-note, .lead.stack, .tip, .sec h2, .person, .faq details, .contact h2', 'rise-in');
+})();

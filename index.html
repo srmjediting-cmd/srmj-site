@@ -48,7 +48,7 @@ section{ padding-block:clamp(56px,7vw,96px) }
 
 .promise{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(28px,4vw,56px); margin:0; padding:0; list-style:none; counter-reset:st }
 .promise li{ counter-increment:st }
-.promise li::before{ content:counter(st); display:block; font-family:var(--display); font-size:clamp(44px,5vw,56px); line-height:1; color:var(--accent); margin-bottom:18px }
+.promise li::before{ content:counter(st); display:block; font-family:var(--display); font-size:clamp(84px,10vw,150px); line-height:.9; letter-spacing:-.04em; color:transparent; -webkit-text-stroke:1.5px var(--accent); margin-bottom:12px }
 .promise b{ display:block; font-family:var(--display); font-weight:400; font-size:clamp(22px,2.4vw,27px); line-height:1.2; margin-bottom:10px }
 .promise span{ color:var(--muted); font-size:16px }
 
@@ -189,6 +189,8 @@ section{ padding-block:clamp(56px,7vw,96px) }
       </div>
     </div>
   </section>
+
+  <div class="marquee" aria-hidden="true"><div class="mq-track"><span>Cabins</span><i>&#8226;</i><span>Lodges</span><i>&#8226;</i><span>Guest houses</span><i>&#8226;</i><span>B&amp;Bs</span><i>&#8226;</i><span>Vacation homes</span><i>&#8226;</i><span>Small inns</span><i>&#8226;</i><span>Cabins</span><i>&#8226;</i><span>Lodges</span><i>&#8226;</i><span>Guest houses</span><i>&#8226;</i><span>B&amp;Bs</span><i>&#8226;</i><span>Vacation homes</span><i>&#8226;</i><span>Small inns</span><i>&#8226;</i></div></div>
 
   <section class="mist" aria-label="How it works in three steps">
     <div class="wrap">
