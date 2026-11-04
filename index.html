@@ -55,6 +55,11 @@ section{ padding-block:clamp(56px,7vw,96px) }
 .who-big{ font-family:var(--display); font-size:clamp(28px,4.2vw,48px); line-height:1.18; letter-spacing:-.01em; max-width:24ch }
 .who-big em{ font-style:normal }
 .who-note{ margin-top:20px; color:var(--muted); font-size:clamp(17px,1.8vw,19px) }
+.who-in{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(32px,5vw,72px); align-items:center }
+.who-img{ position:relative; aspect-ratio:4/5; overflow:hidden; background:var(--ph) }
+/* The file has an "After" label burnt into the top-left corner: zoom from the bottom-right to keep it out of frame. */
+.who-img img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.2); transform-origin:100% 100% }
+@media (max-width:820px){ .who-in{ grid-template-columns:1fr } .who-img{ aspect-ratio:4/3 } }
 
 .deck{ position:relative; aspect-ratio:16/9; width:100%; margin-top:clamp(28px,4vw,48px); background:var(--band); overflow:hidden }
 .deck iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
@@ -213,10 +218,13 @@ section{ padding-block:clamp(56px,7vw,96px) }
 
 
   <section class="who mist" aria-labelledby="who-h">
-    <div class="wrap">
-      <h2 id="who-h" class="visually-hidden">Who we work with</h2>
-      <p class="who-big">We work with <em>cabins and lodges</em>, <em>guest houses and B&amp;Bs</em>, <em>vacation homes</em> and <em>small inns</em>.</p>
-      <p class="who-note">Most are owners of one to three places who look after their own listings.</p>
+    <div class="wrap who-in">
+      <div>
+        <h2 id="who-h" class="visually-hidden">Who we work with</h2>
+        <p class="who-big">We work with <em>cabins and lodges</em>, <em>guest houses and B&amp;Bs</em>, <em>vacation homes</em> and <em>small inns</em>.</p>
+        <p class="who-note">Most are owners of one to three places who look after their own listings.</p>
+      </div>
+      <div class="who-img"><img src="work-5-after-700.jpg" srcset="work-5-after-700.jpg 700w, work-5-after.jpg 1186w" sizes="(max-width: 820px) 100vw, 440px" width="1186" height="835" alt="A wooden cabin with a covered deck among trees." loading="lazy"></div>
     </div>
   </section>
 
