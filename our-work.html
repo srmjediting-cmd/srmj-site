@@ -21,12 +21,16 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="newsreader-latin-400-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="public-sans-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="image" href="sample2-after-1000.jpg" imagesrcset="sample2-after-640.jpg 640w, sample2-after-1000.jpg 1000w, sample2-after.jpg 1448w" imagesizes="100vw">
 <link rel="stylesheet" href="site.css">
 <style>
 /* Our work: a short title, then each photograph as a before/after pair. Side by side on wide screens, stacked on phones. */
-.intro{ padding-block:clamp(48px,8vw,104px) clamp(32px,5vw,56px) }
-.intro h1{ font-size:clamp(40px,6vw,72px); line-height:1.04 }
-.intro p{ margin-top:22px; font-size:clamp(18px,2vw,21px); color:var(--muted); max-width:46ch }
+.phead{ position:relative; height:clamp(420px,64svh,720px); overflow:hidden; background:#0B2527 }
+.phead img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
+.phead-copy{ position:absolute; left:0; right:0; bottom:0; padding:clamp(120px,20vh,200px) 0 clamp(36px,6vh,64px); background:linear-gradient(to top, rgba(6,18,19,.9) 0%, rgba(6,18,19,.68) 50%, rgba(6,18,19,0) 100%); color:#F1F6F4 }
+.phead h1{ font-size:clamp(48px,8vw,112px); line-height:.98; letter-spacing:-.025em; color:#fff }
+.phead p{ margin-top:20px; font-size:clamp(18px,2vw,21px); line-height:1.5; max-width:46ch; color:#DCE7E3 }
+@media (max-width:640px){ .phead{ height:auto } .phead img{ position:relative; height:auto; aspect-ratio:4/3 } .phead-copy{ position:relative; padding:28px 0 40px; background:#0B2527 } }
 
 .work-sec{ padding-block:clamp(56px,8vw,112px) }
 .work{ display:grid; gap:clamp(80px,11vw,152px) }
@@ -56,12 +60,13 @@
 </header>
 
 <main id="main">
-  <div class="wrap">
-    <div class="intro">
+  <header class="phead">
+    <img src="sample2-after-1000.jpg" srcset="sample2-after-640.jpg 640w, sample2-after-1000.jpg 1000w, sample2-after.jpg 1448w" sizes="100vw" width="1448" height="1086" alt="" fetchpriority="high">
+    <div class="phead-copy"><div class="wrap">
       <h1>Our work</h1>
       <p>Property photographs before and after enhancement: balanced light, true color, straight lines. Shown with the owners' permission.</p>
-    </div>
-  </div>
+    </div></div>
+  </header>
 
   <section class="mist work-sec">
    <div class="wrap">
