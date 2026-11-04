@@ -35,6 +35,10 @@
 .person h2{ font-size:clamp(26px,3vw,34px); line-height:1.15 }
 .person .role{ font-size:15px; color:var(--accent); font-weight:600 }
 .person p{ color:var(--muted); max-width:44ch }
+/* Until a portrait file is added (the <img> is commented out), show a small monogram instead of a large empty box. */
+.portrait:not(:has(img)){ width:96px; aspect-ratio:1/1; background:var(--text) }
+.portrait:not(:has(img)) .initials{ font-size:34px; color:var(--bg) }
+.people:not(:has(img)){ max-width:none; padding-bottom:clamp(40px,6vw,72px) }
 
 .how{ border-top:1px solid var(--line); padding-block:clamp(56px,8vw,96px); display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:clamp(28px,6vw,90px) }
 .how h2{ font-size:clamp(28px,3.8vw,44px); line-height:1.12 }
