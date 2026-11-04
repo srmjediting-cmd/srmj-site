@@ -267,3 +267,12 @@ h1 em,h2 em{ font-style:italic; color:#63D8BC }
 /* Accent words: teal on light backgrounds (readable), mint only on dark bands. */
 h1 em,h2 em{ color:var(--accent) }
 .stage h1 em,.phead h1 em,.ahead h1 em,.intro.ink h1 em,.faqx h2 em,.scrub h2 em,.band:not(.contact) h2 em{ color:#63D8BC }
+
+/* v20 fixes from the round-58 critique. */
+.related{ padding-top:clamp(48px,7vw,88px) }
+.site-foot::after{ -webkit-text-stroke-color:rgba(99,216,188,.85); margin-bottom:0; padding-bottom:.04em }
+.band.contact h2{ line-height:1.04 }
+/* Guides: huge outlined step numbers, matching the FAQ. */
+.tips .tip h2::before{ content:counter(t, decimal-leading-zero); font-size:clamp(72px,9vw,132px); line-height:.85; color:transparent; -webkit-text-stroke:1.4px var(--accent); margin-bottom:14px; letter-spacing:-.03em; transition:color .35s ease }
+.tips .tip:hover h2::before{ color:var(--accent) }
+.tips .tip h2{ font-size:clamp(26px,3.2vw,40px); line-height:1.1 }
