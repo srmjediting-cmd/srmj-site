@@ -64,6 +64,9 @@ section{ border-top:1px solid var(--line); padding-block:clamp(56px,8vw,104px) }
 .links a:hover b{ color:var(--accent) }
 .more{ font-weight:600; text-decoration:none; border-bottom:2px solid var(--accent); padding-bottom:3px }
 .more:hover{ color:var(--accent) }
+.send{ list-style:none; margin:0; padding:0; display:grid; gap:10px; color:var(--on-band) }
+.send li{ position:relative; padding-left:26px }
+.send li::before{ content:""; position:absolute; left:2px; top:.5em; width:10px; height:6px; border-left:2px solid var(--accent-on-band); border-bottom:2px solid var(--accent-on-band); transform:rotate(-45deg) }
 .who h2{ font-size:clamp(28px,3.8vw,44px); line-height:1.12 }
 .who-lead{ margin-top:14px; color:var(--muted); font-size:clamp(17px,1.8vw,19px) }
 .who-list{ list-style:none; margin:clamp(24px,3vw,36px) 0 0; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:2px solid var(--text) }
@@ -256,6 +259,11 @@ section{ border-top:1px solid var(--line); padding-block:clamp(56px,8vw,104px) }
     <div class="wrap inner">
       <h2>Tell us about your photographs.</h2>
       <p>Send a link to your listing, or attach a few photographs. We reply by email.</p>
+      <ul class="send">
+        <li>A link to your listing or website, or a few photographs</li>
+        <li>Which rooms or photos matter most to you</li>
+        <li>Anything you want left exactly as it is</li>
+      </ul>
       <a class="addr" id="addr" href="mailto:info@srmjbusiness.com?subject=Photos%20for%20my%20rental&body=Hi%20SRMJ%2C%0A%0ALink%20to%20my%20listing%20or%20website%3A%0A%0AWhat%20I%20would%20like%20improved%3A%0A%0AThanks%2C%0A">info@srmjbusiness.com</a>
       <div class="row">
         <a class="btn solid" href="mailto:info@srmjbusiness.com?subject=Photos%20for%20my%20rental&body=Hi%20SRMJ%2C%0A%0ALink%20to%20my%20listing%20or%20website%3A%0A%0AWhat%20I%20would%20like%20improved%3A%0A%0AThanks%2C%0A">Email us</a>
