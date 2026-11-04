@@ -8,7 +8,7 @@
 /* SRMJ shared styles: tokens, header, footer, contact band, buttons, before/after slider.
    Brand rules: website/source/design/brand-spec.md (radius 0, one accent, no gradients). */
 :root{
-  --bg:#FFFFFF; --text:#0B2527; --muted:#506568; --line:#D5DCDA; --accent:#0F7A66; /* brand #128A73, darkened a little to pass AA for small text on white */ --ph:#EEF2F1;
+  --bg:#FFFFFF; --text:#0B2527; --muted:#506568; --line:#D5DCDA; --mist:#EEF3F1; --accent:#0F7A66; /* brand #128A73, darkened a little to pass AA for small text on white */ --ph:#EEF2F1;
   --band:#0B2527; --on-band:#F1F6F4; --on-band-muted:#9DB5B1; --accent-on-band:#63D8BC;
   --display:"Newsreader", Georgia, "Times New Roman", serif;
   --body:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -17,9 +17,9 @@
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){ --bg:#0A1517; --text:#EAF1EF; --muted:#9FB3B0; --line:#223A3C; --accent:#4FCBAE; --band:#102022; --ph:#102022; color-scheme:dark }
+  :root:not([data-theme="light"]){ --bg:#0A1517; --text:#EAF1EF; --muted:#9FB3B0; --line:#223A3C; --mist:#0F1E20; --accent:#4FCBAE; --band:#102022; --ph:#102022; color-scheme:dark }
 }
-:root[data-theme="dark"]{ --bg:#0A1517; --text:#EAF1EF; --muted:#9FB3B0; --line:#223A3C; --accent:#4FCBAE; --band:#102022; --ph:#102022; color-scheme:dark }
+:root[data-theme="dark"]{ --bg:#0A1517; --text:#EAF1EF; --muted:#9FB3B0; --line:#223A3C; --mist:#0F1E20; --accent:#4FCBAE; --band:#102022; --ph:#102022; color-scheme:dark }
 
 *,*::before,*::after{ box-sizing:border-box }
 html{ -webkit-text-size-adjust:100%; scroll-padding-top:88px }
@@ -34,6 +34,8 @@ p{ margin:0; text-wrap:pretty }
 .wrap{ max-width:1080px; margin:0 auto; padding-inline:var(--gutter) }
 .skip{ position:absolute; left:-9999px; top:0; z-index:40; padding:10px 16px; background:var(--text); color:var(--bg); font-weight:600; text-decoration:none }
 .skip:focus{ left:var(--gutter) }
+
+.visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap }
 
 /* Header */
 .site-head{ position:sticky; top:0; z-index:30; background:var(--bg); border-bottom:1px solid var(--line) }
@@ -84,8 +86,7 @@ p{ margin:0; text-wrap:pretty }
 .related{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:2px solid var(--text); margin-bottom:clamp(56px,8vw,96px) }
 .related a{ display:grid; gap:6px; padding:22px 24px 22px 0; text-decoration:none; border-bottom:1px solid var(--line) }
 .related a + a{ padding-left:24px; border-left:1px solid var(--line) }
-.related b{ font-family:var(--display); font-weight:400; font-size:clamp(21px,2.2vw,24px) }
-.related b::after{ content:" \2192"; color:var(--accent) }
+.related b{ font-family:var(--display); font-weight:400; font-size:clamp(21px,2.2vw,24px); text-decoration:underline; text-decoration-color:var(--accent); text-decoration-thickness:2px; text-underline-offset:6px }
 .related span{ color:var(--muted); font-size:15px }
 .related a:hover b{ color:var(--accent) }
 @media (max-width:720px){ .related{ grid-template-columns:1fr } .related a,.related a + a{ padding-inline:0; border-left:0 } }
