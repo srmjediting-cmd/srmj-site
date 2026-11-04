@@ -56,6 +56,9 @@ section{ border-top:1px solid var(--line); padding-block:clamp(56px,8vw,104px) }
 .deck-steps{ font-family:var(--display); font-size:clamp(20px,3vw,34px); line-height:1.45 }
 .deck-start .btn.solid{ background:var(--accent-on-band); color:#06221E }
 .deck-start:hover .btn.solid{ background:#86E6CF }
+/* Before it starts, the panel only needs room for its text; the 16:9 frame comes back with the walkthrough. */
+.deck:has(.deck-start){ aspect-ratio:auto }
+.deck:has(.deck-start) .deck-start{ position:relative; inset:auto; padding:clamp(40px,6vw,72px) 24px }
 
 .wide{ margin-top:clamp(28px,4vw,48px) }
 .wide .cmp{ aspect-ratio:16/10 }
