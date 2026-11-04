@@ -124,6 +124,12 @@
         bar.appendChild(b);
       });
       gallery.parentNode.insertBefore(bar, gallery);
+      if (window.HTMLDialogElement) {
+        var hint = document.createElement('p');
+        hint.className = 'cap work-hint';
+        hint.textContent = 'Tap or click a photo to see it full size.';
+        bar.appendChild(hint);
+      }
     }
   }
 

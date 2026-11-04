@@ -105,6 +105,7 @@ p{ margin:0; text-wrap:pretty }
 /* Our work filter */
 .work-filter{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:clamp(32px,5vw,56px) }
 .work-filter button{ min-height:40px; padding:8px 16px; border:1px solid var(--line); background:var(--bg); color:var(--text); font:500 15px var(--body); cursor:pointer }
+.work-hint{ width:100%; margin:4px 0 0 }
 .work-filter button:hover{ border-color:var(--text) }
 .work-filter button[aria-pressed="true"]{ background:var(--text); border-color:var(--text); color:var(--bg) }
 
