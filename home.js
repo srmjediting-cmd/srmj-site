@@ -70,15 +70,15 @@ var st=document.querySelector('.stamp');
 if(st&&'IntersectionObserver' in window&&!still){var so=new IntersectionObserver(function(e){if(e[0].isIntersecting){so.disconnect();st.classList.add('go')}},{threshold:.6});so.observe(st)}
 
 /* ---- one passive scroll loop: ridge sinks, sky steps toward dusk, ink fills the three lines ---- */
-var wide=matchMedia('(min-width:761px)'),vh=innerHeight,busy=0,svgs=[].slice.call(hero.querySelectorAll('.rd svg')),SINK=[70,42,14],DUSK=[0,.14,.28,.42],lastStep=-1;
+var dOn=0,dDraw=function(){},wide=matchMedia('(min-width:761px)'),vh=innerHeight,busy=0,svgs=[].slice.call(hero.querySelectorAll('.rd svg')),SINK=[70,42,14];
 var lns=[].slice.call(document.querySelectorAll('.floor p.ln')),track=document.querySelector('.ltrack');
 function clamp(v){return v<0?0:v>1?1:v}
 function tick(){busy=0;var y=scrollY;
- if(!still&&y<vh*1.4){var p=clamp(y/(vh*1.2));svgs.forEach(function(s,i){s.style.transform='translate3d(0,'+(SINK[i%3]*p).toFixed(1)+'px,0)'});
-  var u=clamp((y-vh*.15)/(vh*.75)),st=Math.min(3,Math.floor(u*4));if(st!==lastStep){lastStep=st;hero.style.setProperty('--dusk',DUSK[st])}}
+ if(!still&&y<vh*1.4){var p=clamp(y/(vh*1.2));svgs.forEach(function(s,i){s.style.transform='translate3d(0,'+(SINK[i%3]*p).toFixed(1)+'px,0)'});}
  if(!still&&track){if(wide.matches){var r=track.getBoundingClientRect(),t=clamp(-r.top/(r.height-vh));
    lns.forEach(function(l,i){l.style.setProperty('--fill',(clamp((t-(.08+i*.25))/.2)*100).toFixed(1)+'%')})}
-  else lns.forEach(function(l){l.style.removeProperty('--fill')})}}
+  else lns.forEach(function(l){l.style.removeProperty('--fill')})}
+ if(dOn)dDraw()}
 function onS(){if(!busy){busy=1;requestAnimationFrame(tick)}}
 addEventListener('scroll',onS,{passive:true});addEventListener('resize',function(){vh=innerHeight;onS()});tick();
 /* ---- small once-only entrances and a paused-offscreen sky ---- */
@@ -92,4 +92,45 @@ if('IntersectionObserver' in window){
  s.addEventListener('click',function(e){if(still||!d.animate)return;e.preventDefault();if(a)a.cancel();var h0=d.offsetHeight;
   if(!d.open){d.open=true;var h1=d.offsetHeight;a=d.animate({height:[h0+'px',h1+'px']},{duration:220,easing:'ease'});a.onfinish=function(){a=null}}
   else{var h2=s.offsetHeight;a=d.animate({height:[h0+'px',h2+'px']},{duration:180,easing:'ease'});a.onfinish=function(){d.open=false;a=null}}})});
+
+/* ---- descent: 66 flat Blender frames scrubbed by scroll. Static ridge stays unless every frame arrived, and in reduced-motion, Save-Data or 2G ---- */
+(function(){
+var sec=document.getElementById('descent'),wall=document.getElementById('wall'),cn=navigator.connection||{},N=66;
+if(!sec||still||cn.saveData||/2g/.test(cn.effectiveType||'')||!window.createImageBitmap||!window.fetch||!('IntersectionObserver' in window))return;
+var tag=matchMedia('(max-width:760px)').matches?'m':'d',cvs=document.getElementById('dcv'),g=cvs.getContext('2d'),
+ blobs=[],bm={},want={},last=-1,cw=0,ch=0,started=0,go=0;
+function url(i){return ''+tag+(i<10?'0':'')+i+'.webp'}
+function load(){
+ if(started)return;started=1;var next=0,left=N,bad=0;
+ function pull(){if(bad||next>=N)return;var i=next++;
+  fetch(url(i),{priority:'low'}).then(function(r){if(!r.ok)throw 0;return r.blob()}).then(function(b){blobs[i]=b;
+   if(--left==0)ready();else pull()}).catch(function(){bad=1})}
+ pull();pull();pull();pull();
+}
+function ready(){
+ Promise.all([0,1,2,3,4,5].map(want1)).then(function(){go=1;try0()}).catch(function(){});
+}
+function want1(i){return bm[i]?Promise.resolve():createImageBitmap(blobs[i]).then(function(b){bm[i]=b})}
+function try0(){
+ if(!go||dOn)return;
+ if(wall.getBoundingClientRect().top<innerHeight*.5)return;   // never reshuffle the page under someone's eyes: wait or stay static
+ dOn=1;root.classList.add('cv');size();last=-1;dDraw()}
+function size(){var r=Math.min(devicePixelRatio||1,1.5),w=Math.min(cvs.clientWidth*r,1600),h=Math.min(cvs.clientHeight*r,1600);
+ if(Math.round(w)!=cw||Math.round(h)!=ch){cw=cvs.width=Math.round(w);ch=cvs.height=Math.round(h);last=-1}}
+dDraw=function(){
+ var rc=sec.getBoundingClientRect(),H=sec.offsetHeight-innerHeight;if(rc.top>innerHeight||rc.bottom<0)return;
+ size();var pr=Math.max(0,Math.min(1,-rc.top/H)),i=Math.round(pr*(N-1)),j=i;
+ for(var k=-5;k<=7;k++){var n=i+k;if(n>=0&&n<N&&!bm[n]&&!want[n]){want[n]=1;want1(n).then(function(){want={};last=-1;dDraw()})}}
+ for(var d=1;d<N&&!bm[j];d++)j=bm[i-d]?i-d:bm[i+d]?i+d:i;   // nearest frame that is already decoded
+ if(!bm[j]||j===last&&i===j)return;last=j;
+ var b=bm[j],s=Math.max(cw/b.width,ch/b.height);g.drawImage(b,(cw-b.width*s)/2,(ch-b.height*s)/2,b.width*s,b.height*s);
+ for(var n in bm)if(n<i-8||n>i+10){bm[n].close();delete bm[n]}};
+addEventListener('resize',function(){if(dOn){size();dDraw()}else try0()});
+addEventListener('scroll',function(){if(go&&!dOn)try0()},{passive:true});
+/* start when the section is within two screens AND the person is engaged (first input) or the page has been idle after load */
+var near=0,engaged=0;function maybe(){if(near&&engaged)load()}
+new IntersectionObserver(function(e){near=e[0].isIntersecting;maybe()},{rootMargin:'0px 0px 100% 0px'}).observe(wall);
+['scroll','touchstart','wheel','keydown','pointerdown'].forEach(function(t){addEventListener(t,function(){engaged=1;maybe()},{passive:true,once:true})});
+addEventListener('load',function(){setTimeout(function(){engaged=1;maybe()},3500)});
+})();
 })();
